@@ -1,31 +1,39 @@
 # Next Steps
 
-Last updated: 2026-05-05
+Last updated: 2026-07-19
+
+Paper framing and experiment matrix: `docs/paper-plan.md` (E1–E9 tiers).
 
 ## Now
 
-1. Let the same-budget vanilla PushT job finish and record its metrics.
-2. Re-run residual-flow training after the `time_scale=1000` embedding fix and
-   `detach_condition=true` default.
-3. Evaluate the new checkpoint with the same residual-distribution script.
+1. Let prediction array `5521894` finish, then run the E9 memory-filter
+   diagnostic (`scripts/eval/evaluate_memory_filter.py`) on the GRU-flow
+   checkpoint before any control experiments.
+2. Train the task-adapted nominal (E2): vanilla LeWM on the quadruple-stack
+   pilot, then centered statistics and a kernel array against it.
+3. Run Gate 1: reproduce deterministic PushT and single-cube OGBench within
+   five success points using the corrected evaluator.
+2. Run the 1,000-episode double-stack pilot at the ordered strong/medium/mild
+   levels; select the first level passing the success and mode-separation gate.
+3. Compute one centered residual-statistics artifact from the frozen nominal
+   checkpoint, then train conditional Gaussian, memoryless flow, and GRU-memory
+   flow heads on identical episode manifests and targets.
 
 ## Next Experiment Batch
 
-1. Compare the completed vanilla run against the old 1-epoch residual-flow run.
-2. Evaluate both the old 1-epoch checkpoint and the new checkpoint with the same
-   evaluation script.
-3. If the flow is competitive on covariance/calibration, start a 10-epoch
-   residual-flow run.
+1. Build 512-context, 128-future exact forks for double-cube stacking.
+2. Gate on horizon-10/20 memory energy skill and correct-memory improvements
+   over memoryless, reset-memory, and shuffled-memory flow.
+3. Only after that gate, run three-seed double-stack control and transfer to
+   triple-cycle/RoboCasa annotated subtask windows.
 
 ## Implementation Backlog
 
-- Add a shape-sanity test for `JEPA.residual_condition` with several
-  `history_size` and `num_preds` settings.
-- Add an optional full-covariance Gaussian oracle baseline for analysis only.
-- Add PCA or UMAP plots of held-out residuals versus samples.
-- Expose stochastic rollout in evaluation/planning configs.
-- Add weak metrics tied to task cost, such as goal distance and constraint
-  violation proxies.
+- Add the asset-backed RoboCasa replay runner after macros/assets are installed.
+- Fit and validate cube/robot physical probes before enabling collateral cost.
+- Connect the implemented privileged simulator-particle cost object to the
+  selected validation-tuned solver configuration.
+- Freeze wall-clock-specific CEM candidate/iteration settings on validation.
 
 ## Decision Points
 

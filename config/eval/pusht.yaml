@@ -7,11 +7,14 @@ world:
   env_name: swm/PushT-v1
   num_envs: ${eval.num_eval}
   max_episode_steps: ??? # make sure it's >= eval_budget
-  history_size: 1
-  frame_skip: 1
 
 dataset:
   stats: ${eval.dataset_name}
+  keys_to_load:
+    - pixels
+    - action
+    - proprio
+    - state
   keys_to_cache:
     - action
     - proprio
@@ -27,11 +30,22 @@ plan_config:
 
 # evaluation from dataset (replay expert trajectories)
 eval:
+  video: false
+  wall_clock_budget_seconds: null
   num_eval: 50
   goal_offset_steps: 25
   eval_budget: 50
   img_size: 224
   dataset_name: pusht_expert_train
+  stochastic_planning:
+    enabled: false
+    particles: 8
+    objective: mean
+    cvar_tail_fraction: 0.25
+    flow_steps: 4
+    particle_chunk_size: 8
+    common_random_numbers: true
+    sampling_seed: ${seed}
   callables:
     # -- set state
     - method: _set_state

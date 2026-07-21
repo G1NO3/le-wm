@@ -1,0 +1,5 @@
+# name|Hydra overrides
+# Task-adapted nominal (E2): vanilla LeWM on the quadruple-stack pilot, no
+# residual head. Frozen afterwards to separate nominal-bias correction from
+# stochasticity modeling in the kernel comparison.
+nominal_task_adapted|+data.dataset.path=${oc.env:DATASET_PATH} data.split_manifest=${oc.env:SPLIT_MANIFEST}

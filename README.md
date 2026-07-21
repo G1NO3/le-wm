@@ -31,9 +31,23 @@ This codebase builds on [stable-worldmodel](https://github.com/galilai-group/sta
 
 **Installation:**
 ```bash
-uv venv --python=3.10
-source .venv/bin/activate
-uv pip install stable-worldmodel[train,env]
+pixi install --locked
+pixi run smoke-import
+pixi run test
+```
+
+The committed Pixi lockfile is used for both local development and cluster
+jobs. See `docs/ice-setup.md` for Georgia Tech PACE ICE setup and Slurm
+ablation arrays.
+
+OGBench, PushT, and HDF5 support are included in the default environment. The
+current RoboCasa stack has its own Python 3.11 environment:
+
+```bash
+pixi install --locked -e robocasa
+pixi run -e robocasa robocasa-smoke
+pixi run -e robocasa setup-robocasa
+# Download RoboCasa assets explicitly (about 10 GB) only when needed.
 ```
 
 ## Data
@@ -65,10 +79,33 @@ wandb:
 
 To launch training:
 ```bash
-python train.py data=pusht
+pixi run train-pusht
 ```
 
 Checkpoints are saved to `$STABLEWM_HOME` upon completion.
+
+## Complex stochastic manipulation study
+
+The gated study specification is `config/studies/complex_stochastic.yaml`.
+Its primary task is OGBench double-cube task 5 (stacking), with triple-cube
+task 4 (cyclic rearrangement) and RoboCasa `PickPlaceCounterToCabinet` as
+transfer evaluations.
+
+Pilot collection is capped at 1,000 episodes unless the larger stage is
+acknowledged explicitly:
+
+```bash
+pixi run python scripts/data/collect_stochastic_ogbench.py \
+  --task double_stack --profile strong --episodes 1000 \
+  --output "$STABLEWM_HOME/ogbench/cube_double_stochastic_stack.h5"
+```
+
+`config/ablations/double_stack_prediction.tsv` compares a conditional Gaussian,
+a memoryless residual flow, and a flow with one explicit 128-dimensional GRU
+state against one frozen nominal checkpoint and one centered residual-statistics
+artifact. Run `pixi run smoke-memory` before submitting these heads.
+Downstream Slurm arrays should use `scripts/slurm/ice/submit_gated_array.sh`,
+which verifies the preceding gate's hashed evidence before calling `sbatch`.
 
 For baseline scripts, see the stable-worldmodel [scripts](https://github.com/galilai-group/stable-worldmodel/tree/main/scripts/train) folder.
 

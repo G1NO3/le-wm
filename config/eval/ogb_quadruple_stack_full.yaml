@@ -1,0 +1,16 @@
+defaults:
+  - ogb_quadruple_stack
+  - _self_
+
+world:
+  max_episode_steps: 400
+
+eval:
+  protocol: full_task
+  num_eval: 100
+  num_contexts: 100
+  stochastic_repeats: 1
+  eval_budget: 400
+
+output:
+  filename: ogb_quadruple_stack_full_results.txt

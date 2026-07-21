@@ -16,13 +16,14 @@ if [[ -f "$OUTPUT" ]]; then
   exit 0
 fi
 
-source .venv/bin/activate
+source "$REPO_DIR/scripts/pixi_env.sh"
+resolve_pixi_bin
 
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$DATA_DIR/.cache}"
 export HF_HOME="${HF_HOME:-$XDG_CACHE_HOME/huggingface}"
 mkdir -p "$XDG_CACHE_HOME" "$HF_HOME"
 
-python - <<'PY'
+"$PIXI_BIN" run --locked python - <<'PY'
 from pathlib import Path
 from huggingface_hub import hf_hub_download
 import os
@@ -47,7 +48,7 @@ if Path(path) != archive:
 print(f"Downloaded {repo_id}/{filename} -> {archive}")
 PY
 
-python - <<'PY'
+"$PIXI_BIN" run --locked python - <<'PY'
 from pathlib import Path
 import os
 import zstandard as zstd

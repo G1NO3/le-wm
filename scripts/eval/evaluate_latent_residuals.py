@@ -16,6 +16,14 @@ import stable_worldmodel as swm
 import torch
 from omegaconf import OmegaConf
 
+from experiment_data import episode_disjoint_split
+from stochastic_metrics import (
+    energy_score,
+    energy_skill_score,
+    interval_metrics,
+    mean_error_explained_fraction,
+    randomized_pit,
+)
 from utils import get_column_normalizer, get_img_preprocessor
 
 
@@ -40,6 +48,11 @@ def parse_args():
     parser.add_argument("--flow-steps", type=int, default=8)
     parser.add_argument("--seed", type=int, default=3072)
     parser.add_argument("--quantile-bins", type=int, default=10)
+    parser.add_argument(
+        "--allow-legacy-window-split",
+        action="store_true",
+        help="Evaluate old checkpoints without an episode split manifest.",
+    )
     return parser.parse_args()
 
 
@@ -77,7 +90,7 @@ def load_config(args, checkpoint):
     return OmegaConf.load(config), config
 
 
-def make_val_loader(cfg, args):
+def make_val_loader(cfg, args, checkpoint):
     dataset = swm.data.HDF5Dataset(**cfg.data.dataset, transform=None)
     transforms = [
         get_img_preprocessor(
@@ -92,12 +105,26 @@ def make_val_loader(cfg, args):
 
     dataset.transform = spt.data.transforms.Compose(*transforms)
 
-    generator = torch.Generator().manual_seed(args.seed)
-    _, val_set = spt.data.random_split(
-        dataset,
-        lengths=[cfg.get("train_split", 0.9), 1 - cfg.get("train_split", 0.9)],
-        generator=generator,
-    )
+    manifest_path = cfg.data.get("split_manifest") or checkpoint.parent / "split_manifest.json"
+    if Path(manifest_path).exists():
+        subsets, _ = episode_disjoint_split(
+            dataset,
+            manifest_path,
+            seed=cfg.seed,
+            fractions=tuple(cfg.data.get("split_fractions", [0.8, 0.1, 0.1])),
+        )
+        val_set = subsets["val"]
+    elif args.allow_legacy_window_split:
+        generator = torch.Generator().manual_seed(args.seed)
+        _, val_set = spt.data.random_split(
+            dataset,
+            lengths=[cfg.get("train_split", 0.9), 1 - cfg.get("train_split", 0.9)],
+            generator=generator,
+        )
+    else:
+        raise FileNotFoundError(
+            f"Episode split manifest is required for evaluation: {manifest_path}"
+        )
 
     return torch.utils.data.DataLoader(
         val_set,
@@ -142,7 +169,7 @@ def interval_coverage(samples, target, lo=0.05, hi=0.95):
     return ((target >= q_lo) & (target <= q_hi)).float().mean()
 
 
-def sample_normalized_flow_residuals(model, pred_emb, condition, args):
+def sample_normalized_kernel_residuals(model, pred_emb, condition, args, memory=None):
     sample_shape = (args.num_samples, *pred_emb.shape)
     noise = torch.randn(sample_shape, device=pred_emb.device, dtype=pred_emb.dtype)
 
@@ -153,15 +180,24 @@ def sample_normalized_flow_residuals(model, pred_emb, condition, args):
         .expand(args.num_samples, *condition.shape)
         .flatten(0, 1)
     )
+    flat_memory = None
+    if memory is not None:
+        if memory.ndim == condition.ndim - 1:
+            memory = memory.unsqueeze(-2)
+        flat_memory = (
+            memory.unsqueeze(0)
+            .expand(args.num_samples, *memory.shape)
+            .flatten(0, 1)
+        )
 
     residual = model.sample_residual(
         flat_pred,
         flat_condition,
         steps=args.flow_steps,
         noise=flat_noise,
+        memory=flat_memory,
     )
-    scale = model.residual_scale.to(device=residual.device, dtype=residual.dtype)
-    normalized = residual / scale.clamp_min(1e-8)
+    normalized = model.normalize_residual(residual)
     return normalized.reshape(args.num_samples, -1, normalized.size(-1))
 
 
@@ -176,7 +212,9 @@ def evaluate(args):
     model = torch.load(checkpoint, map_location=device, weights_only=False)
     model = model.to(device).eval()
 
-    loader = make_val_loader(cfg, args)
+    if hasattr(model, "freeze_residual_scale"):
+        model.freeze_residual_scale()
+    loader = make_val_loader(cfg, args, checkpoint)
     ctx_len = cfg.wm.history_size
     n_preds = cfg.wm.num_preds
 
@@ -203,8 +241,25 @@ def evaluate(args):
             tgt_emb = emb[:, n_preds:]
             pred_emb = model.predict(ctx_emb, ctx_act)
 
-            residual = tgt_emb - pred_emb
-            target = model.normalize_residual(residual).flatten(0, 1)
+            residual_history = tgt_emb - pred_emb
+            normalized_history = model.normalize_residual(residual_history)
+            base_condition = model.residual_condition(ctx_emb, ctx_act, pred_emb)
+            memory = None
+            if getattr(model, "residual_memory", None) is not None:
+                memory = model.init_residual_memory(
+                    (pred_emb.size(0),), device=device, dtype=pred_emb.dtype
+                )
+                for index in range(max(pred_emb.size(1) - 1, 0)):
+                    memory = model.update_residual_memory(
+                        memory,
+                        base_condition[:, index],
+                        normalized_history[:, index],
+                    )
+
+            # Match the final history-conditioned token used by rollout.
+            pred_emb = pred_emb[:, -1:]
+            residual = residual_history[:, -1:]
+            target = normalized_history[:, -1:].flatten(0, 1)
             target_chunks.append(target.detach().cpu())
             pred_mse.append(residual.pow(2).mean().detach().cpu())
             norm_residual_mse.append(target.pow(2).mean().detach().cpu())
@@ -218,21 +273,27 @@ def evaluate(args):
             )
             gaussian_chunks.append(gaussian.detach().cpu())
 
-            if model.residual_flow is not None:
-                condition = model.residual_condition(ctx_emb, ctx_act, pred_emb)
-                flow = sample_normalized_flow_residuals(model, pred_emb, condition, args)
+            if model.residual_flow is not None or getattr(model, "residual_kernel", None) is not None:
+                condition = base_condition[:, -1:]
+                flow = sample_normalized_kernel_residuals(
+                    model, pred_emb, condition, args, memory=memory
+                )
                 flow_chunks.append(flow.detach().cpu())
 
-                eps = torch.randn_like(target)
-                tau = torch.rand(*target.shape[:-1], 1, device=device, dtype=target.dtype)
-                z_tau = (1.0 - tau) * eps + tau * target
-                target_velocity = target - eps
-                pred_velocity = model.residual_flow(
-                    tau,
-                    z_tau,
-                    condition.flatten(0, 1),
-                )
-                fm_losses.append((pred_velocity - target_velocity).pow(2).mean().cpu())
+                if model.residual_flow is not None:
+                    eps = torch.randn_like(target)
+                    tau = torch.rand(*target.shape[:-1], 1, device=device, dtype=target.dtype)
+                    z_tau = (1.0 - tau) * eps + tau * target
+                    target_velocity = target - eps
+                    conditioned = model.condition_residual(
+                        condition.squeeze(1), memory
+                    )
+                    pred_velocity = model.residual_flow(
+                        tau,
+                        z_tau,
+                        conditioned,
+                    )
+                    fm_losses.append((pred_velocity - target_velocity).pow(2).mean().cpu())
 
     target = torch.cat(target_chunks, dim=0)
     gaussian = torch.cat(gaussian_chunks, dim=1)
@@ -248,6 +309,7 @@ def evaluate(args):
         "num_samples": args.num_samples,
         "flow_steps": args.flow_steps,
         "nfe": args.flow_steps,
+        "historical_diagnostic": bool(args.allow_legacy_window_split),
         "deterministic": {
             "latent_mse": float(torch.stack(pred_mse).mean()),
             "normalized_residual_mse": float(torch.stack(norm_residual_mse).mean()),
@@ -265,6 +327,34 @@ def evaluate(args):
         },
     }
 
+    gaussian_context = gaussian.transpose(0, 1)
+    target_context = target[:, None]
+    no_residual_context = torch.zeros_like(target_context)
+    result["deterministic"]["energy_score"] = float(
+        energy_score(no_residual_context, target_context).mean()
+    )
+    result["gaussian"]["energy_score"] = float(
+        energy_score(gaussian_context, target_context).mean()
+    )
+    gaussian_mean = gaussian_context.mean(dim=1, keepdim=True)
+    result["gaussian"]["residual_energy_skill"] = float(
+        energy_skill_score(gaussian_context, target_context, no_residual_context)
+    )
+    result["gaussian"]["residual_mean_error_explained"] = float(
+        mean_error_explained_fraction(
+            gaussian_context, target_context, no_residual_context
+        )
+    )
+    result["gaussian"]["stochastic_energy_skill_vs_residual_mean"] = float(
+        energy_skill_score(gaussian_context, target_context, gaussian_mean)
+    )
+    pit = randomized_pit(gaussian_context, target_context)
+    result["gaussian"]["randomized_pit_mean"] = float(pit.mean())
+    for level in (0.5, 0.8, 0.9):
+        coverage, width = interval_metrics(gaussian_context, target_context, level)
+        result["gaussian"][f"coverage_{int(level * 100)}"] = float(coverage.mean())
+        result["gaussian"][f"interval_width_{int(level * 100)}"] = float(width.mean())
+
     if flow_chunks:
         flow = torch.cat(flow_chunks, dim=1)
         flow_cov = covariance(flow.flatten(0, 1))
@@ -276,6 +366,28 @@ def evaluate(args):
             "eval_fm_loss": float(torch.stack(fm_losses).mean()) if fm_losses else None,
             "nfe": args.flow_steps,
         }
+        flow_context = flow.transpose(0, 1)
+        result["flow"]["energy_score"] = float(
+            energy_score(flow_context, target_context).mean()
+        )
+        flow_mean = flow_context.mean(dim=1, keepdim=True)
+        result["flow"]["residual_energy_skill"] = float(
+            energy_skill_score(flow_context, target_context, no_residual_context)
+        )
+        result["flow"]["residual_mean_error_explained"] = float(
+            mean_error_explained_fraction(
+                flow_context, target_context, no_residual_context
+            )
+        )
+        result["flow"]["stochastic_energy_skill_vs_residual_mean"] = float(
+            energy_skill_score(flow_context, target_context, flow_mean)
+        )
+        pit = randomized_pit(flow_context, target_context)
+        result["flow"]["randomized_pit_mean"] = float(pit.mean())
+        for level in (0.5, 0.8, 0.9):
+            coverage, width = interval_metrics(flow_context, target_context, level)
+            result["flow"][f"coverage_{int(level * 100)}"] = float(coverage.mean())
+            result["flow"][f"interval_width_{int(level * 100)}"] = float(width.mean())
 
     return result
 

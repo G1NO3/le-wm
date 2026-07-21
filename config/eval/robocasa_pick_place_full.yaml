@@ -1,0 +1,18 @@
+defaults:
+  - robocasa_pick_place
+  - _self_
+
+world:
+  max_episode_steps: 500
+
+eval:
+  protocol: full_task
+  num_eval: 50
+  batch_size: 10
+  num_contexts: 50
+  stochastic_repeats: 1
+  eval_budget: 500
+  stage: all
+
+output:
+  filename: robocasa_pick_place_full_exploratory.txt

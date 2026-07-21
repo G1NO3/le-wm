@@ -1,0 +1,113 @@
+study: complex_stochastic_manipulation
+seeds: [3072, 3073, 3074]
+
+gates:
+  gate1:
+    name: deterministic_reproduction
+    push_t_max_regression_points: 5
+  gate2:
+    name: harder_task_screen
+    episodes: 100
+    expert_success_range: [0.5, 0.98]
+    deterministic_success_range: [0.15, 0.6]
+    minimum_expert_deterministic_gap: 0.2
+    minimum_h5_mode_separation_sd: 1.0
+  gate2b:
+    name: stochastic_pilot
+    episodes: 1000
+    expert_success_range: [0.5, 0.95]
+    minimum_h5_mode_separation_sd: 1.0
+  gate3:
+    name: quadruple_stack_prediction
+    minimum_memory_energy_gain_vs_flow: 0.05
+  gate4:
+    name: quadruple_stack_control
+    seeds: 3
+  gate5:
+    name: transfer
+    tasks: [octuple_stack2, robocasa_pick_place]
+
+physics_profiles:
+  order: [strong, medium, mild]
+  strong:
+    mass: [0.5, 1.5]
+    surface_friction: [0.3, 1.2]
+    pad_friction: [0.2, 1.0]
+    slip_probability: 0.25
+  medium:
+    mass: [0.75, 1.25]
+    surface_friction: [0.5, 1.0]
+    pad_friction: [0.5, 1.0]
+    slip_probability: 0.15
+  mild:
+    mass: [0.9, 1.1]
+    surface_friction: [0.7, 1.0]
+    pad_friction: [0.7, 1.0]
+    slip_probability: 0.10
+  slip_pad_multiplier: 0.1
+  slip_sim_substeps: 10
+
+datasets:
+  split: [0.8, 0.1, 0.1]
+  ogbench:
+    pilot_episodes: 1000
+    final_episodes: 10000
+    tasks:
+      double_stack: {env_type: double, task_id: 5}
+      triple_cycle: {env_type: triple, task_id: 4}
+      quadruple_stack: {env_type: quadruple, task_id: 5}
+      octuple_stack2: {env_type: octuple, task_id: 5}
+  robocasa:
+    task: PickPlaceCounterToCabinet
+    pilot_demonstrations: 200
+    demonstrations: 1000
+    physics_replays: 4
+    stages: [approach_grasp, lift, transport, cabinet_placement]
+
+fork_evaluation:
+  contexts: {quadruple_stack: 512, octuple_stack2: 512, robocasa: 256}
+  futures_per_context: 128
+  horizons: [1, 5, 10, 20]
+  primary_horizon: 10
+
+kernels:
+  - deterministic
+  - conditional_gaussian
+  - flow
+  - flow_gru_memory
+
+residual_memory:
+  type: gru
+  hidden_dim: 128
+  layers: 1
+  state_is_explicit: true
+  train_target: final_deployment_token
+  teacher_force_prior_residuals: true
+  ablations: [correct, reset, shuffled]
+  multistep_fallback:
+    horizon: 5
+    sampled_previous_residual_probability: 0.25
+
+control:
+  particles: 8
+  flow_nfe: 4
+  common_random_numbers: true
+  particle_chunk_size: 8
+  objectives: [mean, cvar]
+  cvar_tail_fraction: 0.25
+  reachable_window: {starts: 100, stochastic_seeds: 5, budget: 50, goal_offset: 25}
+  full_ogbench: {starts: 100, budget: 200}
+  robocasa_subtask: {windows_per_stage: 50, stochastic_seeds: 5, budget: 50}
+  wall_clock_budgets_seconds: [1, 4, 10]
+
+success_criteria:
+  energy_gain_vs_deterministic: 0.10
+  memory_energy_gain_vs_flow: 0.05
+  temporal_covariance_error_reduction: 0.10
+  stochastic_energy_skill_vs_residual_mean_minimum: 0.0
+  coverage_90_range: [0.87, 0.93]
+  maximum_mean_state_error_increase: 0.05
+  control_success_gain_points: 5
+  worst_decile_distance_gain: 0.10
+  surprise_auroc_gain: 0.05
+  surprise_fpr_relative_reduction: 0.25

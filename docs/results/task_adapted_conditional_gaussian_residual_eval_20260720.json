@@ -1,0 +1,56 @@
+{
+  "checkpoint": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/ice/quadruple_stack_prediction_task_adapted/conditional_gaussian/seed_13041/lewm_conditional_gaussian_seed_13041_epoch_10_object.ckpt",
+  "config": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/ice/quadruple_stack_prediction_task_adapted/conditional_gaussian/seed_13041/config.yaml",
+  "deterministic": {
+    "energy_score": 14.103918075561523,
+    "latent_mse": 0.0009666719124652445,
+    "normalized_residual_mse": 1.2064346075057983
+  },
+  "flow": {
+    "cov_relative_frobenius": 0.8741695284843445,
+    "coverage_50": 0.4403482973575592,
+    "coverage_80": 0.7038905024528503,
+    "coverage_90": 0.7933350205421448,
+    "energy_score": 9.55081844329834,
+    "eval_fm_loss": null,
+    "interval_90_coverage": 0.7933349609375,
+    "interval_width_50": 1.060183048248291,
+    "interval_width_80": 1.9503589868545532,
+    "interval_width_90": 2.409212827682495,
+    "mean_l2": 1.2415955066680908,
+    "nfe": 8,
+    "quantile_ece": 0.025235900655388832,
+    "randomized_pit_mean": 0.5025243163108826,
+    "residual_energy_skill": 0.3228251338005066,
+    "residual_mean_error_explained": 0.11804044246673584,
+    "stochastic_energy_skill_vs_residual_mean": 0.25815558433532715
+  },
+  "flow_steps": 8,
+  "gaussian": {
+    "cov_relative_frobenius": 0.905996561050415,
+    "coverage_50": 0.4607492983341217,
+    "coverage_80": 0.7232691645622253,
+    "coverage_90": 0.8084233403205872,
+    "energy_score": 10.840139389038086,
+    "interval_90_coverage": 0.8084233403205872,
+    "interval_width_50": 1.2362004518508911,
+    "interval_width_80": 2.274745464324951,
+    "interval_width_90": 2.810157060623169,
+    "mean_l2": 1.6793532371520996,
+    "nfe": 0,
+    "quantile_ece": 0.024196777492761612,
+    "randomized_pit_mean": 0.5014964938163757,
+    "residual_energy_skill": 0.23140937089920044,
+    "residual_mean_error_explained": -0.05133390426635742,
+    "stochastic_energy_skill_vs_residual_mean": 0.2551615834236145
+  },
+  "historical_diagnostic": false,
+  "latent_dim": 192,
+  "nfe": 8,
+  "num_samples": 16,
+  "num_targets": 2048,
+  "target_residual": {
+    "cov_trace": 228.94174194335938,
+    "mean_norm": 1.6749553680419922
+  }
+}

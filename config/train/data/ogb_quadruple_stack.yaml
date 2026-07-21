@@ -1,0 +1,16 @@
+dataset:
+  name: ogbench/cube_quadruple_stochastic_stack
+  num_steps: ${eval:'${wm.num_preds} + ${wm.history_size}'}
+  frameskip: 5
+  keys_to_load: [pixels, action, observation]
+  keys_to_cache: [action, observation]
+split_fractions: [0.8, 0.1, 0.1]
+split_manifest: null
+hidden_physics:
+  name: strong
+  mass: [0.5, 1.5]
+  surface_friction: [0.3, 1.2]
+  pad_friction: [0.2, 1.0]
+  slip_probability: 0.25
+  slip_pad_multiplier: 0.1
+  slip_sim_substeps: 10

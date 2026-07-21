@@ -1,0 +1,8 @@
+dataset:
+  name: robocasa/pick_place_counter_to_cabinet_replay
+  num_steps: ${eval:'${wm.num_preds} + ${wm.history_size}'}
+  frameskip: 1
+  keys_to_load: [pixels, action, proprio]
+  keys_to_cache: [action, proprio]
+split_fractions: [0.8, 0.1, 0.1]
+split_manifest: null

@@ -24,7 +24,8 @@ export MPLCONFIGDIR="${MPLCONFIGDIR:-$XDG_CACHE_HOME/matplotlib}"
 
 mkdir -p "$STABLEWM_HOME" "$XDG_CACHE_HOME" "$HF_HOME" "$MPLCONFIGDIR" logs data/eval
 
-source .venv/bin/activate
+source "$REPO_DIR/scripts/pixi_env.sh"
+resolve_pixi_bin
 
 CHECKPOINT="${CHECKPOINT:-data/pusht_rflow_1epoch/lewm_rflow_pusht_1epoch_epoch_1_object.ckpt}"
 OUTPUT="${OUTPUT:-data/eval/pusht_rflow_1epoch_residual_eval.json}"
@@ -35,7 +36,7 @@ NUM_SAMPLES="${NUM_SAMPLES:-16}"
 FLOW_STEPS="${FLOW_STEPS:-8}"
 
 SLURM_BIN="${SLURM_BIN:-/opt/slurm/Ubuntu-20.04/current/bin}"
-"$SLURM_BIN/srun" -u python -u scripts/eval/evaluate_latent_residuals.py \
+"$SLURM_BIN/srun" -u "$PIXI_BIN" run --locked python -u scripts/eval/evaluate_latent_residuals.py \
   --checkpoint "$CHECKPOINT" \
   --output "$OUTPUT" \
   --batch-size "$BATCH_SIZE" \

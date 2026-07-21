@@ -1,0 +1,9 @@
+defaults:
+  - robocasa_pick_place
+  - _self_
+
+eval:
+  stage: lift
+
+output:
+  filename: robocasa_pick_place_lift_results.txt

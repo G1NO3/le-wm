@@ -32,18 +32,16 @@ stochastic transition kernel.
 
 ## Environment
 
-The training dependencies can be installed with:
+Pixi is the environment source of truth. Install the locked environment with:
 
 ```bash
-uv venv --python=3.10
-source .venv/bin/activate
-uv pip install 'stable-worldmodel[train]'
-uv pip install 'datasets>=2.20,<3'
+pixi install --locked
+pixi run smoke-import
 ```
 
-The explicit `datasets` upgrade is currently needed because
-`stable-pretraining==0.1.6` imports `datasets.config`, while uv may otherwise
-resolve an older `datasets==1.1.1` release that does not expose it.
+`pixi.toml` explicitly pins the validated `datasets==2.21.0` release and the
+lockfile freezes all transitive packages. Do not mutate `.pixi` with ad hoc
+`pip install` commands; update and commit the manifest and lockfile instead.
 
 The full `stable-worldmodel[train,env]` extra may fail on newer Python packaging
 toolchains because of the legacy `gym==0.21` dependency. Use the train-only
@@ -69,22 +67,20 @@ export MPLCONFIGDIR=.cache/matplotlib
 Vanilla LeWM training:
 
 ```bash
-python train.py data=pusht wandb.enabled=false
+pixi run train-pusht wandb.enabled=false
 ```
 
 Latent residual-flow training:
 
 ```bash
-python train.py data=pusht \
-  loss.residual_flow.enabled=true \
+pixi run train-pusht-residual \
   wandb.enabled=false
 ```
 
 Smaller-memory run:
 
 ```bash
-python train.py data=pusht \
-  loss.residual_flow.enabled=true \
+pixi run train-pusht-residual \
   loader.batch_size=32 \
   wandb.enabled=false
 ```
@@ -92,7 +88,7 @@ python train.py data=pusht \
 Syntax check:
 
 ```bash
-python -m compileall jepa.py train.py residual_flow.py
+pixi run check
 ```
 
 Slurm smoke job on `sky1`:

@@ -1,0 +1,28 @@
+events:
+  ordinary:
+    label: valid
+    source: unmodified_transition
+  slip:
+    label: valid_stochastic
+    source: hidden_physics_fork
+  drop:
+    label: valid_stochastic
+    source: hidden_physics_fork
+  visual_only:
+    label: valid
+    perturbation: appearance_without_state_change
+  teleport:
+    label: physical_violation
+    perturbation: object_position_jump
+  interpenetration:
+    label: physical_violation
+    perturbation: overlapping_object_geometry
+  unsupported_motion:
+    label: physical_violation
+    perturbation: elevated_object_without_contact
+
+score: sample_energy_score
+reports: [auroc, auprc, valid_stochastic_fpr_at_95_tpr, original_mse_paired_test]
+criteria:
+  auroc_gain: 0.05
+  valid_stochastic_fpr_relative_reduction: 0.25

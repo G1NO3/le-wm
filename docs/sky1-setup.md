@@ -12,8 +12,8 @@ directory.
 ## Current Remote Setup
 
 - Branch: `latent-residual-flow`
-- Python environment: `.venv`
-- Python version: uv-managed CPython 3.10.20
+- Python environment: Pixi, locked by `pixi.lock`
+- Python version: Pixi-managed CPython 3.10
 - Slurm binaries are available under:
 
 ```text
@@ -42,17 +42,19 @@ cpus-per-task: 6
 From `~/flash/Research/WM`:
 
 ```bash
-uv venv --python=3.10
-uv pip install 'stable-worldmodel[train]'
-uv pip install 'datasets>=2.20,<3'
+pixi install --locked
+pixi run smoke-import
 ```
 
-The explicit `datasets` upgrade fixes `stable-pretraining` imports. Without it,
-uv may resolve `datasets==1.1.1`, which fails with:
+The manifest pins `datasets==2.21.0`, which avoids the old
+`stable-pretraining` import failure:
 
 ```text
 ImportError: cannot import name 'config' from 'datasets'
 ```
+
+If Pixi is not yet installed on Sky1, use the same user-local bootstrap shown
+in `docs/ice-setup.md`.
 
 Use project-local flash storage for datasets, checkpoints, and caches:
 

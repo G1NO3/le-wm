@@ -1,0 +1,22 @@
+{
+  "collection_job": "5521332",
+  "dataset_bytes": 23109371861,
+  "dataset_sha256": "836de31d00b9ad9016a449651015d1fd2f01ea3a662f6780f2b7ca80ac7161e7",
+  "episodes": 1000,
+  "expert_success": 1.0,
+  "fork_evidence_job": "5521372",
+  "fork_evidence_sha256": "ea8bc1ededee27c4a0a68f6c48503cffed060aad608750c97e51f87107915dcf",
+  "forks": {
+    "contexts": 64,
+    "horizon": 5,
+    "mode_separation_sd": 2.505983591079712,
+    "realizations_per_context": 32
+  },
+  "gate_reason": "The strongest preregistered profile exceeds 80% success; do not spend data on the milder fallback profiles.",
+  "gate_status": "fail_too_easy",
+  "hidden_modes": 8,
+  "hf_compact_artifacts_commit": "39902a20a9b2ffa159de5bebee2f27cbc35c3f78",
+  "slip_events": 210,
+  "split_sha256": "10f29e396a86542aee3562fe34f29aaed5971ce4ecfa8cacf1c6b03313553545",
+  "transitions": 151286
+}

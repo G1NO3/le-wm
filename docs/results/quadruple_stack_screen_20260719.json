@@ -1,0 +1,65 @@
+{
+  "task": "ogbench-cube-quadruple-play-v0 task 5 (four-high stacking)",
+  "physics_profile": "strong",
+  "collection_smoke_job": "5521459",
+  "collection_job": "5521460",
+  "episodes": 100,
+  "transitions": 36022,
+  "dataset_bytes": 5535199575,
+  "dataset_sha256": "788559b4a78fac428ea018a2b3244a9642b6af627f566206285962f036a278eb",
+  "split_sha256": "7707ca0719b4aed6ed2da8cbee4685f6b8699e1e3756e74ac269f82aa108f839",
+  "expert_success": 0.95,
+  "hidden_modes": 8,
+  "contact_onsets": 305,
+  "slip_events": 66,
+  "fork_evidence_job": "5521483",
+  "fork_evidence_sha256": "d42f6919660528d91c62fbdddd8a096d8490d75b838c17ba7245ec9f10ea5575",
+  "forks": {
+    "contexts": 32,
+    "realizations_per_context": 16,
+    "horizon": 5,
+    "physical_state_dim": 80,
+    "contact_stages": [1, 2, 3, 4],
+    "mode_separation_sd": 5.180331707
+  },
+  "official_checkpoint": {
+    "hf_repo": "quentinll/lewm-cube",
+    "revision": "b0747c5002e86d2ce8f3cd8178004b97524c587d",
+    "source_weights_sha256": "2839a907362f403f9136383016e91774373a295d958ae75121791f22a9fddf89",
+    "converted_checkpoint_sha256": "1c8096a86c57bfed53243cec8fec1f55f088e237580405dfa9b6f8bb8810bb82"
+  },
+  "deterministic_reachable_window": {
+    "job": "5521492",
+    "windows": 100,
+    "success": 0.38,
+    "final_goal_distance": 0.0420970,
+    "worst_decile_goal_distance": 0.123654,
+    "collateral_displacement": 0.0628047,
+    "target_drops": 0.16,
+    "grasp_retries": 3.73
+  },
+  "deterministic_post_contact": {
+    "job": "5521515",
+    "windows": 100,
+    "success": 0.26,
+    "stage_success": {
+      "1": 0.228571,
+      "2": 0.228571,
+      "3": 0.333333
+    },
+    "final_goal_distance": 0.0488083,
+    "worst_decile_goal_distance": 0.1241604,
+    "collateral_displacement": 0.0791091,
+    "target_drops": 0.14,
+    "grasp_retries": 4.72
+  },
+  "gate_status": "pass",
+  "gate_reason": "Expert success is 95%, official deterministic LeWM post-contact success is 26%, their gap is 69 percentage points, and exact-fork mode separation is 5.18 pooled SD.",
+  "hf_dataset_repo": "fei-yang-wu/lewm-stochastic-manipulation",
+  "hf_compact_artifacts_prefix": "screens/ogbench/quadruple_stack/strong/100-seed12041",
+  "hf_compact_artifacts_commit": "d8ce3c25d5e7b5b1b5f94eff1f6b99d3b49fc429",
+  "large_hdf5_location": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/screens/quadruple_stack_strong_100_seed12041.h5",
+  "large_hdf5_uploaded": false,
+  "large_hdf5_upload_blocker": "ICE is not authenticated to the private Hugging Face dataset repository.",
+  "submitted_training_jobs": []
+}

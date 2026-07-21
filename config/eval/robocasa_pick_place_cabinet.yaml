@@ -1,0 +1,9 @@
+defaults:
+  - robocasa_pick_place
+  - _self_
+
+eval:
+  stage: cabinet_placement
+
+output:
+  filename: robocasa_pick_place_cabinet_results.txt

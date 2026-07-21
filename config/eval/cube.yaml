@@ -5,10 +5,8 @@ defaults:
 
 world:
   env_name: swm/OGBCube-v0
-  num_envs: ${eval.num_eval}
+  num_envs: ${eval.batch_size}
   max_episode_steps: ??? # make sure it's >= eval_budget
-  history_size: 1
-  frame_skip: 1
   env_type: single
   ob_type: states
   multiview: False
@@ -19,6 +17,13 @@ world:
 
 dataset:
   stats: ${eval.dataset_name}
+  keys_to_load:
+    - pixels
+    - action
+    - qpos
+    - qvel
+    - privileged/block_0_pos
+    - privileged/block_0_quat
   keys_to_cache:
     - action
 
@@ -32,11 +37,33 @@ plan_config:
 
 # evaluation from dataset (replay expert trajectories)
 eval:
+  protocol: reachable_window
+  video: false
+  wall_clock_budget_seconds: null
   num_eval: 50
+  batch_size: 50
+  num_contexts: null
+  stochastic_repeats: 1
   goal_offset_steps: 25
   eval_budget: 50
   img_size: 224
   dataset_name: ogbench/cube_single_expert
+  stochastic_planning:
+    enabled: false
+    particles: 8
+    objective: mean
+    cvar_tail_fraction: 0.25
+    flow_steps: 4
+    particle_chunk_size: 8
+    common_random_numbers: true
+    collateral_penalty_weight: 0.0
+    collateral_state_indices: []
+    physical_probe_checkpoint: null
+    physical_probe_name: cube_positions
+    sampling_seed: ${seed}
+  hidden_physics:
+    enabled: false
+    profile: strong
   callables:
     # -- set state
     - method: set_state
@@ -52,10 +79,9 @@ eval:
           value: 0
           in_dataset: False
         target_pos:
-          value: goal_privileged_block_0_pos
+          value: goal_privileged/block_0_pos
         target_quat:
-          value: goal_privileged_block_0_quat
+          value: goal_privileged/block_0_quat
 
 output:
   filename: ogb_cube_results.txt
-

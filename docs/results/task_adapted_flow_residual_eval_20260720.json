@@ -1,0 +1,56 @@
+{
+  "checkpoint": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/ice/quadruple_stack_prediction_task_adapted/flow/seed_13041/lewm_flow_seed_13041_epoch_10_object.ckpt",
+  "config": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/ice/quadruple_stack_prediction_task_adapted/flow/seed_13041/config.yaml",
+  "deterministic": {
+    "energy_score": 14.103918075561523,
+    "latent_mse": 0.0009666719124652445,
+    "normalized_residual_mse": 1.2064346075057983
+  },
+  "flow": {
+    "cov_relative_frobenius": 0.773614764213562,
+    "coverage_50": 0.4645029604434967,
+    "coverage_80": 0.7279560565948486,
+    "coverage_90": 0.8140843510627747,
+    "energy_score": 10.03661823272705,
+    "eval_fm_loss": 1.4727333784103394,
+    "interval_90_coverage": 0.8140843510627747,
+    "interval_width_50": 1.155074954032898,
+    "interval_width_80": 2.129751205444336,
+    "interval_width_90": 2.636060953140259,
+    "mean_l2": 1.3928518295288086,
+    "nfe": 8,
+    "quantile_ece": 0.023907875642180443,
+    "randomized_pit_mean": 0.5013001561164856,
+    "residual_energy_skill": 0.28838086128234863,
+    "residual_mean_error_explained": 0.05649286508560181,
+    "stochastic_energy_skill_vs_residual_mean": 0.2583872079849243
+  },
+  "flow_steps": 8,
+  "gaussian": {
+    "cov_relative_frobenius": 0.9059829711914062,
+    "coverage_50": 0.46130624413490295,
+    "coverage_80": 0.7237396240234375,
+    "coverage_90": 0.8085886240005493,
+    "energy_score": 10.84231948852539,
+    "interval_90_coverage": 0.8085886836051941,
+    "interval_width_50": 1.2362388372421265,
+    "interval_width_80": 2.2742598056793213,
+    "interval_width_90": 2.809335947036743,
+    "mean_l2": 1.6762609481811523,
+    "nfe": 0,
+    "quantile_ece": 0.024172361940145493,
+    "randomized_pit_mean": 0.5017278790473938,
+    "residual_energy_skill": 0.23125481605529785,
+    "residual_mean_error_explained": -0.05181586742401123,
+    "stochastic_energy_skill_vs_residual_mean": 0.2552202343940735
+  },
+  "historical_diagnostic": false,
+  "latent_dim": 192,
+  "nfe": 8,
+  "num_samples": 16,
+  "num_targets": 2048,
+  "target_residual": {
+    "cov_trace": 228.94174194335938,
+    "mean_norm": 1.6749553680419922
+  }
+}

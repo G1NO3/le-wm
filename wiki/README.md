@@ -10,7 +10,8 @@ human can read it before making changes.
 2. `wiki/evaluation.md` - how we judge whether the residual kernel is useful.
 3. `wiki/next-steps.md` - the next concrete implementation and experiment tasks.
 4. `docs/project-plan.md` - fuller project plan and experiment log.
-5. `docs/sky1-setup.md` - cluster-specific setup and Slurm details.
+5. `docs/ice-setup.md` - Pixi environment and ICE Slurm ablation workflow.
+6. `docs/sky1-setup.md` - legacy Sky1-specific setup and Slurm details.
 
 ## Source of Truth
 
@@ -22,6 +23,6 @@ human can read it before making changes.
 
 ## Project in One Sentence
 
-We are extending LeWorldModel with an optional conditional flow-matching model
-over latent prediction residuals, so a deterministic latent transition can be
-sampled as a stochastic transition kernel.
+We are testing whether a simple flow-matched latent residual kernel with one
+explicit GRU memory state explains persistent hidden-physics errors and improves
+risk-sensitive particle MPC on multi-object manipulation.

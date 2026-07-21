@@ -24,7 +24,8 @@ export MPLCONFIGDIR="${MPLCONFIGDIR:-$XDG_CACHE_HOME/matplotlib}"
 
 mkdir -p "$STABLEWM_HOME" "$XDG_CACHE_HOME" "$HF_HOME" "$MPLCONFIGDIR" logs
 
-source .venv/bin/activate
+source "$REPO_DIR/scripts/pixi_env.sh"
+resolve_pixi_bin
 
 DATA_CONFIG="${DATA_CONFIG:-pusht}"
 MAX_EPOCHS="${MAX_EPOCHS:-10}"
@@ -47,5 +48,5 @@ if [[ -n "${EXTRA_OVERRIDES:-}" ]]; then
 fi
 
 SLURM_BIN="${SLURM_BIN:-/opt/slurm/Ubuntu-20.04/current/bin}"
-"$SLURM_BIN/srun" -u python -u -c 'import torch; print("cuda_available=", torch.cuda.is_available()); print("device_count=", torch.cuda.device_count())'
-"$SLURM_BIN/srun" -u python -u train.py "${OVERRIDES[@]}"
+"$SLURM_BIN/srun" -u "$PIXI_BIN" run --locked python -u -c 'import torch; print("cuda_available=", torch.cuda.is_available()); print("device_count=", torch.cuda.device_count())'
+"$SLURM_BIN/srun" -u "$PIXI_BIN" run --locked python -u train.py "${OVERRIDES[@]}"

@@ -1,0 +1,9 @@
+defaults:
+  - robocasa_pick_place
+  - _self_
+
+eval:
+  stage: transport
+
+output:
+  filename: robocasa_pick_place_transport_results.txt

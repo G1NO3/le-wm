@@ -1,0 +1,50 @@
+defaults:
+  - launcher: local
+  - solver: cem
+  - _self_
+
+world:
+  env_name: robocasa/PickPlaceCounterToCabinet
+  split: pretrain
+  num_envs: ${eval.batch_size}
+  max_episode_steps: 100
+
+dataset:
+  keys_to_cache: [action]
+
+seed: 42
+policy: random
+
+plan_config:
+  horizon: 5
+  receding_horizon: 5
+  action_block: 5
+
+eval:
+  num_eval: 250
+  batch_size: 10
+  num_contexts: 50
+  stochastic_repeats: 5
+  goal_offset_steps: 25
+  eval_budget: 50
+  img_size: 224
+  dataset_name: robocasa/pick_place_counter_to_cabinet_replay
+  stage: approach_grasp
+  stage_key: subtask_stage
+  stochastic_planning:
+    enabled: false
+    particles: 8
+    objective: cvar
+    cvar_tail_fraction: 0.25
+    flow_steps: 4
+    particle_chunk_size: 8
+    common_random_numbers: true
+    sampling_seed: ${seed}
+  hidden_physics:
+    enabled: true
+    profile: strong
+    target_body_names: [obj]
+  callables: []
+
+output:
+  filename: robocasa_pick_place_results.txt

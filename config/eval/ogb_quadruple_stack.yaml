@@ -1,0 +1,70 @@
+defaults:
+  - cube
+  - _self_
+
+world:
+  env_type: quadruple
+  reward_task_id: 5
+  terminate_at_goal: true
+
+dataset:
+  keys_to_load:
+    - pixels
+    - action
+    - qpos
+    - qvel
+    - privileged/block_0_pos
+    - privileged/block_0_quat
+    - privileged/block_1_pos
+    - privileged/block_1_quat
+    - privileged/block_2_pos
+    - privileged/block_2_quat
+    - privileged/block_3_pos
+    - privileged/block_3_quat
+    - privileged/contact_index
+
+eval:
+  num_eval: 500
+  batch_size: 50
+  num_contexts: 100
+  stochastic_repeats: 5
+  goal_offset_steps: 25
+  eval_budget: 50
+  dataset_name: ogbench/cube_quadruple_stochastic_stack
+  contact_stages: [1, 2, 3]
+  contact_stage_key: privileged/contact_index
+  contact_selection: within_stage
+  hidden_physics:
+    enabled: true
+    profile: strong
+  stochastic_planning:
+    collateral_penalty_weight: 1.0
+    collateral_state_indices: [0, 1, 2, 3]
+  callables:
+    - method: set_state
+      args:
+        qpos: {value: qpos}
+        qvel: {value: qvel}
+    - method: set_target_pos
+      args:
+        cube_id: {value: 0, in_dataset: false}
+        target_pos: {value: goal_privileged/block_0_pos}
+        target_quat: {value: goal_privileged/block_0_quat}
+    - method: set_target_pos
+      args:
+        cube_id: {value: 1, in_dataset: false}
+        target_pos: {value: goal_privileged/block_1_pos}
+        target_quat: {value: goal_privileged/block_1_quat}
+    - method: set_target_pos
+      args:
+        cube_id: {value: 2, in_dataset: false}
+        target_pos: {value: goal_privileged/block_2_pos}
+        target_quat: {value: goal_privileged/block_2_quat}
+    - method: set_target_pos
+      args:
+        cube_id: {value: 3, in_dataset: false}
+        target_pos: {value: goal_privileged/block_3_pos}
+        target_quat: {value: goal_privileged/block_3_quat}
+
+output:
+  filename: ogb_quadruple_stack_results.txt

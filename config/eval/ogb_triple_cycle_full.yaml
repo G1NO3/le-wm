@@ -1,0 +1,16 @@
+defaults:
+  - ogb_triple_cycle
+  - _self_
+
+world:
+  max_episode_steps: 200
+
+eval:
+  protocol: full_task
+  num_eval: 100
+  num_contexts: 100
+  stochastic_repeats: 1
+  eval_budget: 200
+
+output:
+  filename: ogb_triple_cycle_full_results.txt

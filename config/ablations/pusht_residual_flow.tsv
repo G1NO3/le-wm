@@ -1,0 +1,8 @@
+# name|Hydra overrides
+# The submission script forms the Cartesian product of these rows and ABLATION_SEEDS.
+vanilla|loss.residual_flow.enabled=false
+rflow_detached|loss.residual_flow.enabled=true loss.residual_flow.detach_residual_target=true loss.residual_flow.detach_condition=true
+rflow_target_grad|loss.residual_flow.enabled=true loss.residual_flow.detach_residual_target=false loss.residual_flow.detach_condition=true
+rflow_condition_grad|loss.residual_flow.enabled=true loss.residual_flow.detach_residual_target=true loss.residual_flow.detach_condition=false
+rflow_joint_grad|loss.residual_flow.enabled=true loss.residual_flow.detach_residual_target=false loss.residual_flow.detach_condition=false
+rflow_detached_w03|loss.residual_flow.enabled=true loss.residual_flow.detach_residual_target=true loss.residual_flow.detach_condition=true loss.residual_flow.weight=0.3

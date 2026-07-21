@@ -11,3 +11,5 @@ dataset:
     - action
     - proprio
     - state
+split_fractions: [0.8, 0.1, 0.1]
+split_manifest: null

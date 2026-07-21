@@ -6,7 +6,6 @@ output_model_name: lewm
 subdir: ${hydra:job.id}
 
 num_workers: 6
-train_split: 0.9
 seed: 3072
 img_size: 224
 patch_size: 14
@@ -64,11 +63,25 @@ loss:
       num_proj: 1024
   residual_flow:
     enabled: False
+    kernel_type: flow
+    conditioning: conditional
     weight: 1.0
     ema_decay: 0.99
     scale_eps: 0.001
     detach_residual_target: True
     detach_condition: True
+    nominal_checkpoint: null
+    residual_scale_path: null
+    freeze_nominal: False
+    memory:
+      enabled: False
+      hidden_dim: 128
+      max_history_updates: 5
+      sampled_history_probability: 0.0
+      sampling_steps: 4
+    kernel_kwargs:
+      hidden_dim: 512
+      depth: 3
     kwargs:
       hidden_dim: 512
       depth: 4
