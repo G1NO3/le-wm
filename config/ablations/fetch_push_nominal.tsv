@@ -1,0 +1,2 @@
+# name|Hydra overrides
+nominal_task_adapted|+data.dataset.path=${oc.env:DATASET_PATH} data.split_manifest=${oc.env:SPLIT_MANIFEST}

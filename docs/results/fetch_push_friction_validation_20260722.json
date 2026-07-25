@@ -1,0 +1,17 @@
+{
+  "commanded_actions_match": true,
+  "dataset_sha256": "c1e61c1b5b69a77d298484e7be2954df25781389cff8fb50f26b5fc5517be816",
+  "episodes": 1000,
+  "friction_multipliers": [
+    0.20000000298023224,
+    3.0
+  ],
+  "max_paired_initial_qpos_error": 0.0,
+  "pairing_valid": true,
+  "pairs": 500,
+  "privileged_fields_excluded_from_model_inputs": true,
+  "success_rate": 0.629,
+  "success_rate_high": 0.348,
+  "success_rate_low": 0.91,
+  "transitions": 29559
+}

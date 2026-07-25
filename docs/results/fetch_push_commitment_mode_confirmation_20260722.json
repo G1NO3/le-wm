@@ -1,0 +1,66 @@
+{
+  "artifact_scope": "compact immutable record; raw per-context shards remain on ICE",
+  "checkpoint": {
+    "path": "data/ice/fetch_state_mode_mixture/seed_24041/fetch_state_mode_residual_seed24041_object.ckpt",
+    "sha256": "0995360b4320df1a79b9fcea99f7bef8ef5ea612e67cf66bfdd2dd78f01a1f69",
+    "training_labels": "privileged low/high friction labels used only for the two diagnostic residual heads",
+    "runtime_mode_information": "balanced prior only; realized friction mode unavailable"
+  },
+  "confirmation": {
+    "bootstrap_draws": 50000,
+    "bootstrap_seed": 1003072,
+    "contexts": 1024,
+    "episodes": 2048,
+    "fresh_seed_shard_starts": [
+      1003072,
+      1013072,
+      1023072,
+      1033072,
+      1043072,
+      1053072,
+      1063072,
+      1073072
+    ],
+    "ice_jobs": [5526994, 5526995, 5526996, 5526997, 5526998, 5526999, 5527000, 5527001],
+    "jobs_completed_exit_0": true,
+    "unique_context_seeds": 1024
+  },
+  "frozen_task": {
+    "candidate_count": 100,
+    "friction_modes": [0.2, 3.0],
+    "raw_horizon": 20,
+    "speed_grid": [0.1, 1.0, 10],
+    "duration_grid": [2, 20, 2],
+    "success_threshold": 0.05,
+    "success_temperature": 0.01
+  },
+  "oracle_decision_value": {
+    "deterministic_success_rate": 0.60791015625,
+    "stochastic_success_rate": 0.77734375,
+    "deterministic_success_rate_by_friction_mode": [0.9990234375, 0.216796875],
+    "stochastic_success_rate_by_friction_mode": [0.9990234375, 0.5556640625],
+    "absolute_success_improvement": 0.16943359375,
+    "scene_cluster_bootstrap_ci95": [0.15478515625, 0.18408203125],
+    "stochastic_only_successes": 347,
+    "deterministic_only_successes": 0,
+    "strict_improvement_gate": true
+  },
+  "learned_decision_value": {
+    "deterministic_success_rate": 0.51025390625,
+    "stochastic_success_rate": 0.57470703125,
+    "deterministic_success_rate_by_friction_mode": [0.83984375, 0.1806640625],
+    "stochastic_success_rate_by_friction_mode": [0.9287109375, 0.220703125],
+    "absolute_success_improvement": 0.064453125,
+    "scene_cluster_bootstrap_ci95": [0.0458984375, 0.0830078125],
+    "stochastic_only_successes": 237,
+    "deterministic_only_successes": 105,
+    "strict_improvement_gate": true
+  },
+  "all_eight_learned_shard_deltas_positive": true,
+  "confirmation_gate": true,
+  "ice_summary": {
+    "path": "data/ice/fetch_state_mode_mixture/seed_24041/commitment_confirm_1024ctx/paired_summary_1024ctx.json",
+    "sha256": "1bd31250bb07ab9e68fcc8b3a4f4ea14155c45b4bf2af3f21d9484197b21deda"
+  },
+  "interpretation": "Stochastic prediction improves exact simulator success on the uncertainty-sensitive push-onset task. This is a supervised explicit-mode residual upper bound; label-free flow confirmation remains required for the primary model claim."
+}

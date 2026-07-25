@@ -1,0 +1,2220 @@
+{
+  "checkpoint": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/ice/fetch_slide_lewm_nominal/nominal_task_adapted/seed_28041/lewm_nominal_task_adapted_seed_28041_epoch_10_object.ckpt",
+  "checkpoint_sha256": "80d232db180adcbcda565dfaea7fda693383127ff8331043be020212cb690e05",
+  "contexts": 64,
+  "dataset": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/ice/fetch_slide/pilot_500pairs_seed4072.h5",
+  "dataset_sha256": "64edaf12401b603d58b54c0c33f2c445fda1f948b8f7906aa6a28b45b74b64cf",
+  "episodes": 128,
+  "exact_oracle": {
+    "absolute_success_improvement": 0.4296875,
+    "distribution_only_successes": 55,
+    "distribution_success_rate": 0.4375,
+    "mean_state_only_successes": 0,
+    "mean_state_success_rate": 0.0078125,
+    "name": "exact_distribution_vs_exact_mean_state",
+    "scene_cluster_bootstrap_ci95": [
+      0.3828125,
+      0.46875
+    ],
+    "strict_improvement_gate": true
+  },
+  "friction_modes": [
+    0.2,
+    1.0
+  ],
+  "model": "vanilla_lewm",
+  "raw_horizon": 100,
+  "records": [
+    {
+      "indices": {
+        "exact_distribution": 22,
+        "exact_mean_state": 6,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6499999761581421
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703072,
+      "vanilla_lewm_model_cost": 301.9588317871094,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.4243755340576172,
+        0.4243752658367157
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 29,
+        "exact_mean_state": 17,
+        "vanilla_lewm": 48
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        }
+      },
+      "seed": 703073,
+      "vanilla_lewm_model_cost": 226.9016571044922,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.20417435467243195,
+        0.24290339648723602
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 17,
+        "exact_mean_state": 7,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703074,
+      "vanilla_lewm_model_cost": 177.61212158203125,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        1.0049240589141846,
+        0.15843906998634338
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 26,
+        "exact_mean_state": 25,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703075,
+      "vanilla_lewm_model_cost": 179.88723754882812,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.3113557994365692,
+        0.31135591864585876
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 29,
+        "exact_mean_state": 22,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6499999761581421
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703076,
+      "vanilla_lewm_model_cost": 199.45443725585938,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.8043395280838013,
+        0.8043395280838013
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 30,
+        "exact_mean_state": 7,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703077,
+      "vanilla_lewm_model_cost": 286.63311767578125,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.9506809711456299,
+        0.2451469600200653
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 2,
+        "exact_mean_state": 13,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703078,
+      "vanilla_lewm_model_cost": 166.3860626220703,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.8314265012741089,
+        0.4220302700996399
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 49,
+        "exact_mean_state": 14,
+        "vanilla_lewm": 17
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 1.0
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 703079,
+      "vanilla_lewm_model_cost": 236.80831909179688,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.20641973614692688,
+        0.41792675852775574
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 34,
+        "exact_mean_state": 25,
+        "vanilla_lewm": 18
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 703080,
+      "vanilla_lewm_model_cost": 185.35772705078125,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.792111337184906,
+        0.22872166335582733
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 22,
+        "exact_mean_state": 3,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6499999761581421
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703081,
+      "vanilla_lewm_model_cost": 159.6864776611328,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.28121495246887207,
+        0.2812148928642273
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 46,
+        "exact_mean_state": 33,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703082,
+      "vanilla_lewm_model_cost": 110.05339050292969,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.7520352602005005,
+        0.01887284778058529
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 34,
+        "exact_mean_state": 29,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703083,
+      "vanilla_lewm_model_cost": 71.23869323730469,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.8335055112838745,
+        0.20493924617767334
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 18,
+        "exact_mean_state": 21,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703084,
+      "vanilla_lewm_model_cost": 113.87098693847656,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.22178705036640167,
+        0.22178591787815094
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 46,
+        "exact_mean_state": 18,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703085,
+      "vanilla_lewm_model_cost": 212.08180236816406,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.7288240790367126,
+        0.043183762580156326
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 17,
+        "exact_mean_state": 21,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703086,
+      "vanilla_lewm_model_cost": 231.94171142578125,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.611890435218811,
+        0.5090696811676025
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 50,
+        "exact_mean_state": 15,
+        "vanilla_lewm": 15
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.550000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 703087,
+      "vanilla_lewm_model_cost": 472.09918212890625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.14775660634040833,
+        0.4686865210533142
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 46,
+        "exact_mean_state": 33,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703088,
+      "vanilla_lewm_model_cost": 144.51910400390625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.7535821199417114,
+        0.06989347189664841
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 29,
+        "exact_mean_state": 18,
+        "vanilla_lewm": 5
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.44999998807907104
+        }
+      },
+      "seed": 703089,
+      "vanilla_lewm_model_cost": 60.15312957763672,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.7292526364326477,
+        0.7292523980140686
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 37,
+        "exact_mean_state": 3,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703090,
+      "vanilla_lewm_model_cost": 163.10260009765625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.9680299162864685,
+        0.5523921847343445
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 7,
+        "exact_mean_state": 30,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703091,
+      "vanilla_lewm_model_cost": 335.3511657714844,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.7303056716918945,
+        0.022445406764745712
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 45,
+        "exact_mean_state": 25,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703092,
+      "vanilla_lewm_model_cost": 151.54183959960938,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.4350627064704895,
+        0.4350612759590149
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 29,
+        "exact_mean_state": 30,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703093,
+      "vanilla_lewm_model_cost": 167.0478515625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6303322315216064,
+        0.19636136293411255
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 49,
+        "exact_mean_state": 25,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 1.0
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703094,
+      "vanilla_lewm_model_cost": 156.45938110351562,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.9168937802314758,
+        0.004563520196825266
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 11,
+        "exact_mean_state": 29,
+        "vanilla_lewm": 13
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 703095,
+      "vanilla_lewm_model_cost": 149.36090087890625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.5623467564582825,
+        0.5948055386543274
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 29,
+        "exact_mean_state": 33,
+        "vanilla_lewm": 16
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 703096,
+      "vanilla_lewm_model_cost": 74.58663940429688,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6737335324287415,
+        0.673733115196228
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 30,
+        "exact_mean_state": 10,
+        "vanilla_lewm": 35
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 703097,
+      "vanilla_lewm_model_cost": 124.7480239868164,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.9291700124740601,
+        0.0527566634118557
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 29,
+        "exact_mean_state": 37,
+        "vanilla_lewm": 1
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703098,
+      "vanilla_lewm_model_cost": 315.13641357421875,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.8154596090316772,
+        0.8154593706130981
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 29,
+        "exact_mean_state": 2,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703099,
+      "vanilla_lewm_model_cost": 204.14312744140625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.882050096988678,
+        0.6539007425308228
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 29,
+        "exact_mean_state": 37,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703100,
+      "vanilla_lewm_model_cost": 119.37474822998047,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6520795822143555,
+        0.2591556906700134
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 45,
+        "exact_mean_state": 25,
+        "vanilla_lewm": 1
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703101,
+      "vanilla_lewm_model_cost": 143.7275390625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.3934825360774994,
+        0.39348161220550537
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 2,
+        "exact_mean_state": 21,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703102,
+      "vanilla_lewm_model_cost": 180.166015625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.9012598395347595,
+        0.24274414777755737
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 37,
+        "exact_mean_state": 21,
+        "vanilla_lewm": 24
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703103,
+      "vanilla_lewm_model_cost": 261.9997863769531,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.25584688782691956,
+        0.25584733486175537
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 50,
+        "exact_mean_state": 11,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703104,
+      "vanilla_lewm_model_cost": 342.2518005371094,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6824727654457092,
+        0.009469747543334961
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 10,
+        "exact_mean_state": 2,
+        "vanilla_lewm": 3
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703105,
+      "vanilla_lewm_model_cost": 117.98153686523438,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.2960602641105652,
+        0.029275210574269295
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 26,
+        "exact_mean_state": 25,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703106,
+      "vanilla_lewm_model_cost": 114.30044555664062,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.8933680057525635,
+        0.26866278052330017
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 34,
+        "exact_mean_state": 7,
+        "vanilla_lewm": 28
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.75
+        }
+      },
+      "seed": 703107,
+      "vanilla_lewm_model_cost": 88.83214569091797,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.41348448395729065,
+        0.41348502039909363
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 18,
+        "exact_mean_state": 2,
+        "vanilla_lewm": 1
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703108,
+      "vanilla_lewm_model_cost": 158.32464599609375,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.3403390049934387,
+        0.34033894538879395
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 26,
+        "exact_mean_state": 25,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703109,
+      "vanilla_lewm_model_cost": 241.22145080566406,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.8334115743637085,
+        0.10077901184558868
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 25,
+        "exact_mean_state": 11,
+        "vanilla_lewm": 19
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 703110,
+      "vanilla_lewm_model_cost": 113.61907958984375,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.5969863533973694,
+        0.3517143428325653
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 42,
+        "exact_mean_state": 33,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8999999761581421
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703111,
+      "vanilla_lewm_model_cost": 197.1260986328125,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.7866349816322327,
+        0.029279712587594986
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 46,
+        "exact_mean_state": 33,
+        "vanilla_lewm": 27
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703112,
+      "vanilla_lewm_model_cost": 279.0494689941406,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.7003732323646545,
+        0.23484690487384796
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 11,
+        "exact_mean_state": 18,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703113,
+      "vanilla_lewm_model_cost": 107.42605590820312,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6781533360481262,
+        0.09120967984199524
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 26,
+        "exact_mean_state": 6,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703114,
+      "vanilla_lewm_model_cost": 268.28515625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.4057101309299469,
+        0.4057101607322693
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 34,
+        "exact_mean_state": 21,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703115,
+      "vanilla_lewm_model_cost": 125.59373474121094,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6244027614593506,
+        0.1381041407585144
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 14,
+        "exact_mean_state": 2,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703116,
+      "vanilla_lewm_model_cost": 196.17990112304688,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.72789067029953,
+        0.5812922120094299
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 6,
+        "exact_mean_state": 25,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703117,
+      "vanilla_lewm_model_cost": 78.05607604980469,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.9444111585617065,
+        0.07316461205482483
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 2,
+        "exact_mean_state": 6,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703118,
+      "vanilla_lewm_model_cost": 209.69708251953125,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6894585490226746,
+        0.23943236470222473
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 41,
+        "exact_mean_state": 10,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703119,
+      "vanilla_lewm_model_cost": 278.8485107421875,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.30125778913497925,
+        0.30125826597213745
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 37,
+        "exact_mean_state": 6,
+        "vanilla_lewm": 48
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        }
+      },
+      "seed": 703120,
+      "vanilla_lewm_model_cost": 217.59603881835938,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.3906109929084778,
+        0.466455340385437
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 25,
+        "exact_mean_state": 14,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703121,
+      "vanilla_lewm_model_cost": 289.2986755371094,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.5964311957359314,
+        0.5964305996894836
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 41,
+        "exact_mean_state": 10,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703122,
+      "vanilla_lewm_model_cost": 232.9696044921875,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.9586000442504883,
+        0.18508146703243256
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 45,
+        "exact_mean_state": 7,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703123,
+      "vanilla_lewm_model_cost": 261.58441162109375,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.9535750150680542,
+        0.09211397916078568
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 14,
+        "exact_mean_state": 2,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703124,
+      "vanilla_lewm_model_cost": 238.9935302734375,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.7157087326049805,
+        0.5643723011016846
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 48,
+        "exact_mean_state": 9,
+        "vanilla_lewm": 0
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.5
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703125,
+      "vanilla_lewm_model_cost": 214.84759521484375,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.0883633941411972,
+        0.0883619487285614
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 10,
+        "exact_mean_state": 18,
+        "vanilla_lewm": 1
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703126,
+      "vanilla_lewm_model_cost": 222.02857971191406,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6856698393821716,
+        0.6856693625450134
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 14,
+        "exact_mean_state": 2,
+        "vanilla_lewm": 1
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703127,
+      "vanilla_lewm_model_cost": 345.38128662109375,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.2895817458629608,
+        0.2895803153514862
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 33,
+        "exact_mean_state": 3,
+        "vanilla_lewm": 2
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703128,
+      "vanilla_lewm_model_cost": 304.1746826171875,
+      "vanilla_lewm_success": [
+        true,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.04789863899350166,
+        0.28339964151382446
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 37,
+        "exact_mean_state": 3,
+        "vanilla_lewm": 48
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        }
+      },
+      "seed": 703129,
+      "vanilla_lewm_model_cost": 207.2440185546875,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.302462637424469,
+        0.3038620948791504
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 25,
+        "exact_mean_state": 11,
+        "vanilla_lewm": 1
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703130,
+      "vanilla_lewm_model_cost": 172.18414306640625,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.5016809105873108,
+        0.501681387424469
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 10,
+        "exact_mean_state": 14,
+        "vanilla_lewm": 47
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703131,
+      "vanilla_lewm_model_cost": 130.60604858398438,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6767223477363586,
+        0.12183094769716263
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 46,
+        "exact_mean_state": 33,
+        "vanilla_lewm": 3
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703132,
+      "vanilla_lewm_model_cost": 282.95538330078125,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.13765576481819153,
+        0.5030807852745056
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 46,
+        "exact_mean_state": 11,
+        "vanilla_lewm": 51
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        }
+      },
+      "seed": 703133,
+      "vanilla_lewm_model_cost": 102.12364959716797,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6329215168952942,
+        0.015119067393243313
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 3,
+        "exact_mean_state": 14,
+        "vanilla_lewm": 50
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703134,
+      "vanilla_lewm_model_cost": 129.21588134765625,
+      "vanilla_lewm_success": [
+        false,
+        true
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6728938221931458,
+        0.03587375208735466
+      ]
+    },
+    {
+      "indices": {
+        "exact_distribution": 7,
+        "exact_mean_state": 29,
+        "vanilla_lewm": 31
+      },
+      "parameters": {
+        "exact_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "exact_mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "vanilla_lewm": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.75
+        }
+      },
+      "seed": 703135,
+      "vanilla_lewm_model_cost": 195.4000701904297,
+      "vanilla_lewm_success": [
+        false,
+        false
+      ],
+      "vanilla_lewm_terminal_distance_m": [
+        0.6248123645782471,
+        0.2799627184867859
+      ]
+    }
+  ],
+  "residual_enabled": false,
+  "seed": 703072,
+  "selection_cost": "terminal latent distance to native goal-image embedding",
+  "success_threshold_m": 0.05,
+  "task": "fetch_slide_hidden_friction_vanilla_lewm_commitment",
+  "vanilla_lewm": {
+    "paired_both_success_rate": 0.0,
+    "scene_cluster_bootstrap_ci95": [
+      0.0390625,
+      0.125
+    ],
+    "success_rate": 0.078125,
+    "success_rate_high": 0.140625,
+    "success_rate_low": 0.015625
+  }
+}

@@ -1,0 +1,3436 @@
+{
+  "attempts": 64,
+  "candidate_grid": {
+    "angle": [
+      -0.0,
+      0.0,
+      1
+    ],
+    "count": 52,
+    "duration": [
+      1,
+      4
+    ],
+    "speed": [
+      0.4,
+      1.0,
+      13
+    ]
+  },
+  "comparisons": {
+    "discrete": {
+      "absolute_success_improvement": 0.4765625,
+      "distribution_only_successes": 61,
+      "distribution_success_rate": 0.4765625,
+      "mean_state_only_successes": 0,
+      "mean_state_success_rate": 0.0,
+      "name": "discrete_distribution_vs_mean_state",
+      "scene_cluster_bootstrap_ci95": [
+        0.4453125,
+        0.5
+      ],
+      "strict_improvement_gate": true
+    },
+    "smooth": {
+      "absolute_success_improvement": 0.4765625,
+      "distribution_only_successes": 61,
+      "distribution_success_rate": 0.4765625,
+      "mean_state_only_successes": 0,
+      "mean_state_success_rate": 0.0,
+      "name": "smooth_distribution_vs_mean_state",
+      "scene_cluster_bootstrap_ci95": [
+        0.4453125,
+        0.5
+      ],
+      "strict_improvement_gate": true
+    }
+  },
+  "contexts": 64,
+  "discrete_distribution_success_rate_by_mode": [
+    0.65625,
+    0.296875
+  ],
+  "friction_modes": [
+    0.2,
+    1.0
+  ],
+  "gates": {
+    "action_dependent_mode_separation": true,
+    "both_modes_controllable": true,
+    "context_yield": true,
+    "different_action_rankings": true,
+    "discrete_distribution_value": true,
+    "pass": true,
+    "smooth_distribution_value": true
+  },
+  "mean_state_success_rate_by_mode": [
+    0.0,
+    0.0
+  ],
+  "median_terminal_mode_separation_m": 0.5528088510036469,
+  "per_mode_candidate_reachability": [
+    0.65625,
+    0.78125
+  ],
+  "preferred_action_disagreement_rate": 1.0,
+  "profile": {
+    "mass": [
+      1.0,
+      1.0
+    ],
+    "name": "slide_strong",
+    "pad_friction": [
+      1.0,
+      1.0
+    ],
+    "slip_pad_multiplier": 0.1,
+    "slip_probability": 0.0,
+    "slip_sim_substeps": 10,
+    "surface_friction": [
+      0.2,
+      1.0
+    ]
+  },
+  "records": [
+    {
+      "discrete_distribution_index": 17,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.0394534133374691,
+        0.381081223487854
+      ],
+      "mean_state_index": 25,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.29307499527931213,
+        0.27754315733909607
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        }
+      },
+      "seed": 403072,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 30,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7452771067619324,
+        0.03127102926373482
+      ]
+    },
+    {
+      "discrete_distribution_index": 38,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.8595118522644043,
+        0.016499022021889687
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.26607704162597656,
+        0.28498274087905884
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8500000238418579
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8500000238418579
+        }
+      },
+      "seed": 403073,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 38,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8595118522644043,
+        0.016499022021889687
+      ]
+    },
+    {
+      "discrete_distribution_index": 45,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.7887586355209351,
+        0.03753816708922386
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.30509892106056213,
+        0.29527759552001953
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8500000238418579
+        }
+      },
+      "seed": 403074,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 38,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8132663369178772,
+        0.015386868268251419
+      ]
+    },
+    {
+      "discrete_distribution_index": 2,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.033461373299360275,
+        0.22420047223567963
+      ],
+      "mean_state_index": 13,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.051939014345407486,
+        0.2365015298128128
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 403075,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 29,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.5539634823799133,
+        0.020491650328040123
+      ]
+    },
+    {
+      "discrete_distribution_index": 17,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.017916366457939148,
+        0.29124003648757935
+      ],
+      "mean_state_index": 7,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.24013051390647888,
+        0.23661018908023834
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        }
+      },
+      "seed": 403076,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 30,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8180761933326721,
+        0.008785861544311047
+      ]
+    },
+    {
+      "discrete_distribution_index": 2,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.04354877397418022,
+        0.31663474440574646
+      ],
+      "mean_state_index": 6,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.22764325141906738,
+        0.26070699095726013
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 403077,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 26,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.5679109692573547,
+        0.03288108855485916
+      ]
+    },
+    {
+      "discrete_distribution_index": 25,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.029043134301900864,
+        0.4863140285015106
+      ],
+      "mean_state_index": 14,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.20759592950344086,
+        0.44184932112693787
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        }
+      },
+      "seed": 403078,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 7,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.024557655677199364,
+        0.4909232556819916
+      ]
+    },
+    {
+      "discrete_distribution_index": 17,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03213493898510933,
+        0.26962393522262573
+      ],
+      "mean_state_index": 3,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.21278372406959534,
+        0.23123574256896973
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 403079,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 26,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8191347718238831,
+        0.004207015503197908
+      ]
+    },
+    {
+      "discrete_distribution_index": 33,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.613832950592041,
+        0.03741060569882393
+      ],
+      "mean_state_index": 17,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.15195432305335999,
+        0.22186140716075897
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 403080,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 33,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.613832950592041,
+        0.03741060569882393
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.002807330572977662,
+        0.41918930411338806
+      ],
+      "mean_state_index": 33,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.40454190969467163,
+        0.3306748569011688
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403081,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.002807330572977662,
+        0.41918930411338806
+      ]
+    },
+    {
+      "discrete_distribution_index": 29,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.7704455256462097,
+        0.012917641550302505
+      ],
+      "mean_state_index": 2,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.11469344794750214,
+        0.23649698495864868
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 403082,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 29,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7704455256462097,
+        0.012917641550302505
+      ]
+    },
+    {
+      "discrete_distribution_index": 25,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.04956762120127678,
+        0.435122549533844
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.23129147291183472,
+        0.3920944333076477
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 403083,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 25,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.04956762120127678,
+        0.435122549533844
+      ]
+    },
+    {
+      "discrete_distribution_index": 25,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.6587373614311218,
+        0.04954053834080696
+      ],
+      "mean_state_index": 2,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.14247551560401917,
+        0.19306278228759766
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 403084,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 14,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.6907213926315308,
+        0.025829670950770378
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.028923606500029564,
+        0.5265230536460876
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.2850896120071411,
+        0.47838062047958374
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403085,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.028923606500029564,
+        0.5265230536460876
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.0108629846945405,
+        0.4133653938770294
+      ],
+      "mean_state_index": 14,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.25003665685653687,
+        0.36024877429008484
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403086,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.0108629846945405,
+        0.4133653938770294
+      ]
+    },
+    {
+      "discrete_distribution_index": 6,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03105326183140278,
+        0.32432153820991516
+      ],
+      "mean_state_index": 25,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.27767834067344666,
+        0.2735167443752289
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        }
+      },
+      "seed": 403087,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 6,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.03105326183140278,
+        0.32432153820991516
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03458376228809357,
+        0.4476112723350525
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.23843762278556824,
+        0.3975165784358978
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403088,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.03458376228809357,
+        0.4476112723350525
+      ]
+    },
+    {
+      "discrete_distribution_index": 30,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.5601717829704285,
+        0.03866615518927574
+      ],
+      "mean_state_index": 3,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.12111882865428925,
+        0.23968137800693512
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        }
+      },
+      "seed": 403089,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 41,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.5687294602394104,
+        0.038606468588113785
+      ]
+    },
+    {
+      "discrete_distribution_index": 46,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.6969828605651855,
+        0.008352547883987427
+      ],
+      "mean_state_index": 11,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.2002958357334137,
+        0.4062669277191162
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 403090,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 46,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.6969828605651855,
+        0.008352547883987427
+      ]
+    },
+    {
+      "discrete_distribution_index": 6,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.021901989355683327,
+        0.3402106463909149
+      ],
+      "mean_state_index": 25,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.32672348618507385,
+        0.28848710656166077
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 403091,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 45,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.9252808094024658,
+        0.02082267962396145
+      ]
+    },
+    {
+      "discrete_distribution_index": 2,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.027326691895723343,
+        0.2395389974117279
+      ],
+      "mean_state_index": 6,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.2451982945203781,
+        0.18762357532978058
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 403092,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 33,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.9558757543563843,
+        0.02171069197356701
+      ]
+    },
+    {
+      "discrete_distribution_index": 3,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.0273479875177145,
+        0.4303690195083618
+      ],
+      "mean_state_index": 10,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.2580787241458893,
+        0.39747583866119385
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 403093,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 3,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.0273479875177145,
+        0.4303690195083618
+      ]
+    },
+    {
+      "discrete_distribution_index": 7,
+      "discrete_distribution_success": [
+        false,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.10854220390319824,
+        0.5417699813842773
+      ],
+      "mean_state_index": 18,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.35583633184432983,
+        0.4654211103916168
+      ],
+      "mode_reachable": [
+        false,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 403094,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 25,
+      "smooth_distribution_success": [
+        false,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.10801362991333008,
+        0.5525533556938171
+      ]
+    },
+    {
+      "discrete_distribution_index": 21,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.011422760784626007,
+        0.392849862575531
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.28385230898857117,
+        0.306246280670166
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8999999761581421
+        }
+      },
+      "seed": 403095,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 42,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.719929575920105,
+        0.009567753411829472
+      ]
+    },
+    {
+      "discrete_distribution_index": 21,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.0247141495347023,
+        0.2833789587020874
+      ],
+      "mean_state_index": 10,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.1968655288219452,
+        0.24043382704257965
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 403096,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 26,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.9092245101928711,
+        0.02134806662797928
+      ]
+    },
+    {
+      "discrete_distribution_index": 45,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.9226089119911194,
+        0.01913018710911274
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.3313225209712982,
+        0.25315389037132263
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 403097,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 45,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.9226089119911194,
+        0.01913018710911274
+      ]
+    },
+    {
+      "discrete_distribution_index": 13,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03232182562351227,
+        0.2349928319454193
+      ],
+      "mean_state_index": 17,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.18752704560756683,
+        0.18313291668891907
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 403098,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 18,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.618136465549469,
+        0.030072195455431938
+      ]
+    },
+    {
+      "discrete_distribution_index": 21,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.04457876831293106,
+        0.3042933940887451
+      ],
+      "mean_state_index": 7,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.22123222053050995,
+        0.2250492125749588
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        }
+      },
+      "seed": 403099,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 30,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7438795566558838,
+        0.0007039231131784618
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.0327923521399498,
+        0.5541483759880066
+      ],
+      "mean_state_index": 33,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.5926783680915833,
+        0.44049033522605896
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403100,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.0327923521399498,
+        0.5541483759880066
+      ]
+    },
+    {
+      "discrete_distribution_index": 14,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03623928129673004,
+        0.6128594279289246
+      ],
+      "mean_state_index": 37,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.24818983674049377,
+        0.5264973640441895
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 403101,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 14,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.03623928129673004,
+        0.6128594279289246
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.040350839495658875,
+        0.4907388985157013
+      ],
+      "mean_state_index": 18,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.3985408842563629,
+        0.40698984265327454
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403102,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.040350839495658875,
+        0.4907388985157013
+      ]
+    },
+    {
+      "discrete_distribution_index": 13,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.0383756197988987,
+        0.27595317363739014
+      ],
+      "mean_state_index": 17,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.23554959893226624,
+        0.22518368065357208
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 403103,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 13,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.0383756197988987,
+        0.27595317363739014
+      ]
+    },
+    {
+      "discrete_distribution_index": 11,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.029560361057519913,
+        0.5268392562866211
+      ],
+      "mean_state_index": 33,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.1888742297887802,
+        0.4773097634315491
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        }
+      },
+      "seed": 403104,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 11,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.029560361057519913,
+        0.5268392562866211
+      ]
+    },
+    {
+      "discrete_distribution_index": 2,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03473109379410744,
+        0.27153679728507996
+      ],
+      "mean_state_index": 3,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.1708313226699829,
+        0.21156838536262512
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 403105,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 26,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.6161078810691833,
+        0.030882960185408592
+      ]
+    },
+    {
+      "discrete_distribution_index": 25,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.00884972233325243,
+        0.3988092243671417
+      ],
+      "mean_state_index": 14,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.2732284963130951,
+        0.34132593870162964
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 403106,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 25,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.00884972233325243,
+        0.3988092243671417
+      ]
+    },
+    {
+      "discrete_distribution_index": 14,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.7377221584320068,
+        0.03662837669253349
+      ],
+      "mean_state_index": 2,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.17863556742668152,
+        0.2051820158958435
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 403107,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 14,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7377221584320068,
+        0.03662837669253349
+      ]
+    },
+    {
+      "discrete_distribution_index": 2,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.02828339859843254,
+        0.30799561738967896
+      ],
+      "mean_state_index": 3,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.2194058895111084,
+        0.23840372264385223
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 403108,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 2,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.02828339859843254,
+        0.30799561738967896
+      ]
+    },
+    {
+      "discrete_distribution_index": 13,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.047807034105062485,
+        0.24276386201381683
+      ],
+      "mean_state_index": 17,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.24430720508098602,
+        0.18868215382099152
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 403109,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 18,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7942191362380981,
+        0.007960478775203228
+      ]
+    },
+    {
+      "discrete_distribution_index": 11,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.0050880927592515945,
+        0.5759417414665222
+      ],
+      "mean_state_index": 18,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.16376473009586334,
+        0.5294966697692871
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        }
+      },
+      "seed": 403110,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 11,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.0050880927592515945,
+        0.5759417414665222
+      ]
+    },
+    {
+      "discrete_distribution_index": 21,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03825002163648605,
+        0.3889157474040985
+      ],
+      "mean_state_index": 14,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.341924786567688,
+        0.3378711938858032
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 1.0
+        }
+      },
+      "seed": 403111,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 49,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8932129144668579,
+        0.03454098477959633
+      ]
+    },
+    {
+      "discrete_distribution_index": 21,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.04130910336971283,
+        0.3020263612270355
+      ],
+      "mean_state_index": 3,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.08723821491003036,
+        0.28786975145339966
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        }
+      },
+      "seed": 403112,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 6,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.03478652611374855,
+        0.3122676610946655
+      ]
+    },
+    {
+      "discrete_distribution_index": 6,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.04798685759305954,
+        0.21501202881336212
+      ],
+      "mean_state_index": 10,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.19112379848957062,
+        0.1793934404850006
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        }
+      },
+      "seed": 403113,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 37,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8301233053207397,
+        0.018207145854830742
+      ]
+    },
+    {
+      "discrete_distribution_index": 2,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03892505541443825,
+        0.13596615195274353
+      ],
+      "mean_state_index": 17,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.110653355717659,
+        0.1240278109908104
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 403114,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 29,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.5151399970054626,
+        0.019295796751976013
+      ]
+    },
+    {
+      "discrete_distribution_index": 46,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.6591154336929321,
+        0.025815464556217194
+      ],
+      "mean_state_index": 18,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.20557615160942078,
+        0.39520254731178284
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 403115,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 50,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.6689386367797852,
+        0.02056163363158703
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.04248882085084915,
+        0.518127977848053
+      ],
+      "mean_state_index": 18,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.35966551303863525,
+        0.43435144424438477
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403116,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.04248882085084915,
+        0.518127977848053
+      ]
+    },
+    {
+      "discrete_distribution_index": 2,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.04714810848236084,
+        0.21008683741092682
+      ],
+      "mean_state_index": 17,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.1931125372648239,
+        0.18459734320640564
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 403117,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 18,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.6239846348762512,
+        0.011608998291194439
+      ]
+    },
+    {
+      "discrete_distribution_index": 11,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.007394044194370508,
+        0.4240628778934479
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.10367638617753983,
+        0.4371066093444824
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        }
+      },
+      "seed": 403118,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 11,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.007394044194370508,
+        0.4240628778934479
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        false,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.06176070496439934,
+        0.3848499357700348
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.23489663004875183,
+        0.34855762124061584
+      ],
+      "mode_reachable": [
+        false,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8999999761581421
+        }
+      },
+      "seed": 403119,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 42,
+      "smooth_distribution_success": [
+        false,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7425518035888672,
+        0.05167561396956444
+      ]
+    },
+    {
+      "discrete_distribution_index": 46,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.9160217046737671,
+        0.042531006038188934
+      ],
+      "mean_state_index": 10,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.20390169322490692,
+        0.2826509177684784
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 403120,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 46,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.9160217046737671,
+        0.042531006038188934
+      ]
+    },
+    {
+      "discrete_distribution_index": 13,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.03601732850074768,
+        0.09916221350431442
+      ],
+      "mean_state_index": 2,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.1124553233385086,
+        0.07874535769224167
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403121,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.4824989140033722,
+        0.002602420514449477
+      ]
+    },
+    {
+      "discrete_distribution_index": 34,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.8280895948410034,
+        0.016841288655996323
+      ],
+      "mean_state_index": 14,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.2901937663555145,
+        0.2643832862377167
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 403122,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 34,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8280895948410034,
+        0.016841288655996323
+      ]
+    },
+    {
+      "discrete_distribution_index": 17,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.026911113411188126,
+        0.17487262189388275
+      ],
+      "mean_state_index": 21,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.13629969954490662,
+        0.14247238636016846
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 403123,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 33,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8077934980392456,
+        0.014613413251936436
+      ]
+    },
+    {
+      "discrete_distribution_index": 17,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.039040740579366684,
+        0.25777196884155273
+      ],
+      "mean_state_index": 7,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.19056960940361023,
+        0.20304974913597107
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 403124,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 26,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.8154497742652893,
+        0.005735547281801701
+      ]
+    },
+    {
+      "discrete_distribution_index": 50,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.7250328063964844,
+        0.042891547083854675
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.268606573343277,
+        0.3198733627796173
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 1.0
+        }
+      },
+      "seed": 403125,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 49,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7328085899353027,
+        0.042891547083854675
+      ]
+    },
+    {
+      "discrete_distribution_index": 14,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.7263448238372803,
+        0.016358545050024986
+      ],
+      "mean_state_index": 17,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.11601237207651138,
+        0.16070955991744995
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 403126,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 14,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7263448238372803,
+        0.016358545050024986
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.025658046826720238,
+        0.5811847448348999
+      ],
+      "mean_state_index": 41,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.3665066659450531,
+        0.4063469469547272
+      ],
+      "mode_reachable": [
+        true,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403127,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.025658046826720238,
+        0.5811847448348999
+      ]
+    },
+    {
+      "discrete_distribution_index": 46,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.6774150729179382,
+        0.013324439525604248
+      ],
+      "mean_state_index": 11,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.2454727292060852,
+        0.3877759277820587
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 403128,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 46,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.6774150729179382,
+        0.013324439525604248
+      ]
+    },
+    {
+      "discrete_distribution_index": 46,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.7271230816841125,
+        0.019852476194500923
+      ],
+      "mean_state_index": 11,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.17832224071025848,
+        0.3970944583415985
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 403129,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 46,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7271230816841125,
+        0.019852476194500923
+      ]
+    },
+    {
+      "discrete_distribution_index": 37,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.8077706694602966,
+        0.04101021587848663
+      ],
+      "mean_state_index": 21,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.22913840413093567,
+        0.2868051528930664
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        }
+      },
+      "seed": 403130,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 30,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.840653121471405,
+        0.03145207092165947
+      ]
+    },
+    {
+      "discrete_distribution_index": 21,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.042488668113946915,
+        0.3145288825035095
+      ],
+      "mean_state_index": 29,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.26805564761161804,
+        0.2324593961238861
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 403131,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 45,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.7849236726760864,
+        0.015273971483111382
+      ]
+    },
+    {
+      "discrete_distribution_index": 41,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.9318901896476746,
+        0.043374329805374146
+      ],
+      "mean_state_index": 10,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.23028036952018738,
+        0.2402164340019226
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        }
+      },
+      "seed": 403132,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 41,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.9318901896476746,
+        0.043374329805374146
+      ]
+    },
+    {
+      "discrete_distribution_index": 46,
+      "discrete_distribution_success": [
+        false,
+        true
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.6754507422447205,
+        0.03919273987412453
+      ],
+      "mean_state_index": 11,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.17757481336593628,
+        0.41207924485206604
+      ],
+      "mode_reachable": [
+        false,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 403133,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 46,
+      "smooth_distribution_success": [
+        false,
+        true
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.6754507422447205,
+        0.03919273987412453
+      ]
+    },
+    {
+      "discrete_distribution_index": 10,
+      "discrete_distribution_success": [
+        true,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.007092713378369808,
+        0.39787763357162476
+      ],
+      "mean_state_index": 18,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.34504058957099915,
+        0.28392085433006287
+      ],
+      "mode_reachable": [
+        true,
+        true
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 403134,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 10,
+      "smooth_distribution_success": [
+        true,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.007092713378369808,
+        0.39787763357162476
+      ]
+    },
+    {
+      "discrete_distribution_index": 14,
+      "discrete_distribution_success": [
+        false,
+        false
+      ],
+      "discrete_distribution_terminal_distance_m": [
+        0.1119442954659462,
+        0.47137781977653503
+      ],
+      "mean_state_index": 33,
+      "mean_state_success": [
+        false,
+        false
+      ],
+      "mean_state_terminal_distance_m": [
+        0.42215120792388916,
+        0.4212876856327057
+      ],
+      "mode_reachable": [
+        false,
+        false
+      ],
+      "parameters": {
+        "discrete_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "mean_state": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "smooth_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        }
+      },
+      "seed": 403135,
+      "shared_candidate_reachable": false,
+      "smooth_distribution_index": 7,
+      "smooth_distribution_success": [
+        false,
+        false
+      ],
+      "smooth_distribution_terminal_distance_m": [
+        0.08171411603689194,
+        0.5089303851127625
+      ]
+    }
+  ],
+  "seed": 403072,
+  "shared_candidate_reachability": 0.0,
+  "smooth_distribution_success_rate_by_mode": [
+    0.328125,
+    0.625
+  ],
+  "success_definition": {
+    "horizon_raw_steps": 100,
+    "metric": "terminal puck-to-goal Euclidean distance",
+    "threshold_m": 0.05
+  },
+  "task": "fetch_slide_hidden_friction_commitment_oracle_screen"
+}

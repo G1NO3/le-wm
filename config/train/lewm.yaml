@@ -76,6 +76,9 @@ loss:
     memory:
       enabled: False
       hidden_dim: 128
+      # Optional deployable low-dimensional observation whose transition delta
+      # is provided only while updating memory from observed history.
+      observation_key: null
       max_history_updates: 5
       sampled_history_probability: 0.0
       sampling_steps: 4

@@ -1,0 +1,15 @@
+dataset:
+  name: fetch_slide_hidden_friction
+  num_steps: ${eval:'${wm.num_preds} + ${wm.history_size}'}
+  frameskip: 2
+  keys_to_load: [pixels, action, proprio, state]
+  keys_to_cache: [action, proprio, state]
+split_fractions: [0.8, 0.1, 0.1]
+split_manifest: null
+hidden_physics:
+  name: slide_strong
+  mass: [1.0, 1.0]
+  surface_friction: [0.2, 1.0]
+  pad_friction: [1.0, 1.0]
+  slip_probability: 0.0
+  pairing: same scene and strike under both friction modes

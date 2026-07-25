@@ -17,9 +17,14 @@ from omegaconf import DictConfig, OmegaConf
 from sklearn import preprocessing
 from torchvision.transforms import v2 as transforms
 import stable_worldmodel as swm
-from stochastic_physics import OGBenchHiddenPhysics, RoboCasaHiddenPhysics
+from stochastic_physics import (
+    FetchPushHiddenFriction,
+    FetchPushPairedFriction,
+    OGBenchHiddenPhysics,
+    RoboCasaHiddenPhysics,
+)
 from physical_probes import RidgeProbe
-from residual_policy import ResidualWorldModelPolicy
+from residual_policy import FetchGuidedWorldModelPolicy, ResidualWorldModelPolicy
 from experiment_data import sha256_file, sha256_json
 
 
@@ -162,6 +167,66 @@ def jsonable(value):
         return value.detach().cpu().tolist()
     return value
 
+
+def paired_fetch_success_metrics(successes, seeds, origin):
+    """Summarize balanced low/high outcomes independent of completion order."""
+
+    successes = np.asarray(successes, dtype=bool).reshape(-1)
+    seeds = np.asarray(seeds, dtype=np.int64).reshape(-1)
+    offsets = seeds - int(origin)
+    if len(successes) != len(seeds) or np.any(offsets < 0):
+        raise ValueError("Invalid paired FetchPush outcomes or seed origin")
+    modes = offsets % 2
+    pair_ids = offsets // 2
+    both = []
+    for pair_id in np.unique(pair_ids):
+        selected = pair_ids == pair_id
+        pair_modes = modes[selected]
+        if selected.sum() != 2 or set(pair_modes.tolist()) != {0, 1}:
+            raise ValueError(f"Incomplete paired FetchPush scene {pair_id}")
+        both.append(bool(successes[selected].all()))
+    result = {}
+    for mode, label in ((0, "low"), (1, "high")):
+        selected = successes[modes == mode]
+        result[f"success_rate_{label}"] = float(selected.mean() * 100)
+    result["paired_both_success_rate"] = float(np.mean(both) * 100)
+    return modes, result
+
+
+def evaluate_paired_full_task(world, *, episodes, seed):
+    """Evaluate exact consecutive low/high seed blocks without async censoring."""
+
+    batch_size = int(world.num_envs)
+    if batch_size % 2 or episodes % batch_size:
+        raise ValueError(
+            "Paired full-task evaluation requires an even num_envs and "
+            "num_eval divisible by num_envs"
+        )
+    batches = []
+    for offset in range(0, int(episodes), batch_size):
+        action_buffers = getattr(world.policy, "_action_buffer", None)
+        if action_buffers is not None:
+            for buffer in action_buffers:
+                buffer.clear()
+            world.policy._next_init = None
+        batches.append(
+            world.evaluate(
+                episodes=batch_size,
+                seed=int(seed) + offset,
+                reset_mode="wait",
+            )
+        )
+    metrics = {}
+    for key in batches[0]:
+        values = [batch[key] for batch in batches]
+        if isinstance(values[0], (list, np.ndarray)):
+            metrics[key] = np.concatenate([np.asarray(value) for value in values])
+        else:
+            metrics[key] = float(np.mean(values))
+    successes = np.asarray(metrics["episode_successes"], dtype=bool)
+    metrics["success_rate"] = float(100 * successes.mean())
+    return metrics
+
 @hydra.main(version_base=None, config_path="./config/eval", config_name="pusht")
 def run(cfg: DictConfig):
     """Run evaluation of dinowm vs random policy."""
@@ -174,13 +239,20 @@ def run(cfg: DictConfig):
     world_kwargs = OmegaConf.to_container(cfg.world, resolve=True)
     hidden_cfg = cfg.eval.get("hidden_physics")
     if hidden_cfg and hidden_cfg.get("enabled", False):
-        wrapper_cls = (
-            RoboCasaHiddenPhysics
-            if "robocasa" in cfg.world.env_name.lower()
-            else OGBenchHiddenPhysics
-        )
         wrapper_kwargs = OmegaConf.to_container(hidden_cfg, resolve=True)
         wrapper_kwargs.pop("enabled", None)
+        paired = bool(wrapper_kwargs.pop("paired", False))
+        env_name = cfg.world.env_name.lower()
+        if "fetchpush" in env_name:
+            wrapper_cls = (
+                FetchPushPairedFriction if paired else FetchPushHiddenFriction
+            )
+        elif "robocasa" in env_name:
+            wrapper_cls = RoboCasaHiddenPhysics
+        else:
+            if paired:
+                raise ValueError("paired hidden physics is only supported for FetchPush")
+            wrapper_cls = OGBenchHiddenPhysics
         world_kwargs["pre_wrappers"] = [partial(wrapper_cls, **wrapper_kwargs)]
     world = swm.World(**world_kwargs, image_shape=(224, 224))
 
@@ -221,6 +293,7 @@ def run(cfg: DictConfig):
             if not hasattr(model, "planning"):
                 model.planning = {}
             model.planning.update(OmegaConf.to_container(planning, resolve=True))
+        if planning:
             probe_path = planning.get("physical_probe_checkpoint")
             if probe_path:
                 probe_payload = torch.load(probe_path, map_location="cpu", weights_only=True)
@@ -234,13 +307,22 @@ def run(cfg: DictConfig):
                 )
         config = swm.PlanConfig(**cfg.plan_config)
         solver = hydra.utils.instantiate(cfg.solver, model=model)
-        policy_class = (
-            ResidualWorldModelPolicy
-            if getattr(model, "residual_memory", None) is not None
-            else swm.policy.WorldModelPolicy
-        )
+        if cfg.eval.get("guided_expert", False):
+            if getattr(model, "residual_memory", None) is not None:
+                raise ValueError("Fetch expert guidance is not yet combined with residual memory")
+            policy_class = FetchGuidedWorldModelPolicy
+        else:
+            policy_class = (
+                ResidualWorldModelPolicy
+                if getattr(model, "residual_memory", None) is not None
+                else swm.policy.WorldModelPolicy
+            )
         policy = policy_class(
-            solver=solver, config=config, process=process, transform=transform
+            solver=solver,
+            config=config,
+            process=process,
+            transform=transform,
+            **({"expert_seed": int(cfg.seed)} if policy_class is FetchGuidedWorldModelPolicy else {}),
         )
 
     else:
@@ -260,15 +342,32 @@ def run(cfg: DictConfig):
     start_time = time.time()
     protocol = cfg.eval.get("protocol", "reachable_window")
     evaluation_contact_stages = None
+    evaluation_friction_modes = None
     if protocol == "full_task":
         eval_episodes = np.arange(cfg.seed, cfg.seed + cfg.eval.num_eval)
         eval_start_idx = np.zeros(cfg.eval.num_eval, dtype=int)
-        metrics = world.evaluate(
-            episodes=cfg.eval.num_eval,
-            seed=cfg.seed,
-            video=video_path,
-            reset_mode="auto",
-        )
+        if hidden_cfg and hidden_cfg.get("paired", False):
+            if video_path is not None:
+                raise ValueError("Paired batched full-task evaluation does not support video")
+            metrics = evaluate_paired_full_task(
+                world, episodes=cfg.eval.num_eval, seed=cfg.seed
+            )
+            successes = np.asarray(metrics["episode_successes"], dtype=bool)
+            seeds = np.asarray(metrics["seeds"], dtype=np.int64)
+            eval_episodes = seeds.copy()
+            eval_start_idx = np.zeros_like(seeds)
+            origin = int(hidden_cfg.get("collection_seed_origin", cfg.seed))
+            evaluation_friction_modes, paired_metrics = paired_fetch_success_metrics(
+                successes, seeds, origin
+            )
+            metrics.update(paired_metrics)
+        else:
+            metrics = world.evaluate(
+                episodes=cfg.eval.num_eval,
+                seed=cfg.seed,
+                video=video_path,
+                reset_mode="auto",
+            )
     elif protocol == "reachable_window":
         candidate_episodes, candidate_starts, candidate_rows = reachable_context_index(
             dataset, cfg.eval.goal_offset_steps
@@ -433,8 +532,14 @@ def run(cfg: DictConfig):
             if evaluation_contact_stages is not None
             else None
         ),
+        "friction_modes": (
+            evaluation_friction_modes.tolist()
+            if evaluation_friction_modes is not None
+            else None
+        ),
     }
     planning = cfg.eval.get("stochastic_planning", {})
+    stochastic_planning_enabled = bool(planning.get("enabled", False))
     hidden_physics_metadata = cfg.eval.get("hidden_physics", {})
     if OmegaConf.is_config(hidden_physics_metadata):
         hidden_physics_metadata = OmegaConf.to_container(
@@ -464,8 +569,14 @@ def run(cfg: DictConfig):
         "checkpoint_sha256": (
             sha256_file(checkpoint_path) if checkpoint_path is not None else None
         ),
-        "particles": int(planning.get("particles", 1)),
-        "nfe": int(planning.get("flow_steps", 0)),
+        "stochastic_planning_enabled": stochastic_planning_enabled,
+        "particles": int(planning.get("particles", 1)) if stochastic_planning_enabled else 1,
+        "nfe": int(planning.get("flow_steps", 0)) if stochastic_planning_enabled else 0,
+        "planning_objective": (
+            str(planning.get("objective", "mean"))
+            if stochastic_planning_enabled
+            else "deterministic"
+        ),
         "gpu": torch.cuda.get_device_name() if torch.cuda.is_available() else "cpu",
         "latency_seconds": end_time - start_time,
         "latency_per_episode_seconds": (end_time - start_time) / len(eval_episodes),

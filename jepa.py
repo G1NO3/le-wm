@@ -175,7 +175,9 @@ class JEPA(nn.Module):
             )
         return memory_module.condition(context, memory)
 
-    def update_residual_memory(self, memory, context, normalized_residual):
+    def update_residual_memory(
+        self, memory, context, normalized_residual, observation_delta=None
+    ):
         """Update an explicit memory state after a residual is realized."""
 
         memory_module = getattr(self, "residual_memory", None)
@@ -187,7 +189,9 @@ class JEPA(nn.Module):
             memory = self.init_residual_memory(
                 context.shape[:-1], device=context.device, dtype=context.dtype
             )
-        return memory_module.update(memory, context, normalized_residual)
+        return memory_module.update(
+            memory, context, normalized_residual, observation_delta
+        )
 
     @torch.no_grad()
     def update_residual_statistics(self, residual, decay: float = 0.99, eps: float = 1e-3):
@@ -312,7 +316,16 @@ class JEPA(nn.Module):
             uniform_noise=uniform_noise,
         )
 
-    def observe_transition(self, memory, previous_emb, action_emb, next_emb):
+    def observe_transition(
+        self,
+        memory,
+        previous_emb,
+        action_emb,
+        next_emb,
+        *,
+        previous_observation=None,
+        next_observation=None,
+    ):
         """Update memory from one encoded real transition without target leakage."""
 
         prediction = self.predict(previous_emb, action_emb)[..., -1:, :]
@@ -320,10 +333,20 @@ class JEPA(nn.Module):
             previous_emb[..., -1:, :], action_emb[..., -1:, :], prediction
         )
         normalized = self.normalize_residual(next_emb[..., -1:, :] - prediction)
+        observation_delta = None
+        if int(getattr(self.residual_memory, "observation_dim", 0)):
+            if previous_observation is None or next_observation is None:
+                raise ValueError(
+                    "State-conditioned residual memory requires observation history"
+                )
+            observation_delta = (
+                next_observation[..., -1, :] - previous_observation[..., -1, :]
+            ).detach()
         updated = self.update_residual_memory(
             memory,
             context.squeeze(-2).detach(),
             normalized.squeeze(-2).detach(),
+            observation_delta,
         )
         return updated
 
@@ -333,6 +356,7 @@ class JEPA(nn.Module):
         embeddings,
         action_embeddings,
         *,
+        observations=None,
         start_target=1,
         history_size=None,
     ):
@@ -342,6 +366,8 @@ class JEPA(nn.Module):
             return None
         if embeddings.shape[:2] != action_embeddings.shape[:2]:
             raise ValueError("Embedding and action histories must have matching axes")
+        if observations is not None and observations.shape[:2] != embeddings.shape[:2]:
+            raise ValueError("Observation and embedding histories must have matching axes")
         if memory is None:
             memory = self.init_residual_memory(
                 embeddings.shape[:1], device=embeddings.device, dtype=embeddings.dtype
@@ -355,6 +381,16 @@ class JEPA(nn.Module):
                 embeddings[:, context_start:target_index],
                 action_embeddings[:, context_start:target_index],
                 embeddings[:, target_index : target_index + 1],
+                previous_observation=(
+                    None
+                    if observations is None
+                    else observations[:, target_index - 1 : target_index]
+                ),
+                next_observation=(
+                    None
+                    if observations is None
+                    else observations[:, target_index : target_index + 1]
+                ),
             )
         return memory
 
@@ -459,10 +495,20 @@ class JEPA(nn.Module):
                 )
                 pred_emb = nominal + residual
                 if residual_memory is not None:
+                    observation_dim = int(
+                        getattr(self.residual_memory, "observation_dim", 0)
+                    )
                     residual_memory = self.update_residual_memory(
                         residual_memory,
                         condition.detach(),
                         self.normalize_residual(residual).detach(),
+                        (
+                            condition.new_zeros(
+                                *condition.shape[:-1], observation_dim
+                            )
+                            if observation_dim
+                            else None
+                        ),
                     )
             else:
                 pred_emb = self.predict(emb_trunc, act_trunc)[:, -1:]  # (BS, 1, D)
@@ -568,20 +614,27 @@ class JEPA(nn.Module):
     def criterion(self, info_dict: dict):
         """Compute the cost between predicted embeddings and goal embeddings."""
         pred_emb = info_dict["predicted_emb"]  # (B,S, T-1, dim)
-        goal_emb = info_dict["goal_emb"]
-        if goal_emb.ndim == pred_emb.ndim - 1:
-            goal_emb = goal_emb.unsqueeze(1)
-
-        goal_emb = goal_emb[..., -1:, :].expand_as(pred_emb)
-
-        # return last-step cost per action candidate
-        cost = F.mse_loss(
-            pred_emb[..., -1:, :],
-            goal_emb[..., -1:, :].detach(),
-            reduction="none",
-        ).sum(dim=tuple(range(2, pred_emb.ndim)))  # (B, S)
-
         probe = getattr(self, "physical_probe", None)
+        if "goal_emb" in info_dict:
+            goal_emb = info_dict["goal_emb"]
+            if goal_emb.ndim == pred_emb.ndim - 1:
+                goal_emb = goal_emb.unsqueeze(1)
+            goal_emb = goal_emb[..., -1:, :].expand_as(pred_emb)
+            cost = F.mse_loss(
+                pred_emb[..., -1:, :],
+                goal_emb[..., -1:, :].detach(),
+                reduction="none",
+            ).sum(dim=tuple(range(2, pred_emb.ndim)))
+        elif probe is not None and "goal_position" in info_dict:
+            predicted_position = probe(pred_emb[..., -1, :])
+            goal_position = info_dict["goal_position"]
+            if goal_position.ndim > predicted_position.ndim:
+                goal_position = goal_position[..., -1, :]
+            goal_position = goal_position.to(predicted_position)
+            cost = (predicted_position - goal_position).square().sum(dim=-1)
+        else:
+            raise KeyError("Planning requires either a goal image or a physical goal probe")
+
         weight = float(getattr(self, "planning", {}).get("collateral_penalty_weight", 0))
         indices = getattr(self, "planning", {}).get("collateral_state_indices", [])
         if probe is not None and weight > 0 and indices:
@@ -597,7 +650,13 @@ class JEPA(nn.Module):
     def get_cost(self, info_dict: dict, action_candidates: torch.Tensor):
         """ Compute the cost of action candidates given an info dict with goal and initial state."""
 
-        assert "goal" in info_dict, "goal not in info_dict"
+        has_image_goal = "goal" in info_dict
+        has_physical_goal = (
+            "goal_position" in info_dict
+            and getattr(self, "physical_probe", None) is not None
+        )
+        if not has_image_goal and not has_physical_goal:
+            raise KeyError("Planning requires goal pixels or goal_position plus a probe")
 
         device = next(self.parameters()).device
         action_candidates = action_candidates.to(device)
@@ -605,17 +664,15 @@ class JEPA(nn.Module):
             if torch.is_tensor(info_dict[k]):
                 info_dict[k] = info_dict[k].to(device)
 
-        goal = {k: v[:, 0] for k, v in info_dict.items() if torch.is_tensor(v)}
-        goal["pixels"] = goal["goal"]
-
-        for k in info_dict:
-            if k.startswith("goal_"):
-                goal[k[len("goal_") :]] = goal.pop(k)
-
-        goal.pop("action")
-        goal = self.encode(goal)
-
-        info_dict["goal_emb"] = goal["emb"]
+        if has_image_goal:
+            goal = {k: v[:, 0] for k, v in info_dict.items() if torch.is_tensor(v)}
+            goal["pixels"] = goal["goal"]
+            for k in info_dict:
+                if k.startswith("goal_"):
+                    goal[k[len("goal_") :]] = goal.pop(k)
+            goal.pop("action")
+            goal = self.encode(goal)
+            info_dict["goal_emb"] = goal["emb"]
         particles = int(getattr(self, "planning", {}).get("particles", 1))
         has_kernel = self.residual_flow is not None or getattr(self, "residual_kernel", None) is not None
         if particles <= 1 or not has_kernel:
@@ -665,6 +722,7 @@ class JEPA(nn.Module):
             particle_cost,
             objective=self.planning.get("objective", "mean"),
             tail_fraction=float(self.planning.get("cvar_tail_fraction", 0.25)),
+            risk_weight=float(self.planning.get("risk_weight", 1.0)),
         )
         
         return cost

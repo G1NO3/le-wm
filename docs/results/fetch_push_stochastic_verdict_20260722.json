@@ -1,0 +1,97 @@
+{
+  "horizon": 10,
+  "models": {
+    "conditional_gaussian": {
+      "exact_fork": {
+        "energy_score": 1.8251183032989502,
+        "horizon": 10,
+        "residual_energy_skill": 0.31804972887039185,
+        "stochastic_energy_skill_vs_residual_mean": 0.13448435068130493,
+        "versus_deterministic": {
+          "ci95": [
+            0.7385369539260864,
+            0.9700174927711487
+          ],
+          "mean_improvement": 0.8512035608291626
+        },
+        "versus_residual_mean": {
+          "ci95": [
+            0.24770542979240417,
+            0.31983327865600586
+          ],
+          "mean_improvement": 0.28358790278434753
+        }
+      },
+      "heldout": {
+        "energy_score": 11.031509399414062,
+        "residual_energy_skill": 0.3539596199989319,
+        "stochastic_energy_skill_vs_residual_mean": 0.19514203071594238
+      },
+      "strict_stochastic_help": true
+    },
+    "flow": {
+      "exact_fork": {
+        "energy_score": 1.7058161497116089,
+        "horizon": 10,
+        "residual_energy_skill": 0.36262667179107666,
+        "stochastic_energy_skill_vs_residual_mean": 0.2087996006011963,
+        "versus_deterministic": {
+          "ci95": [
+            0.8513258099555969,
+            1.0981872081756592
+          ],
+          "mean_improvement": 0.9705058336257935
+        },
+        "versus_residual_mean": {
+          "ci95": [
+            0.4120665192604065,
+            0.48697808384895325
+          ],
+          "mean_improvement": 0.4501688480377197
+        }
+      },
+      "heldout": {
+        "energy_score": 10.725505828857422,
+        "residual_energy_skill": 0.3718801736831665,
+        "stochastic_energy_skill_vs_residual_mean": 0.25236284732818604
+      },
+      "strict_stochastic_help": true
+    },
+    "flow_gru_memory": {
+      "exact_fork": {
+        "energy_score": 1.7034794092178345,
+        "horizon": 10,
+        "residual_energy_skill": 0.3634997606277466,
+        "stochastic_energy_skill_vs_residual_mean": 0.21032971143722534,
+        "versus_deterministic": {
+          "ci95": [
+            0.8535804748535156,
+            1.100460171699524
+          ],
+          "mean_improvement": 0.9728424549102783
+        },
+        "versus_residual_mean": {
+          "ci95": [
+            0.41613903641700745,
+            0.49092137813568115
+          ],
+          "mean_improvement": 0.4537242352962494
+        }
+      },
+      "heldout": {
+        "energy_score": 10.499531745910645,
+        "residual_energy_skill": 0.3851139545440674,
+        "stochastic_energy_skill_vs_residual_mean": 0.2512974143028259
+      },
+      "strict_stochastic_help": true
+    }
+  },
+  "one_seed_gate_only": true,
+  "question": "Does sampled residual spread help beyond deterministic LeWM and residual-mean correction?",
+  "strictly_passing_models": [
+    "conditional_gaussian",
+    "flow",
+    "flow_gru_memory"
+  ],
+  "verdict": "stochastic_residual_helps"
+}

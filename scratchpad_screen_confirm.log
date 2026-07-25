@@ -1,0 +1,348 @@
+/mnt/storage/fwu91/Projects/ResDyn/le-wm/.pixi/envs/default/lib/python3.10/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
+  from stable_worldmodel.envs import ale  # noqa: F401
+13:49:06 | INFO  | __init__.py | PyTorch version 2.13.0 available.
+13:49:08 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+13:49:08 | INFO  | __init__.py | No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+AdroitHandRelocateDense-v1, AdroitHandHammerDense-v1, AdroitHandDoorDense-v1 environment's reward functions were updated in v1.2.1 without an environment version update. Therefore, use gymnasium-robotics==1.2.0 for v1 reproducibility or use v2 in gymnasium-robotics>=1.4.3. See https://github.com/Farama-Foundation/Gymnasium-Robotics/pull/220 for more details
+collected context 1/100
+collected context 2/100
+collected context 3/100
+collected context 4/100
+collected context 4/100
+collected context 5/100
+collected context 6/100
+collected context 7/100
+collected context 8/100
+collected context 9/100
+collected context 10/100
+collected context 11/100
+collected context 12/100
+collected context 13/100
+collected context 14/100
+collected context 15/100
+collected context 16/100
+collected context 17/100
+collected context 18/100
+collected context 19/100
+collected context 19/100
+collected context 20/100
+collected context 20/100
+collected context 21/100
+collected context 22/100
+collected context 23/100
+collected context 24/100
+collected context 25/100
+collected context 26/100
+collected context 26/100
+collected context 27/100
+collected context 27/100
+collected context 27/100
+collected context 28/100
+collected context 29/100
+collected context 30/100
+collected context 31/100
+collected context 32/100
+collected context 33/100
+collected context 34/100
+collected context 35/100
+collected context 35/100
+collected context 36/100
+collected context 37/100
+collected context 38/100
+collected context 39/100
+collected context 40/100
+collected context 41/100
+collected context 42/100
+collected context 43/100
+collected context 44/100
+collected context 45/100
+collected context 46/100
+collected context 47/100
+collected context 47/100
+collected context 48/100
+collected context 49/100
+collected context 50/100
+collected context 51/100
+collected context 52/100
+collected context 53/100
+collected context 54/100
+collected context 55/100
+collected context 56/100
+collected context 57/100
+collected context 58/100
+collected context 59/100
+collected context 60/100
+collected context 61/100
+collected context 62/100
+collected context 62/100
+collected context 63/100
+collected context 64/100
+collected context 65/100
+collected context 66/100
+collected context 67/100
+collected context 68/100
+collected context 69/100
+collected context 70/100
+collected context 70/100
+collected context 71/100
+collected context 72/100
+collected context 73/100
+collected context 74/100
+collected context 75/100
+collected context 76/100
+collected context 77/100
+collected context 78/100
+collected context 79/100
+collected context 80/100
+collected context 81/100
+collected context 82/100
+collected context 82/100
+collected context 83/100
+collected context 84/100
+collected context 85/100
+collected context 86/100
+collected context 87/100
+collected context 88/100
+collected context 89/100
+collected context 90/100
+collected context 91/100
+collected context 92/100
+collected context 93/100
+collected context 94/100
+collected context 95/100
+collected context 96/100
+collected context 96/100
+collected context 97/100
+collected context 97/100
+collected context 98/100
+collected context 99/100
+collected context 100/100
+  friction 0.25/2.5: context 1/100
+  friction 0.25/2.5: context 2/100
+  friction 0.25/2.5: context 3/100
+  friction 0.25/2.5: context 4/100
+  friction 0.25/2.5: context 5/100
+  friction 0.25/2.5: context 6/100
+  friction 0.25/2.5: context 7/100
+  friction 0.25/2.5: context 8/100
+  friction 0.25/2.5: context 9/100
+  friction 0.25/2.5: context 10/100
+  friction 0.25/2.5: context 11/100
+  friction 0.25/2.5: context 12/100
+  friction 0.25/2.5: context 13/100
+  friction 0.25/2.5: context 14/100
+  friction 0.25/2.5: context 15/100
+  friction 0.25/2.5: context 16/100
+  friction 0.25/2.5: context 17/100
+  friction 0.25/2.5: context 18/100
+  friction 0.25/2.5: context 19/100
+  friction 0.25/2.5: context 20/100
+  friction 0.25/2.5: context 21/100
+  friction 0.25/2.5: context 22/100
+  friction 0.25/2.5: context 23/100
+  friction 0.25/2.5: context 24/100
+  friction 0.25/2.5: context 25/100
+  friction 0.25/2.5: context 26/100
+  friction 0.25/2.5: context 27/100
+  friction 0.25/2.5: context 28/100
+  friction 0.25/2.5: context 29/100
+  friction 0.25/2.5: context 30/100
+  friction 0.25/2.5: context 31/100
+  friction 0.25/2.5: context 32/100
+  friction 0.25/2.5: context 33/100
+  friction 0.25/2.5: context 34/100
+  friction 0.25/2.5: context 35/100
+  friction 0.25/2.5: context 36/100
+  friction 0.25/2.5: context 37/100
+  friction 0.25/2.5: context 38/100
+  friction 0.25/2.5: context 39/100
+  friction 0.25/2.5: context 40/100
+  friction 0.25/2.5: context 41/100
+  friction 0.25/2.5: context 42/100
+  friction 0.25/2.5: context 43/100
+  friction 0.25/2.5: context 44/100
+  friction 0.25/2.5: context 45/100
+  friction 0.25/2.5: context 46/100
+  friction 0.25/2.5: context 47/100
+  friction 0.25/2.5: context 48/100
+  friction 0.25/2.5: context 49/100
+  friction 0.25/2.5: context 50/100
+  friction 0.25/2.5: context 51/100
+  friction 0.25/2.5: context 52/100
+  friction 0.25/2.5: context 53/100
+  friction 0.25/2.5: context 54/100
+  friction 0.25/2.5: context 55/100
+  friction 0.25/2.5: context 56/100
+  friction 0.25/2.5: context 57/100
+  friction 0.25/2.5: context 58/100
+  friction 0.25/2.5: context 59/100
+  friction 0.25/2.5: context 60/100
+  friction 0.25/2.5: context 61/100
+  friction 0.25/2.5: context 62/100
+  friction 0.25/2.5: context 63/100
+  friction 0.25/2.5: context 64/100
+  friction 0.25/2.5: context 65/100
+  friction 0.25/2.5: context 66/100
+  friction 0.25/2.5: context 67/100
+  friction 0.25/2.5: context 68/100
+  friction 0.25/2.5: context 69/100
+  friction 0.25/2.5: context 70/100
+  friction 0.25/2.5: context 71/100
+  friction 0.25/2.5: context 72/100
+  friction 0.25/2.5: context 73/100
+  friction 0.25/2.5: context 74/100
+  friction 0.25/2.5: context 75/100
+  friction 0.25/2.5: context 76/100
+  friction 0.25/2.5: context 77/100
+  friction 0.25/2.5: context 78/100
+  friction 0.25/2.5: context 79/100
+  friction 0.25/2.5: context 80/100
+  friction 0.25/2.5: context 81/100
+  friction 0.25/2.5: context 82/100
+  friction 0.25/2.5: context 83/100
+  friction 0.25/2.5: context 84/100
+  friction 0.25/2.5: context 85/100
+  friction 0.25/2.5: context 86/100
+  friction 0.25/2.5: context 87/100
+  friction 0.25/2.5: context 88/100
+  friction 0.25/2.5: context 89/100
+  friction 0.25/2.5: context 90/100
+  friction 0.25/2.5: context 91/100
+  friction 0.25/2.5: context 92/100
+  friction 0.25/2.5: context 93/100
+  friction 0.25/2.5: context 94/100
+  friction 0.25/2.5: context 95/100
+  friction 0.25/2.5: context 96/100
+  friction 0.25/2.5: context 97/100
+  friction 0.25/2.5: context 98/100
+  friction 0.25/2.5: context 99/100
+  friction 0.25/2.5: context 100/100
+friction 0.25/2.5 tol 0.03: episode dist 0.970 vs mean 0.830 (+0.140) | context dist 0.940 vs mean 0.690 (+0.250, CI [0.17, 0.34])
+friction 0.25/2.5 tol 0.05: episode dist 0.995 vs mean 0.885 (+0.110) | context dist 0.990 vs mean 0.770 (+0.220, CI [0.14, 0.3])
+  friction 0.2/3.0: context 1/100
+  friction 0.2/3.0: context 2/100
+  friction 0.2/3.0: context 3/100
+  friction 0.2/3.0: context 4/100
+  friction 0.2/3.0: context 5/100
+  friction 0.2/3.0: context 6/100
+  friction 0.2/3.0: context 7/100
+  friction 0.2/3.0: context 8/100
+  friction 0.2/3.0: context 9/100
+  friction 0.2/3.0: context 10/100
+  friction 0.2/3.0: context 11/100
+  friction 0.2/3.0: context 12/100
+  friction 0.2/3.0: context 13/100
+  friction 0.2/3.0: context 14/100
+  friction 0.2/3.0: context 15/100
+  friction 0.2/3.0: context 16/100
+  friction 0.2/3.0: context 17/100
+  friction 0.2/3.0: context 18/100
+  friction 0.2/3.0: context 19/100
+  friction 0.2/3.0: context 20/100
+  friction 0.2/3.0: context 21/100
+  friction 0.2/3.0: context 22/100
+  friction 0.2/3.0: context 23/100
+  friction 0.2/3.0: context 24/100
+  friction 0.2/3.0: context 25/100
+  friction 0.2/3.0: context 26/100
+  friction 0.2/3.0: context 27/100
+  friction 0.2/3.0: context 28/100
+  friction 0.2/3.0: context 29/100
+  friction 0.2/3.0: context 30/100
+  friction 0.2/3.0: context 31/100
+  friction 0.2/3.0: context 32/100
+  friction 0.2/3.0: context 33/100
+  friction 0.2/3.0: context 34/100
+  friction 0.2/3.0: context 35/100
+  friction 0.2/3.0: context 36/100
+  friction 0.2/3.0: context 37/100
+  friction 0.2/3.0: context 38/100
+  friction 0.2/3.0: context 39/100
+  friction 0.2/3.0: context 40/100
+  friction 0.2/3.0: context 41/100
+  friction 0.2/3.0: context 42/100
+  friction 0.2/3.0: context 43/100
+  friction 0.2/3.0: context 44/100
+  friction 0.2/3.0: context 45/100
+  friction 0.2/3.0: context 46/100
+  friction 0.2/3.0: context 47/100
+  friction 0.2/3.0: context 48/100
+  friction 0.2/3.0: context 49/100
+  friction 0.2/3.0: context 50/100
+  friction 0.2/3.0: context 51/100
+  friction 0.2/3.0: context 52/100
+  friction 0.2/3.0: context 53/100
+  friction 0.2/3.0: context 54/100
+  friction 0.2/3.0: context 55/100
+  friction 0.2/3.0: context 56/100
+  friction 0.2/3.0: context 57/100
+  friction 0.2/3.0: context 58/100
+  friction 0.2/3.0: context 59/100
+  friction 0.2/3.0: context 60/100
+  friction 0.2/3.0: context 61/100
+  friction 0.2/3.0: context 62/100
+  friction 0.2/3.0: context 63/100
+  friction 0.2/3.0: context 64/100
+  friction 0.2/3.0: context 65/100
+  friction 0.2/3.0: context 66/100
+  friction 0.2/3.0: context 67/100
+  friction 0.2/3.0: context 68/100
+  friction 0.2/3.0: context 69/100
+  friction 0.2/3.0: context 70/100
+  friction 0.2/3.0: context 71/100
+  friction 0.2/3.0: context 72/100
+  friction 0.2/3.0: context 73/100
+  friction 0.2/3.0: context 74/100
+  friction 0.2/3.0: context 75/100
+  friction 0.2/3.0: context 76/100
+  friction 0.2/3.0: context 77/100
+  friction 0.2/3.0: context 78/100
+  friction 0.2/3.0: context 79/100
+  friction 0.2/3.0: context 80/100
+  friction 0.2/3.0: context 81/100
+  friction 0.2/3.0: context 82/100
+  friction 0.2/3.0: context 83/100
+  friction 0.2/3.0: context 84/100
+  friction 0.2/3.0: context 85/100
+  friction 0.2/3.0: context 86/100
+  friction 0.2/3.0: context 87/100
+  friction 0.2/3.0: context 88/100
+  friction 0.2/3.0: context 89/100
+  friction 0.2/3.0: context 90/100
+  friction 0.2/3.0: context 91/100
+  friction 0.2/3.0: context 92/100
+  friction 0.2/3.0: context 93/100
+  friction 0.2/3.0: context 94/100
+  friction 0.2/3.0: context 95/100
+  friction 0.2/3.0: context 96/100
+  friction 0.2/3.0: context 97/100
+  friction 0.2/3.0: context 98/100
+  friction 0.2/3.0: context 99/100
+  friction 0.2/3.0: context 100/100
+friction 0.2/3.0 tol 0.03: episode dist 0.740 vs mean 0.630 (+0.110) | context dist 0.480 vs mean 0.260 (+0.220, CI [0.14, 0.3])
+friction 0.2/3.0 tol 0.05: episode dist 0.790 vs mean 0.665 (+0.125) | context dist 0.580 vs mean 0.330 (+0.250, CI [0.17, 0.34])
+
+BEST: {
+  "friction_low": 0.25,
+  "friction_high": 2.5,
+  "tolerance": 0.03,
+  "oracle_mean_success_rate": 0.83,
+  "oracle_distribution_success_rate": 0.97,
+  "absolute_success_improvement": 0.14,
+  "scene_cluster_bootstrap_ci95": [
+    0.095,
+    0.185
+  ],
+  "context_oracle_mean_success_rate": 0.69,
+  "context_oracle_distribution_success_rate": 0.94,
+  "context_absolute_success_improvement": 0.25,
+  "context_scene_cluster_bootstrap_ci95": [
+    0.17,
+    0.34
+  ],
+  "hedge_exists_fraction": 0.94,
+  "clean_win_contexts": 0,
+  "clean_win_fraction": 0.0,
+  "clean_win_context_indices": [],
+  "strict_gate": true
+}

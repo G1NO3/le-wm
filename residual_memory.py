@@ -15,12 +15,20 @@ class ResidualMemory(nn.Module):
     cannot be mixed accidentally during planning.
     """
 
-    def __init__(self, *, condition_dim: int, residual_dim: int, hidden_dim: int = 128):
+    def __init__(
+        self,
+        *,
+        condition_dim: int,
+        residual_dim: int,
+        hidden_dim: int = 128,
+        observation_dim: int = 0,
+    ):
         super().__init__()
         self.condition_dim = int(condition_dim)
         self.residual_dim = int(residual_dim)
         self.hidden_dim = int(hidden_dim)
-        input_dim = self.condition_dim + self.residual_dim
+        self.observation_dim = int(observation_dim)
+        input_dim = self.condition_dim + self.residual_dim + self.observation_dim
         self.input_norm = nn.LayerNorm(input_dim)
         self.input_projection = nn.Linear(input_dim, self.hidden_dim)
         self.cell = nn.GRUCell(self.hidden_dim, self.hidden_dim)
@@ -43,12 +51,31 @@ class ResidualMemory(nn.Module):
         memory: torch.Tensor,
         context: torch.Tensor,
         normalized_residual: torch.Tensor,
+        observation_delta: torch.Tensor | None = None,
     ) -> torch.Tensor:
         if context.shape[:-1] != memory.shape[:-1]:
             raise ValueError("Residual memory update received mismatched context axes")
         if normalized_residual.shape[:-1] != memory.shape[:-1]:
             raise ValueError("Residual memory update received mismatched residual axes")
-        value = torch.cat([context, normalized_residual], dim=-1)
+        observation_dim = int(getattr(self, "observation_dim", 0))
+        if observation_dim:
+            if observation_delta is None:
+                raise ValueError(
+                    "This residual memory requires an observed-state delta"
+                )
+            if observation_delta.shape[:-1] != memory.shape[:-1]:
+                raise ValueError(
+                    "Residual memory update received mismatched observation axes"
+                )
+            if observation_delta.size(-1) != observation_dim:
+                raise ValueError(
+                    f"Expected observation delta width {observation_dim}, got "
+                    f"{observation_delta.size(-1)}"
+                )
+            values = [context, normalized_residual, observation_delta]
+        else:
+            values = [context, normalized_residual]
+        value = torch.cat(values, dim=-1)
         value = F.silu(self.input_projection(self.input_norm(value)))
         leading = memory.shape[:-1]
         updated = self.cell(

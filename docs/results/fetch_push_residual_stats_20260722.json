@@ -1,0 +1,17 @@
+{
+  "checkpoint_sha256": "39b55735a1bc4521b8fc754e457b7611dffbbcb1efa7025c0ec933607f3265f3",
+  "count": 18225,
+  "dataset_sha256": "c1e61c1b5b69a77d298484e7be2954df25781389cff8fb50f26b5fc5517be816",
+  "latent_dim": 192,
+  "residual_mean": {
+    "l2": 0.04522830247879028,
+    "mean_abs": 0.0026681956369429827
+  },
+  "residual_scale": {
+    "max": 0.06756886839866638,
+    "mean": 0.058087512850761414,
+    "median": 0.058102596551179886,
+    "min": 0.05007456988096237
+  },
+  "split_sha256": "dd7b4d40ada0004920ee1df31f7f8cf1b8b000af1527ce2c923a2a44be83541b"
+}

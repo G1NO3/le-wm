@@ -200,6 +200,21 @@ def test_residual_memory_is_explicit_resettable_state():
     assert torch.equal(first, torch.zeros_like(first))
 
 
+def test_state_conditioned_memory_requires_and_uses_observed_delta():
+    memory = ResidualMemory(
+        condition_dim=12, residual_dim=4, hidden_dim=5, observation_dim=3
+    )
+    initial = memory.init(2, device=torch.device("cpu"), dtype=torch.float32)
+    context = torch.randn(2, 12)
+    residual = torch.randn(2, 4)
+    with pytest.raises(ValueError, match="observed-state delta"):
+        memory.update(initial, context, residual)
+    first = memory.update(initial, context, residual, torch.zeros(2, 3))
+    second = memory.update(initial, context, residual, torch.ones(2, 3))
+    assert first.shape == initial.shape
+    assert not torch.allclose(first, second)
+
+
 def test_final_target_never_enters_its_own_memory():
     wm = recurrent_model()
     context = torch.randn(2, 3, 12)
@@ -283,6 +298,10 @@ def test_online_policy_persists_and_resets_episode_memory():
 def test_mean_and_worst_quartile_cvar():
     cost = torch.tensor([[[1.0, 2.0, 3.0, 20.0], [2.0, 2.0, 2.0, 2.0]]])
     assert torch.equal(aggregate_particle_cost(cost, "mean"), torch.tensor([[6.5, 2.0]]))
+    expected = cost.mean(-1) + 0.5 * cost.std(-1, unbiased=False)
+    assert torch.allclose(
+        aggregate_particle_cost(cost, "mean_std", risk_weight=0.5), expected
+    )
     assert torch.equal(
         aggregate_particle_cost(cost, "cvar", 0.25), torch.tensor([[20.0, 2.0]])
     )
@@ -437,3 +456,86 @@ def test_particle_mpc_sampling_seed_reproduces_fresh_runs():
     first = first_model.get_cost({k: v.clone() for k, v in info.items()}, actions)
     second = second_model.get_cost({k: v.clone() for k, v in info.items()}, actions)
     assert torch.equal(first, second)
+
+
+def _online_policy_model(action_dim, frameskip, dim=4, history_size=2):
+    from module import Embedder
+
+    predictor = Predictor()
+    predictor.pos_embedding = nn.Parameter(torch.zeros(1, history_size, dim))
+    wm = JEPA(
+        encoder=Encoder(dim=dim),
+        predictor=predictor,
+        action_encoder=Embedder(
+            input_dim=action_dim * frameskip, smoothed_dim=dim, emb_dim=dim
+        ),
+        residual_memory=ResidualMemory(
+            condition_dim=3 * dim, residual_dim=dim, hidden_dim=6
+        ),
+        residual_scale=torch.ones(dim),
+    )
+    return wm.eval()
+
+
+def _online_policy(wm, frameskip):
+    policy = ResidualWorldModelPolicy.__new__(ResidualWorldModelPolicy)
+    policy.solver = SimpleNamespace(model=wm)
+    policy.process = {}
+    policy.transform = {}
+    policy.cfg = SimpleNamespace(action_block=frameskip)
+    policy._reset_memory_state(1)
+    return policy
+
+
+def _frame(value, dim_c=1, size=2):
+    return torch.full((1, 1, dim_c, size, size), float(value))
+
+
+def test_online_memory_chunks_raw_actions_into_model_steps():
+    action_dim, frameskip = 2, 3
+    torch.manual_seed(0)
+    wm = _online_policy_model(action_dim, frameskip)
+    policy = _online_policy(wm, frameskip)
+
+    raw_actions = [torch.randn(action_dim) for _ in range(frameskip)]
+
+    # Reset frame f0, then `frameskip` raw steps ending on the boundary frame.
+    policy._update_observed_memory(
+        {"pixels": _frame(0.0), "action": torch.zeros(1, 1, action_dim),
+         "_needs_flush": np.array([True])}
+    )
+    memory = None
+    for step, raw in enumerate(raw_actions):
+        boundary_frame = _frame(1.0) if step == frameskip - 1 else _frame(0.5)
+        memory = policy._update_observed_memory(
+            {"pixels": boundary_frame, "action": raw[None, None],
+             "_needs_flush": np.array([False])}
+        ).clone()
+
+    # No update should land before the model-step boundary; exactly one after.
+    f0 = wm.encode({"pixels": _frame(0.0)})["emb"][:, 0]
+    f1 = wm.encode({"pixels": _frame(1.0)})["emb"][:, 0]
+    chunk = torch.cat(raw_actions, dim=-1)[None, None]
+    act_emb = wm.action_encoder(chunk)
+    expected = wm.observe_transition(
+        wm.init_residual_memory((1,)), f0[None], act_emb, f1[:, None]
+    ).squeeze(0)
+    assert torch.allclose(memory[0], expected, atol=1e-5)
+    assert not torch.allclose(memory[0], torch.zeros_like(memory[0]))
+
+
+def test_online_memory_no_update_before_boundary():
+    action_dim, frameskip = 2, 4
+    wm = _online_policy_model(action_dim, frameskip)
+    policy = _online_policy(wm, frameskip)
+    policy._update_observed_memory(
+        {"pixels": _frame(0.0), "action": torch.zeros(1, 1, action_dim),
+         "_needs_flush": np.array([True])}
+    )
+    # Two raw steps: still inside the first model step, memory stays at reset.
+    for _ in range(frameskip - 2):
+        memory = policy._update_observed_memory(
+            {"pixels": _frame(0.3), "action": torch.randn(1, 1, action_dim),
+             "_needs_flush": np.array([False])}
+        )
+    assert torch.allclose(memory[0], torch.zeros_like(memory[0]))

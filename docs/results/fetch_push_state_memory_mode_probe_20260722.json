@@ -1,0 +1,439 @@
+{
+  "class_balance": 0.5,
+  "contexts": 256,
+  "input": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/ice/fetch_push_state_memory_v2/posterior_obs5/posterior_samples.pt",
+  "probes": {
+    "1": {
+      "current_nominal_residual": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "feature_dim": 192,
+        "fold_accuracy": [
+          0.5,
+          0.4807692307692308,
+          0.5192307692307693,
+          0.5,
+          0.5
+        ]
+      },
+      "current_residual_condition": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "feature_dim": 576,
+        "fold_accuracy": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      "nominal_residual_history": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "feature_dim": 192,
+        "fold_accuracy": [
+          0.5,
+          0.4807692307692308,
+          0.5192307692307693,
+          0.5,
+          0.5
+        ]
+      },
+      "observation_embedding": {
+        "accuracy": 0.5078125,
+        "balanced_accuracy": 0.5078125,
+        "feature_dim": 384,
+        "fold_accuracy": [
+          0.5192307692307693,
+          0.5,
+          0.5,
+          0.5,
+          0.52
+        ]
+      },
+      "observed_state_delta": {
+        "accuracy": 0.99609375,
+        "balanced_accuracy": 0.99609375,
+        "feature_dim": 28,
+        "fold_accuracy": [
+          1.0,
+          1.0,
+          0.9807692307692307,
+          1.0,
+          1.0
+        ]
+      },
+      "physical_displacement_history": {
+        "accuracy": 0.9921875,
+        "balanced_accuracy": 0.9921875,
+        "feature_dim": 3,
+        "fold_accuracy": [
+          1.0,
+          1.0,
+          0.9807692307692307,
+          1.0,
+          0.98
+        ]
+      },
+      "residual_memory/flow_gru_memory": {
+        "accuracy": 0.55078125,
+        "balanced_accuracy": 0.55078125,
+        "feature_dim": 128,
+        "fold_accuracy": [
+          0.5384615384615384,
+          0.5769230769230769,
+          0.4807692307692308,
+          0.58,
+          0.58
+        ]
+      }
+    },
+    "2": {
+      "current_nominal_residual": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "feature_dim": 192,
+        "fold_accuracy": [
+          0.5192307692307693,
+          0.4807692307692308,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      "current_residual_condition": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "feature_dim": 576,
+        "fold_accuracy": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      "nominal_residual_history": {
+        "accuracy": 0.50390625,
+        "balanced_accuracy": 0.50390625,
+        "feature_dim": 384,
+        "fold_accuracy": [
+          0.5384615384615384,
+          0.46153846153846156,
+          0.5,
+          0.5,
+          0.52
+        ]
+      },
+      "observation_embedding": {
+        "accuracy": 0.50390625,
+        "balanced_accuracy": 0.50390625,
+        "feature_dim": 384,
+        "fold_accuracy": [
+          0.4807692307692308,
+          0.5192307692307693,
+          0.5,
+          0.52,
+          0.5
+        ]
+      },
+      "observed_state_delta": {
+        "accuracy": 0.9765625,
+        "balanced_accuracy": 0.9765625,
+        "feature_dim": 28,
+        "fold_accuracy": [
+          1.0,
+          0.9423076923076923,
+          0.9615384615384616,
+          0.98,
+          1.0
+        ]
+      },
+      "physical_displacement_history": {
+        "accuracy": 0.9921875,
+        "balanced_accuracy": 0.9921875,
+        "feature_dim": 6,
+        "fold_accuracy": [
+          1.0,
+          1.0,
+          0.9807692307692307,
+          1.0,
+          0.98
+        ]
+      },
+      "residual_memory/flow_gru_memory": {
+        "accuracy": 0.546875,
+        "balanced_accuracy": 0.546875,
+        "feature_dim": 128,
+        "fold_accuracy": [
+          0.5192307692307693,
+          0.5384615384615384,
+          0.5576923076923077,
+          0.56,
+          0.56
+        ]
+      }
+    },
+    "3": {
+      "current_nominal_residual": {
+        "accuracy": 0.53125,
+        "balanced_accuracy": 0.53125,
+        "feature_dim": 192,
+        "fold_accuracy": [
+          0.5576923076923077,
+          0.5384615384615384,
+          0.5192307692307693,
+          0.52,
+          0.52
+        ]
+      },
+      "current_residual_condition": {
+        "accuracy": 0.49609375,
+        "balanced_accuracy": 0.49609375,
+        "feature_dim": 576,
+        "fold_accuracy": [
+          0.4807692307692308,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      "nominal_residual_history": {
+        "accuracy": 0.51953125,
+        "balanced_accuracy": 0.51953125,
+        "feature_dim": 576,
+        "fold_accuracy": [
+          0.5,
+          0.5576923076923077,
+          0.5384615384615384,
+          0.5,
+          0.5
+        ]
+      },
+      "observation_embedding": {
+        "accuracy": 0.49609375,
+        "balanced_accuracy": 0.49609375,
+        "feature_dim": 384,
+        "fold_accuracy": [
+          0.4807692307692308,
+          0.4807692307692308,
+          0.5192307692307693,
+          0.5,
+          0.5
+        ]
+      },
+      "observed_state_delta": {
+        "accuracy": 0.91015625,
+        "balanced_accuracy": 0.91015625,
+        "feature_dim": 28,
+        "fold_accuracy": [
+          0.8846153846153846,
+          0.9038461538461539,
+          0.9038461538461539,
+          0.9,
+          0.96
+        ]
+      },
+      "physical_displacement_history": {
+        "accuracy": 0.9921875,
+        "balanced_accuracy": 0.9921875,
+        "feature_dim": 9,
+        "fold_accuracy": [
+          1.0,
+          1.0,
+          0.9807692307692307,
+          1.0,
+          0.98
+        ]
+      },
+      "residual_memory/flow_gru_memory": {
+        "accuracy": 0.515625,
+        "balanced_accuracy": 0.515625,
+        "feature_dim": 128,
+        "fold_accuracy": [
+          0.4807692307692308,
+          0.5,
+          0.5192307692307693,
+          0.58,
+          0.5
+        ]
+      }
+    },
+    "4": {
+      "current_nominal_residual": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "feature_dim": 192,
+        "fold_accuracy": [
+          0.5,
+          0.4807692307692308,
+          0.4807692307692308,
+          0.52,
+          0.52
+        ]
+      },
+      "current_residual_condition": {
+        "accuracy": 0.50390625,
+        "balanced_accuracy": 0.50390625,
+        "feature_dim": 576,
+        "fold_accuracy": [
+          0.5,
+          0.5,
+          0.5,
+          0.52,
+          0.5
+        ]
+      },
+      "nominal_residual_history": {
+        "accuracy": 0.51953125,
+        "balanced_accuracy": 0.51953125,
+        "feature_dim": 768,
+        "fold_accuracy": [
+          0.5576923076923077,
+          0.5,
+          0.5384615384615384,
+          0.5,
+          0.5
+        ]
+      },
+      "observation_embedding": {
+        "accuracy": 0.48828125,
+        "balanced_accuracy": 0.48828125,
+        "feature_dim": 384,
+        "fold_accuracy": [
+          0.4807692307692308,
+          0.5,
+          0.46153846153846156,
+          0.52,
+          0.48
+        ]
+      },
+      "observed_state_delta": {
+        "accuracy": 0.73046875,
+        "balanced_accuracy": 0.73046875,
+        "feature_dim": 28,
+        "fold_accuracy": [
+          0.6730769230769231,
+          0.7115384615384616,
+          0.7307692307692307,
+          0.78,
+          0.76
+        ]
+      },
+      "physical_displacement_history": {
+        "accuracy": 0.99609375,
+        "balanced_accuracy": 0.99609375,
+        "feature_dim": 12,
+        "fold_accuracy": [
+          1.0,
+          1.0,
+          0.9807692307692307,
+          1.0,
+          1.0
+        ]
+      },
+      "residual_memory/flow_gru_memory": {
+        "accuracy": 0.51953125,
+        "balanced_accuracy": 0.51953125,
+        "feature_dim": 128,
+        "fold_accuracy": [
+          0.5192307692307693,
+          0.5384615384615384,
+          0.5,
+          0.5,
+          0.54
+        ]
+      }
+    },
+    "5": {
+      "current_nominal_residual": {
+        "accuracy": 0.50390625,
+        "balanced_accuracy": 0.50390625,
+        "feature_dim": 192,
+        "fold_accuracy": [
+          0.5,
+          0.5,
+          0.5192307692307693,
+          0.5,
+          0.5
+        ]
+      },
+      "current_residual_condition": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "feature_dim": 576,
+        "fold_accuracy": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      "nominal_residual_history": {
+        "accuracy": 0.515625,
+        "balanced_accuracy": 0.515625,
+        "feature_dim": 960,
+        "fold_accuracy": [
+          0.5192307692307693,
+          0.5,
+          0.5,
+          0.52,
+          0.54
+        ]
+      },
+      "observation_embedding": {
+        "accuracy": 0.5,
+        "balanced_accuracy": 0.5,
+        "feature_dim": 384,
+        "fold_accuracy": [
+          0.5576923076923077,
+          0.46153846153846156,
+          0.5192307692307693,
+          0.48,
+          0.48
+        ]
+      },
+      "observed_state_delta": {
+        "accuracy": 0.6796875,
+        "balanced_accuracy": 0.6796875,
+        "feature_dim": 28,
+        "fold_accuracy": [
+          0.75,
+          0.5961538461538461,
+          0.7115384615384616,
+          0.68,
+          0.66
+        ]
+      },
+      "physical_displacement_history": {
+        "accuracy": 0.99609375,
+        "balanced_accuracy": 0.99609375,
+        "feature_dim": 15,
+        "fold_accuracy": [
+          1.0,
+          1.0,
+          0.9807692307692307,
+          1.0,
+          1.0
+        ]
+      },
+      "residual_memory/flow_gru_memory": {
+        "accuracy": 0.53515625,
+        "balanced_accuracy": 0.53515625,
+        "feature_dim": 128,
+        "fold_accuracy": [
+          0.5576923076923077,
+          0.5384615384615384,
+          0.5576923076923077,
+          0.5,
+          0.52
+        ]
+      }
+    }
+  },
+  "scenes": 128,
+  "split": "five-fold grouped by paired simulator scene"
+}

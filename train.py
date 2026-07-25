@@ -20,7 +20,15 @@ from utils import get_column_normalizer, get_img_preprocessor, ModelObjectCallBa
 
 
 def residual_kernel_loss(
-    model, pred_emb, tgt_emb, ctx_emb, ctx_act, cfg, *, update_statistics
+    model,
+    pred_emb,
+    tgt_emb,
+    ctx_emb,
+    ctx_act,
+    cfg,
+    *,
+    observation_history=None,
+    update_statistics,
 ):
     """Train one uncertainty head on the deployment-time final transition."""
 
@@ -91,6 +99,14 @@ def residual_kernel_loss(
                 memory,
                 base_condition[:, index].detach(),
                 memory_residual,
+                (
+                    None
+                    if observation_history is None
+                    else (
+                        observation_history[:, index + 1]
+                        - observation_history[:, index]
+                    ).detach()
+                ),
             )
 
     condition = model.condition_residual(base_condition[:, -1], memory).unsqueeze(1)
@@ -111,6 +127,16 @@ def lejepa_forward(self, batch, stage, cfg):
 
     # Replace NaN values with 0 (occurs at sequence boundaries)
     batch["action"] = torch.nan_to_num(batch["action"], 0.0)
+    residual_cfg = cfg.loss.get("residual_flow")
+    observation_key = (
+        residual_cfg.get("memory", {}).get("observation_key")
+        if residual_cfg is not None
+        else None
+    )
+    if observation_key and observation_key in batch:
+        # Constant state coordinates have zero empirical variance and therefore
+        # become NaN under the dataset's standard-score transform.
+        batch[observation_key] = torch.nan_to_num(batch[observation_key], 0.0)
 
     output = self.model.encode(batch)
 
@@ -128,7 +154,6 @@ def lejepa_forward(self, batch, stage, cfg):
     output["sigreg_loss"]= self.sigreg(emb.transpose(0, 1))
     output["loss"] = output["pred_loss"] + lambd * output["sigreg_loss"]  
 
-    residual_cfg = cfg.loss.get("residual_flow")
     if (
         residual_cfg is not None
         and residual_cfg.get("enabled", False)
@@ -144,6 +169,9 @@ def lejepa_forward(self, batch, stage, cfg):
             ctx_emb,
             ctx_act,
             cfg,
+            observation_history=(
+                batch.get(observation_key) if observation_key else None
+            ),
             update_statistics=stage == "fit" and self.model.training,
         )
         output["loss"] = (
@@ -246,10 +274,17 @@ def run(cfg):
         memory_enabled = bool(memory_cfg.get("enabled", False))
         condition_dim = 3 * embed_dim
         if memory_enabled:
+            observation_key = memory_cfg.get("observation_key")
+            observation_dim = (
+                int(getattr(cfg.wm, f"{observation_key}_dim"))
+                if observation_key
+                else 0
+            )
             residual_memory = ResidualMemory(
                 condition_dim=condition_dim,
                 residual_dim=embed_dim,
                 hidden_dim=int(memory_cfg.get("hidden_dim", 128)),
+                observation_dim=observation_dim,
             )
             condition_dim += residual_memory.hidden_dim
         if kernel_type == "flow":
@@ -396,7 +431,11 @@ def run(cfg):
             "checkpoint_sha256": (
                 sha256_file(nominal_checkpoint) if nominal_checkpoint else None
             ),
-            "kernel": residual_cfg.get("kernel_type", "none") if residual_cfg else "none",
+            "kernel": (
+                residual_cfg.get("kernel_type", "none")
+                if residual_cfg and residual_cfg.get("enabled", False)
+                else "none"
+            ),
             "residual_memory": (
                 OmegaConf.to_container(
                     residual_cfg.get("memory", {}), resolve=True

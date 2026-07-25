@@ -1,0 +1,442 @@
+{
+  "best_setting": {
+    "absolute_success_improvement": 0.175,
+    "clean_win_context_indices": [],
+    "clean_win_contexts": 0,
+    "clean_win_fraction": 0.0,
+    "friction_high": 2.5,
+    "friction_low": 0.25,
+    "hedge_exists_fraction": 0.925,
+    "oracle_distribution_success_rate": 0.9625,
+    "oracle_mean_success_rate": 0.7875,
+    "scene_cluster_bootstrap_ci95": [
+      0.1,
+      0.25
+    ],
+    "strict_gate": true,
+    "tolerance": 0.03
+  },
+  "candidate_grid": {
+    "duration_min": 4,
+    "duration_stride": 2,
+    "raw_horizon": 20,
+    "speed_count": 14,
+    "speed_max": 1.2,
+    "speed_min": 0.05
+  },
+  "context_seeds": [
+    903072,
+    903073,
+    903074,
+    903075,
+    903077,
+    903078,
+    903079,
+    903080,
+    903081,
+    903082,
+    903083,
+    903084,
+    903085,
+    903086,
+    903087,
+    903088,
+    903089,
+    903090,
+    903091,
+    903093,
+    903095,
+    903096,
+    903097,
+    903098,
+    903099,
+    903100,
+    903102,
+    903105,
+    903106,
+    903107,
+    903108,
+    903109,
+    903110,
+    903111,
+    903112,
+    903114,
+    903115,
+    903116,
+    903117,
+    903118
+  ],
+  "contexts": 40,
+  "exact_forks_only": true,
+  "friction_pairs": [
+    [
+      0.2,
+      3.0
+    ],
+    [
+      0.3,
+      2.0
+    ],
+    [
+      0.15,
+      4.0
+    ],
+    [
+      0.4,
+      1.8
+    ],
+    [
+      0.25,
+      2.5
+    ]
+  ],
+  "settings_sorted_by_improvement": [
+    {
+      "absolute_success_improvement": 0.175,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 2.5,
+      "friction_low": 0.25,
+      "hedge_exists_fraction": 0.925,
+      "oracle_distribution_success_rate": 0.9625,
+      "oracle_mean_success_rate": 0.7875,
+      "scene_cluster_bootstrap_ci95": [
+        0.1,
+        0.25
+      ],
+      "strict_gate": true,
+      "tolerance": 0.03
+    },
+    {
+      "absolute_success_improvement": 0.1375,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 3.0,
+      "friction_low": 0.2,
+      "hedge_exists_fraction": 0.475,
+      "oracle_distribution_success_rate": 0.7375,
+      "oracle_mean_success_rate": 0.6,
+      "scene_cluster_bootstrap_ci95": [
+        0.075,
+        0.2125
+      ],
+      "strict_gate": true,
+      "tolerance": 0.05
+    },
+    {
+      "absolute_success_improvement": 0.1375,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 3.0,
+      "friction_low": 0.2,
+      "hedge_exists_fraction": 0.7,
+      "oracle_distribution_success_rate": 0.85,
+      "oracle_mean_success_rate": 0.7125,
+      "scene_cluster_bootstrap_ci95": [
+        0.075,
+        0.2125
+      ],
+      "strict_gate": true,
+      "tolerance": 0.08
+    },
+    {
+      "absolute_success_improvement": 0.1375,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 2.5,
+      "friction_low": 0.25,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 0.8625,
+      "scene_cluster_bootstrap_ci95": [
+        0.075,
+        0.2125
+      ],
+      "strict_gate": true,
+      "tolerance": 0.05
+    },
+    {
+      "absolute_success_improvement": 0.075,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 3.0,
+      "friction_low": 0.2,
+      "hedge_exists_fraction": 0.325,
+      "oracle_distribution_success_rate": 0.6625,
+      "oracle_mean_success_rate": 0.5875,
+      "scene_cluster_bootstrap_ci95": [
+        0.025,
+        0.1375
+      ],
+      "strict_gate": true,
+      "tolerance": 0.03
+    },
+    {
+      "absolute_success_improvement": 0.075,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 4.0,
+      "friction_low": 0.15,
+      "hedge_exists_fraction": 0.175,
+      "oracle_distribution_success_rate": 0.5875,
+      "oracle_mean_success_rate": 0.5125,
+      "scene_cluster_bootstrap_ci95": [
+        0.025,
+        0.1375
+      ],
+      "strict_gate": true,
+      "tolerance": 0.03
+    },
+    {
+      "absolute_success_improvement": 0.075,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 2.5,
+      "friction_low": 0.25,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 0.925,
+      "scene_cluster_bootstrap_ci95": [
+        0.025,
+        0.1375
+      ],
+      "strict_gate": true,
+      "tolerance": 0.08
+    },
+    {
+      "absolute_success_improvement": 0.0625,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 2.0,
+      "friction_low": 0.3,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 0.9375,
+      "scene_cluster_bootstrap_ci95": [
+        0.0125,
+        0.1125
+      ],
+      "strict_gate": true,
+      "tolerance": 0.03
+    },
+    {
+      "absolute_success_improvement": 0.0625,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 4.0,
+      "friction_low": 0.15,
+      "hedge_exists_fraction": 0.225,
+      "oracle_distribution_success_rate": 0.6125,
+      "oracle_mean_success_rate": 0.55,
+      "scene_cluster_bootstrap_ci95": [
+        0.0125,
+        0.1125
+      ],
+      "strict_gate": true,
+      "tolerance": 0.05
+    },
+    {
+      "absolute_success_improvement": 0.05,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 3.0,
+      "friction_low": 0.2,
+      "hedge_exists_fraction": 0.75,
+      "oracle_distribution_success_rate": 0.875,
+      "oracle_mean_success_rate": 0.825,
+      "scene_cluster_bootstrap_ci95": [
+        0.0125,
+        0.1
+      ],
+      "strict_gate": true,
+      "tolerance": 0.1
+    },
+    {
+      "absolute_success_improvement": 0.0375,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 2.0,
+      "friction_low": 0.3,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 0.9625,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0875
+      ],
+      "strict_gate": false,
+      "tolerance": 0.05
+    },
+    {
+      "absolute_success_improvement": 0.0375,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 4.0,
+      "friction_low": 0.15,
+      "hedge_exists_fraction": 0.475,
+      "oracle_distribution_success_rate": 0.7375,
+      "oracle_mean_success_rate": 0.7,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0875
+      ],
+      "strict_gate": false,
+      "tolerance": 0.1
+    },
+    {
+      "absolute_success_improvement": 0.0375,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 1.8,
+      "friction_low": 0.4,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 0.9625,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0875
+      ],
+      "strict_gate": false,
+      "tolerance": 0.03
+    },
+    {
+      "absolute_success_improvement": 0.025,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 4.0,
+      "friction_low": 0.15,
+      "hedge_exists_fraction": 0.375,
+      "oracle_distribution_success_rate": 0.6875,
+      "oracle_mean_success_rate": 0.6625,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0625
+      ],
+      "strict_gate": false,
+      "tolerance": 0.08
+    },
+    {
+      "absolute_success_improvement": 0.0125,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 1.8,
+      "friction_low": 0.4,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 0.9875,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0375
+      ],
+      "strict_gate": false,
+      "tolerance": 0.05
+    },
+    {
+      "absolute_success_improvement": 0.0,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 2.0,
+      "friction_low": 0.3,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 1.0,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0
+      ],
+      "strict_gate": false,
+      "tolerance": 0.08
+    },
+    {
+      "absolute_success_improvement": 0.0,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 2.0,
+      "friction_low": 0.3,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 1.0,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0
+      ],
+      "strict_gate": false,
+      "tolerance": 0.1
+    },
+    {
+      "absolute_success_improvement": 0.0,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 1.8,
+      "friction_low": 0.4,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 1.0,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0
+      ],
+      "strict_gate": false,
+      "tolerance": 0.08
+    },
+    {
+      "absolute_success_improvement": 0.0,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 1.8,
+      "friction_low": 0.4,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 1.0,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0
+      ],
+      "strict_gate": false,
+      "tolerance": 0.1
+    },
+    {
+      "absolute_success_improvement": 0.0,
+      "clean_win_context_indices": [],
+      "clean_win_contexts": 0,
+      "clean_win_fraction": 0.0,
+      "friction_high": 2.5,
+      "friction_low": 0.25,
+      "hedge_exists_fraction": 1.0,
+      "oracle_distribution_success_rate": 1.0,
+      "oracle_mean_success_rate": 1.0,
+      "scene_cluster_bootstrap_ci95": [
+        0.0,
+        0.0
+      ],
+      "strict_gate": false,
+      "tolerance": 0.1
+    }
+  ],
+  "task": "fetch_push_commitment_geometry_screen",
+  "tolerances": [
+    0.03,
+    0.05,
+    0.08,
+    0.1
+  ]
+}

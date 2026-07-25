@@ -21,6 +21,15 @@ if [[ -z "${CHECKPOINT:-}" ]]; then
   exit 2
 fi
 
+# Training configs deliberately keep these paths as oc.env interpolations so
+# checkpoints can move between machines.  Export every pinned input here as
+# well; otherwise OmegaConf fails while loading the checkpoint config before
+# evaluation can verify any hashes or construct the held-out loader.
+: "${DATASET_PATH:?Set DATASET_PATH to the immutable HDF5 collection}"
+: "${SPLIT_MANIFEST:?Set SPLIT_MANIFEST to the grouped episode split}"
+: "${NOMINAL_CHECKPOINT:?Set NOMINAL_CHECKPOINT to the frozen nominal checkpoint}"
+: "${RESIDUAL_SCALE_PATH:?Set RESIDUAL_SCALE_PATH to the centered train-only statistics}"
+
 OUTPUT="${OUTPUT:-$STABLEWM_HOME/ice/evaluations/$(basename "${CHECKPOINT%_object.ckpt}").json}"
 BATCH_SIZE="${BATCH_SIZE:-64}"
 NUM_WORKERS="${NUM_WORKERS:-2}"

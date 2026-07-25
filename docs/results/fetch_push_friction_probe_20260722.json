@@ -1,0 +1,41 @@
+{
+  "balanced_mixture_success_rate": 0.63,
+  "forks": {
+    "accepted_contexts": 60,
+    "attempted_contexts": 64,
+    "horizon_1_median_separation_m": 0.005266095838079058,
+    "horizon_5_median_separation_m": 0.1227593901433178,
+    "horizon_10_median_separation_m": 0.3135028809486582,
+    "horizon_20_median_separation_m": 0.6281943907112411,
+    "horizon_20_median_passive_separation_m": 0.002204976516583357,
+    "median_action_dependence_ratio": 284.89832072511877
+  },
+  "gates": {
+    "action_dependent": true,
+    "nontrivial_task": true,
+    "pass": true,
+    "persistent_friction_separation": true
+  },
+  "profile": {
+    "mass": [1.0, 1.0],
+    "name": "push_strong",
+    "pad_friction": [1.0, 1.0],
+    "slip_probability": 0.0,
+    "surface_friction": [0.2, 3.0]
+  },
+  "seed": 3072,
+  "task": {
+    "high": {
+      "episodes": 100,
+      "mean_final_goal_distance_m": 0.09602872252464295,
+      "mean_steps": 37.79,
+      "success_rate": 0.36
+    },
+    "low": {
+      "episodes": 100,
+      "mean_final_goal_distance_m": 0.08661166713107377,
+      "mean_steps": 21.57,
+      "success_rate": 0.9
+    }
+  }
+}

@@ -52,11 +52,16 @@ if [[ "$STOCHASTIC" == "true" ]]; then
   )
 fi
 
+# Optional extra Hydra overrides (space-separated), e.g. selecting a stage:
+#   EXTRA_OVERRIDES="++eval.contact_stages=[4]"
+read -r -a EXTRA_OVERRIDE_ARGS <<< "${EXTRA_OVERRIDES:-}"
+
 print_run_metadata
 echo "dataset_name=$DATASET_NAME"
 echo "policy=$POLICY"
 echo "num_eval=$NUM_EVAL num_contexts=$NUM_CONTEXTS repeats=$STOCHASTIC_REPEATS"
 echo "stochastic=$STOCHASTIC particles=$PARTICLES objective=$OBJECTIVE nfe=$FLOW_STEPS chunk=$PARTICLE_CHUNK"
+echo "extra_overrides=${EXTRA_OVERRIDES:-}"
 echo "output=$OUTPUT_FILENAME"
 
 srun "$PIXI_BIN" run --locked python -u eval.py \
@@ -69,4 +74,5 @@ srun "$PIXI_BIN" run --locked python -u eval.py \
   eval.batch_size="$BATCH_SIZE" \
   seed="$EVAL_SEED" \
   output.filename="$OUTPUT_FILENAME" \
-  "${EXTRA_ARGS[@]}"
+  "${EXTRA_ARGS[@]}" \
+  "${EXTRA_OVERRIDE_ARGS[@]}"

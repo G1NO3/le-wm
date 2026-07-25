@@ -1,0 +1,291 @@
+/mnt/storage/fwu91/Projects/ResDyn/le-wm/.pixi/envs/default/lib/python3.10/site-packages/stable_worldmodel/envs/__init__.py:215: UserWarning: ale-py not found; ALE/* envs are unavailable. Install with: pip install 'stable-worldmodel[env]' or pip install ale-py.
+  from stable_worldmodel.envs import ale  # noqa: F401
+13:37:59 | INFO  | __init__.py | PyTorch version 2.13.0 available.
+13:38:00 | INFO  | atomic_chec~| [atomic_save] installed crash-safe checkpoint plugin (write to sibling .tmp + fsync + atomic rename)
+13:38:00 | INFO  | __init__.py | No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+AdroitHandRelocateDense-v1, AdroitHandHammerDense-v1, AdroitHandDoorDense-v1 environment's reward functions were updated in v1.2.1 without an environment version update. Therefore, use gymnasium-robotics==1.2.0 for v1 reproducibility or use v2 in gymnasium-robotics>=1.4.3. See https://github.com/Farama-Foundation/Gymnasium-Robotics/pull/220 for more details
+collected context 1/40
+collected context 2/40
+collected context 3/40
+collected context 4/40
+collected context 4/40
+collected context 5/40
+collected context 6/40
+collected context 7/40
+collected context 8/40
+collected context 9/40
+collected context 10/40
+collected context 11/40
+collected context 12/40
+collected context 13/40
+collected context 14/40
+collected context 15/40
+collected context 16/40
+collected context 17/40
+collected context 18/40
+collected context 19/40
+collected context 19/40
+collected context 20/40
+collected context 20/40
+collected context 21/40
+collected context 22/40
+collected context 23/40
+collected context 24/40
+collected context 25/40
+collected context 26/40
+collected context 26/40
+collected context 27/40
+collected context 27/40
+collected context 27/40
+collected context 28/40
+collected context 29/40
+collected context 30/40
+collected context 31/40
+collected context 32/40
+collected context 33/40
+collected context 34/40
+collected context 35/40
+collected context 35/40
+collected context 36/40
+collected context 37/40
+collected context 38/40
+collected context 39/40
+collected context 40/40
+  friction 0.2/3.0: context 1/40
+  friction 0.2/3.0: context 2/40
+  friction 0.2/3.0: context 3/40
+  friction 0.2/3.0: context 4/40
+  friction 0.2/3.0: context 5/40
+  friction 0.2/3.0: context 6/40
+  friction 0.2/3.0: context 7/40
+  friction 0.2/3.0: context 8/40
+  friction 0.2/3.0: context 9/40
+  friction 0.2/3.0: context 10/40
+  friction 0.2/3.0: context 11/40
+  friction 0.2/3.0: context 12/40
+  friction 0.2/3.0: context 13/40
+  friction 0.2/3.0: context 14/40
+  friction 0.2/3.0: context 15/40
+  friction 0.2/3.0: context 16/40
+  friction 0.2/3.0: context 17/40
+  friction 0.2/3.0: context 18/40
+  friction 0.2/3.0: context 19/40
+  friction 0.2/3.0: context 20/40
+  friction 0.2/3.0: context 21/40
+  friction 0.2/3.0: context 22/40
+  friction 0.2/3.0: context 23/40
+  friction 0.2/3.0: context 24/40
+  friction 0.2/3.0: context 25/40
+  friction 0.2/3.0: context 26/40
+  friction 0.2/3.0: context 27/40
+  friction 0.2/3.0: context 28/40
+  friction 0.2/3.0: context 29/40
+  friction 0.2/3.0: context 30/40
+  friction 0.2/3.0: context 31/40
+  friction 0.2/3.0: context 32/40
+  friction 0.2/3.0: context 33/40
+  friction 0.2/3.0: context 34/40
+  friction 0.2/3.0: context 35/40
+  friction 0.2/3.0: context 36/40
+  friction 0.2/3.0: context 37/40
+  friction 0.2/3.0: context 38/40
+  friction 0.2/3.0: context 39/40
+  friction 0.2/3.0: context 40/40
+friction 0.2/3.0 tol 0.03: dist 0.662 vs mean 0.588 (+0.075, CI [0.025, 0.1375]), clean-win 0/40
+friction 0.2/3.0 tol 0.05: dist 0.738 vs mean 0.600 (+0.138, CI [0.075, 0.2125]), clean-win 0/40
+friction 0.2/3.0 tol 0.08: dist 0.850 vs mean 0.713 (+0.138, CI [0.075, 0.2125]), clean-win 0/40
+friction 0.2/3.0 tol 0.1: dist 0.875 vs mean 0.825 (+0.050, CI [0.0125, 0.1]), clean-win 0/40
+  friction 0.3/2.0: context 1/40
+  friction 0.3/2.0: context 2/40
+  friction 0.3/2.0: context 3/40
+  friction 0.3/2.0: context 4/40
+  friction 0.3/2.0: context 5/40
+  friction 0.3/2.0: context 6/40
+  friction 0.3/2.0: context 7/40
+  friction 0.3/2.0: context 8/40
+  friction 0.3/2.0: context 9/40
+  friction 0.3/2.0: context 10/40
+  friction 0.3/2.0: context 11/40
+  friction 0.3/2.0: context 12/40
+  friction 0.3/2.0: context 13/40
+  friction 0.3/2.0: context 14/40
+  friction 0.3/2.0: context 15/40
+  friction 0.3/2.0: context 16/40
+  friction 0.3/2.0: context 17/40
+  friction 0.3/2.0: context 18/40
+  friction 0.3/2.0: context 19/40
+  friction 0.3/2.0: context 20/40
+  friction 0.3/2.0: context 21/40
+  friction 0.3/2.0: context 22/40
+  friction 0.3/2.0: context 23/40
+  friction 0.3/2.0: context 24/40
+  friction 0.3/2.0: context 25/40
+  friction 0.3/2.0: context 26/40
+  friction 0.3/2.0: context 27/40
+  friction 0.3/2.0: context 28/40
+  friction 0.3/2.0: context 29/40
+  friction 0.3/2.0: context 30/40
+  friction 0.3/2.0: context 31/40
+  friction 0.3/2.0: context 32/40
+  friction 0.3/2.0: context 33/40
+  friction 0.3/2.0: context 34/40
+  friction 0.3/2.0: context 35/40
+  friction 0.3/2.0: context 36/40
+  friction 0.3/2.0: context 37/40
+  friction 0.3/2.0: context 38/40
+  friction 0.3/2.0: context 39/40
+  friction 0.3/2.0: context 40/40
+friction 0.3/2.0 tol 0.03: dist 1.000 vs mean 0.938 (+0.062, CI [0.0125, 0.1125]), clean-win 0/40
+friction 0.3/2.0 tol 0.05: dist 1.000 vs mean 0.963 (+0.037, CI [0.0, 0.0875]), clean-win 0/40
+friction 0.3/2.0 tol 0.08: dist 1.000 vs mean 1.000 (+0.000, CI [0.0, 0.0]), clean-win 0/40
+friction 0.3/2.0 tol 0.1: dist 1.000 vs mean 1.000 (+0.000, CI [0.0, 0.0]), clean-win 0/40
+  friction 0.15/4.0: context 1/40
+  friction 0.15/4.0: context 2/40
+  friction 0.15/4.0: context 3/40
+  friction 0.15/4.0: context 4/40
+  friction 0.15/4.0: context 5/40
+  friction 0.15/4.0: context 6/40
+  friction 0.15/4.0: context 7/40
+  friction 0.15/4.0: context 8/40
+  friction 0.15/4.0: context 9/40
+  friction 0.15/4.0: context 10/40
+  friction 0.15/4.0: context 11/40
+  friction 0.15/4.0: context 12/40
+  friction 0.15/4.0: context 13/40
+  friction 0.15/4.0: context 14/40
+  friction 0.15/4.0: context 15/40
+  friction 0.15/4.0: context 16/40
+  friction 0.15/4.0: context 17/40
+  friction 0.15/4.0: context 18/40
+  friction 0.15/4.0: context 19/40
+  friction 0.15/4.0: context 20/40
+  friction 0.15/4.0: context 21/40
+  friction 0.15/4.0: context 22/40
+  friction 0.15/4.0: context 23/40
+  friction 0.15/4.0: context 24/40
+  friction 0.15/4.0: context 25/40
+  friction 0.15/4.0: context 26/40
+  friction 0.15/4.0: context 27/40
+  friction 0.15/4.0: context 28/40
+  friction 0.15/4.0: context 29/40
+  friction 0.15/4.0: context 30/40
+  friction 0.15/4.0: context 31/40
+  friction 0.15/4.0: context 32/40
+  friction 0.15/4.0: context 33/40
+  friction 0.15/4.0: context 34/40
+  friction 0.15/4.0: context 35/40
+  friction 0.15/4.0: context 36/40
+  friction 0.15/4.0: context 37/40
+  friction 0.15/4.0: context 38/40
+  friction 0.15/4.0: context 39/40
+  friction 0.15/4.0: context 40/40
+friction 0.15/4.0 tol 0.03: dist 0.588 vs mean 0.512 (+0.075, CI [0.025, 0.1375]), clean-win 0/40
+friction 0.15/4.0 tol 0.05: dist 0.613 vs mean 0.550 (+0.062, CI [0.0125, 0.1125]), clean-win 0/40
+friction 0.15/4.0 tol 0.08: dist 0.688 vs mean 0.662 (+0.025, CI [0.0, 0.0625]), clean-win 0/40
+friction 0.15/4.0 tol 0.1: dist 0.738 vs mean 0.700 (+0.037, CI [0.0, 0.0875]), clean-win 0/40
+  friction 0.4/1.8: context 1/40
+  friction 0.4/1.8: context 2/40
+  friction 0.4/1.8: context 3/40
+  friction 0.4/1.8: context 4/40
+  friction 0.4/1.8: context 5/40
+  friction 0.4/1.8: context 6/40
+  friction 0.4/1.8: context 7/40
+  friction 0.4/1.8: context 8/40
+  friction 0.4/1.8: context 9/40
+  friction 0.4/1.8: context 10/40
+  friction 0.4/1.8: context 11/40
+  friction 0.4/1.8: context 12/40
+  friction 0.4/1.8: context 13/40
+  friction 0.4/1.8: context 14/40
+  friction 0.4/1.8: context 15/40
+  friction 0.4/1.8: context 16/40
+  friction 0.4/1.8: context 17/40
+  friction 0.4/1.8: context 18/40
+  friction 0.4/1.8: context 19/40
+  friction 0.4/1.8: context 20/40
+  friction 0.4/1.8: context 21/40
+  friction 0.4/1.8: context 22/40
+  friction 0.4/1.8: context 23/40
+  friction 0.4/1.8: context 24/40
+  friction 0.4/1.8: context 25/40
+  friction 0.4/1.8: context 26/40
+  friction 0.4/1.8: context 27/40
+  friction 0.4/1.8: context 28/40
+  friction 0.4/1.8: context 29/40
+  friction 0.4/1.8: context 30/40
+  friction 0.4/1.8: context 31/40
+  friction 0.4/1.8: context 32/40
+  friction 0.4/1.8: context 33/40
+  friction 0.4/1.8: context 34/40
+  friction 0.4/1.8: context 35/40
+  friction 0.4/1.8: context 36/40
+  friction 0.4/1.8: context 37/40
+  friction 0.4/1.8: context 38/40
+  friction 0.4/1.8: context 39/40
+  friction 0.4/1.8: context 40/40
+friction 0.4/1.8 tol 0.03: dist 1.000 vs mean 0.963 (+0.037, CI [0.0, 0.0875]), clean-win 0/40
+friction 0.4/1.8 tol 0.05: dist 1.000 vs mean 0.988 (+0.013, CI [0.0, 0.0375]), clean-win 0/40
+friction 0.4/1.8 tol 0.08: dist 1.000 vs mean 1.000 (+0.000, CI [0.0, 0.0]), clean-win 0/40
+friction 0.4/1.8 tol 0.1: dist 1.000 vs mean 1.000 (+0.000, CI [0.0, 0.0]), clean-win 0/40
+  friction 0.25/2.5: context 1/40
+  friction 0.25/2.5: context 2/40
+  friction 0.25/2.5: context 3/40
+  friction 0.25/2.5: context 4/40
+  friction 0.25/2.5: context 5/40
+  friction 0.25/2.5: context 6/40
+  friction 0.25/2.5: context 7/40
+  friction 0.25/2.5: context 8/40
+  friction 0.25/2.5: context 9/40
+  friction 0.25/2.5: context 10/40
+  friction 0.25/2.5: context 11/40
+  friction 0.25/2.5: context 12/40
+  friction 0.25/2.5: context 13/40
+  friction 0.25/2.5: context 14/40
+  friction 0.25/2.5: context 15/40
+  friction 0.25/2.5: context 16/40
+  friction 0.25/2.5: context 17/40
+  friction 0.25/2.5: context 18/40
+  friction 0.25/2.5: context 19/40
+  friction 0.25/2.5: context 20/40
+  friction 0.25/2.5: context 21/40
+  friction 0.25/2.5: context 22/40
+  friction 0.25/2.5: context 23/40
+  friction 0.25/2.5: context 24/40
+  friction 0.25/2.5: context 25/40
+  friction 0.25/2.5: context 26/40
+  friction 0.25/2.5: context 27/40
+  friction 0.25/2.5: context 28/40
+  friction 0.25/2.5: context 29/40
+  friction 0.25/2.5: context 30/40
+  friction 0.25/2.5: context 31/40
+  friction 0.25/2.5: context 32/40
+  friction 0.25/2.5: context 33/40
+  friction 0.25/2.5: context 34/40
+  friction 0.25/2.5: context 35/40
+  friction 0.25/2.5: context 36/40
+  friction 0.25/2.5: context 37/40
+  friction 0.25/2.5: context 38/40
+  friction 0.25/2.5: context 39/40
+  friction 0.25/2.5: context 40/40
+friction 0.25/2.5 tol 0.03: dist 0.963 vs mean 0.787 (+0.175, CI [0.1, 0.25]), clean-win 0/40
+friction 0.25/2.5 tol 0.05: dist 1.000 vs mean 0.863 (+0.138, CI [0.075, 0.2125]), clean-win 0/40
+friction 0.25/2.5 tol 0.08: dist 1.000 vs mean 0.925 (+0.075, CI [0.025, 0.1375]), clean-win 0/40
+friction 0.25/2.5 tol 0.1: dist 1.000 vs mean 1.000 (+0.000, CI [0.0, 0.0]), clean-win 0/40
+
+BEST: {
+  "friction_low": 0.25,
+  "friction_high": 2.5,
+  "tolerance": 0.03,
+  "oracle_mean_success_rate": 0.7875,
+  "oracle_distribution_success_rate": 0.9625,
+  "absolute_success_improvement": 0.175,
+  "scene_cluster_bootstrap_ci95": [
+    0.1,
+    0.25
+  ],
+  "hedge_exists_fraction": 0.925,
+  "clean_win_contexts": 0,
+  "clean_win_fraction": 0.0,
+  "clean_win_context_indices": [],
+  "strict_gate": true
+}

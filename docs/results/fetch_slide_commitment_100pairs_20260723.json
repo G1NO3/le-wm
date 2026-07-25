@@ -1,0 +1,4222 @@
+{
+  "checkpoint": "/storage/ice1/3/2/fwu91/le-wm-codex-smoke-20260719/data/ice/fetch_slide_paired_modes/seed_27041/fetch_slide_paired_modes_seed27041_object.ckpt",
+  "checkpoint_sha256": "b21997d08a4a9d96add9d1c30111c982523022c2d6fcb959426fe1f5e9fa7a95",
+  "comparisons": {
+    "learned": {
+      "absolute_success_improvement": -0.0390625,
+      "distribution_only_successes": 0,
+      "distribution_success_rate": 0.0,
+      "mean_state_only_successes": 5,
+      "mean_state_success_rate": 0.0390625,
+      "name": "learned_distribution_vs_learned_residual_mean",
+      "scene_cluster_bootstrap_ci95": [
+        -0.078125,
+        -0.0078125
+      ],
+      "strict_improvement_gate": false
+    },
+    "oracle_discrete": {
+      "absolute_success_improvement": 0.4296875,
+      "distribution_only_successes": 56,
+      "distribution_success_rate": 0.4375,
+      "mean_state_only_successes": 1,
+      "mean_state_success_rate": 0.0078125,
+      "name": "exact_discrete_distribution_vs_exact_mean_state",
+      "scene_cluster_bootstrap_ci95": [
+        0.3828125,
+        0.46875
+      ],
+      "strict_improvement_gate": true
+    },
+    "oracle_smooth": {
+      "absolute_success_improvement": 0.4296875,
+      "distribution_only_successes": 55,
+      "distribution_success_rate": 0.4375,
+      "mean_state_only_successes": 0,
+      "mean_state_success_rate": 0.0078125,
+      "name": "exact_smooth_distribution_vs_exact_mean_state",
+      "scene_cluster_bootstrap_ci95": [
+        0.3828125,
+        0.46875
+      ],
+      "strict_improvement_gate": true
+    }
+  },
+  "contexts": 64,
+  "episodes": 128,
+  "friction_modes": [
+    0.2,
+    1.0
+  ],
+  "gates": {
+    "exact_task_value": true,
+    "learned_stochastic_value": false,
+    "pass": false
+  },
+  "raw_horizon": 100,
+  "records": [
+    {
+      "indices": {
+        "model_distribution": 47,
+        "model_mean": 42,
+        "oracle_discrete": 2,
+        "oracle_mean": 6,
+        "oracle_smooth": 22
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6729190349578857,
+        0.24586598575115204
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6421969532966614,
+        0.14566931128501892
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.949999988079071
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8999999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6499999761581421
+        }
+      },
+      "seed": 703072
+    },
+    {
+      "indices": {
+        "model_distribution": 20,
+        "model_mean": 28,
+        "oracle_discrete": 13,
+        "oracle_mean": 17,
+        "oracle_smooth": 29
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.2543469965457916,
+        0.25434598326683044
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.2543469965457916,
+        0.25434598326683044
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.6499999761581421
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.75
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 703073
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 48,
+        "oracle_discrete": 17,
+        "oracle_mean": 7,
+        "oracle_smooth": 17
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3411831855773926,
+        0.3411828279495239
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.32719337940216064,
+        0.3375503122806549
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 703074
+    },
+    {
+      "indices": {
+        "model_distribution": 13,
+        "model_mean": 35,
+        "oracle_discrete": 6,
+        "oracle_mean": 25,
+        "oracle_smooth": 26
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.29282689094543457,
+        0.30610260367393494
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.9872143268585205,
+        0.09300879389047623
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.800000011920929
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703075
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 50,
+        "oracle_discrete": 29,
+        "oracle_mean": 22,
+        "oracle_smooth": 29
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.8043395280838013,
+        0.8043395280838013
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5724351406097412,
+        0.34228983521461487
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6499999761581421
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 703076
+    },
+    {
+      "indices": {
+        "model_distribution": 14,
+        "model_mean": 29,
+        "oracle_discrete": 21,
+        "oracle_mean": 7,
+        "oracle_smooth": 30
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.4025877118110657,
+        0.2267405092716217
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.38089823722839355,
+        0.23237662017345428
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        }
+      },
+      "seed": 703077
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 46,
+        "oracle_discrete": 48,
+        "oracle_mean": 13,
+        "oracle_smooth": 2
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.06402833759784698,
+        0.06402823328971863
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.854114830493927,
+        0.4046585261821747
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        true
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703078
+    },
+    {
+      "indices": {
+        "model_distribution": 3,
+        "model_mean": 34,
+        "oracle_discrete": 46,
+        "oracle_mean": 14,
+        "oracle_smooth": 49
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.060696251690387726,
+        0.3643532991409302
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.8499566316604614,
+        0.07678380608558655
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 1.0
+        }
+      },
+      "seed": 703079
+    },
+    {
+      "indices": {
+        "model_distribution": 33,
+        "model_mean": 47,
+        "oracle_discrete": 6,
+        "oracle_mean": 25,
+        "oracle_smooth": 34
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.8086439967155457,
+        0.20864000916481018
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.8114520311355591,
+        0.03685987368226051
+      ],
+      "model_mean_success": [
+        false,
+        true
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.949999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 703080
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 50,
+        "oracle_discrete": 17,
+        "oracle_mean": 3,
+        "oracle_smooth": 22
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.28121495246887207,
+        0.2812148928642273
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6739922165870667,
+        0.2053382843732834
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6499999761581421
+        }
+      },
+      "seed": 703081
+    },
+    {
+      "indices": {
+        "model_distribution": 20,
+        "model_mean": 43,
+        "oracle_discrete": 7,
+        "oracle_mean": 33,
+        "oracle_smooth": 46
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6473891735076904,
+        0.6473889350891113
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6721895337104797,
+        0.058437373489141464
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.6499999761581421
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.8999999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703082
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 3,
+        "oracle_discrete": 30,
+        "oracle_mean": 29,
+        "oracle_smooth": 34
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.4049654006958008,
+        0.40496575832366943
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.07209934294223785,
+        0.30165737867355347
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 703083
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 11,
+        "oracle_discrete": 17,
+        "oracle_mean": 21,
+        "oracle_smooth": 18
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.22178705036640167,
+        0.22178591787815094
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.4673789143562317,
+        0.07824214547872543
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 703084
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 23,
+        "oracle_discrete": 29,
+        "oracle_mean": 18,
+        "oracle_smooth": 46
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.5487956404685974,
+        0.5487961173057556
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6091089248657227,
+        0.2743367850780487
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.6499999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703085
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 0,
+        "oracle_discrete": 17,
+        "oracle_mean": 21,
+        "oracle_smooth": 17
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.22412413358688354,
+        0.22412458062171936
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.22412413358688354,
+        0.22412458062171936
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 703086
+    },
+    {
+      "indices": {
+        "model_distribution": 48,
+        "model_mean": 39,
+        "oracle_discrete": 7,
+        "oracle_mean": 15,
+        "oracle_smooth": 50
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6223711371421814,
+        0.6223713755607605
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6430671215057373,
+        0.14065465331077576
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.8500000238418579
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.550000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703087
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 39,
+        "oracle_discrete": 46,
+        "oracle_mean": 33,
+        "oracle_smooth": 46
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.5648877024650574,
+        0.564887523651123
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.7036007046699524,
+        0.10796687006950378
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.8500000238418579
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703088
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 47,
+        "oracle_discrete": 29,
+        "oracle_mean": 18,
+        "oracle_smooth": 29
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.7292526364326477,
+        0.7292523980140686
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6766831874847412,
+        0.13909703493118286
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.949999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 703089
+    },
+    {
+      "indices": {
+        "model_distribution": 17,
+        "model_mean": 11,
+        "oracle_discrete": 18,
+        "oracle_mean": 3,
+        "oracle_smooth": 37
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.12092287838459015,
+        0.2208699733018875
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6169483065605164,
+        0.16985636949539185
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        }
+      },
+      "seed": 703090
+    },
+    {
+      "indices": {
+        "model_distribution": 22,
+        "model_mean": 27,
+        "oracle_discrete": 7,
+        "oracle_mean": 30,
+        "oracle_smooth": 7
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6304798722267151,
+        0.36835479736328125
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.622479259967804,
+        0.4073773920536041
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6499999761581421
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.699999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        }
+      },
+      "seed": 703091
+    },
+    {
+      "indices": {
+        "model_distribution": 33,
+        "model_mean": 42,
+        "oracle_discrete": 6,
+        "oracle_mean": 25,
+        "oracle_smooth": 45
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.7669544219970703,
+        0.18294459581375122
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.8052393794059753,
+        0.06635958701372147
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8999999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703092
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 47,
+        "oracle_discrete": 29,
+        "oracle_mean": 30,
+        "oracle_smooth": 29
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.7549524307250977,
+        0.7549517154693604
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6649966239929199,
+        0.11555814743041992
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.949999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 703093
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 16,
+        "oracle_discrete": 6,
+        "oracle_mean": 25,
+        "oracle_smooth": 49
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.49428457021713257,
+        0.4942845106124878
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.49428457021713257,
+        0.4942845106124878
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.6000000238418579
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 1.0
+        }
+      },
+      "seed": 703094
+    },
+    {
+      "indices": {
+        "model_distribution": 5,
+        "model_mean": 22,
+        "oracle_discrete": 11,
+        "oracle_mean": 29,
+        "oracle_smooth": 11
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6045292019844055,
+        0.6045287251472473
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.589651882648468,
+        0.34497541189193726
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.44999998807907104
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6499999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        }
+      },
+      "seed": 703095
+    },
+    {
+      "indices": {
+        "model_distribution": 16,
+        "model_mean": 50,
+        "oracle_discrete": 29,
+        "oracle_mean": 33,
+        "oracle_smooth": 29
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6737335324287415,
+        0.673733115196228
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6572287678718567,
+        0.20983676612377167
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.6000000238418579
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 703096
+    },
+    {
+      "indices": {
+        "model_distribution": 40,
+        "model_mean": 47,
+        "oracle_discrete": 21,
+        "oracle_mean": 10,
+        "oracle_smooth": 30
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3526983857154846,
+        0.35269811749458313
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.959069013595581,
+        0.15123489499092102
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.8999999761581421
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.949999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        }
+      },
+      "seed": 703097
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 46,
+        "oracle_discrete": 18,
+        "oracle_mean": 37,
+        "oracle_smooth": 29
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.8154596090316772,
+        0.8154593706130981
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5999199151992798,
+        0.36551305651664734
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 703098
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 7,
+        "oracle_discrete": 18,
+        "oracle_mean": 2,
+        "oracle_smooth": 29
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3264196813106537,
+        0.32641980051994324
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.3901471793651581,
+        0.1734863519668579
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 703099
+    },
+    {
+      "indices": {
+        "model_distribution": 20,
+        "model_mean": 37,
+        "oracle_discrete": 29,
+        "oracle_mean": 37,
+        "oracle_smooth": 29
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.7233904600143433,
+        0.7233903408050537
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.21007715165615082,
+        0.4595564603805542
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.6499999761581421
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        }
+      },
+      "seed": 703100
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 40,
+        "oracle_discrete": 6,
+        "oracle_mean": 25,
+        "oracle_smooth": 45
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3934825360774994,
+        0.39348161220550537
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.3934825360774994,
+        0.39348161220550537
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.8999999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703101
+    },
+    {
+      "indices": {
+        "model_distribution": 5,
+        "model_mean": 5,
+        "oracle_discrete": 2,
+        "oracle_mean": 21,
+        "oracle_smooth": 2
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.23041915893554688,
+        0.23041962087154388
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.23041915893554688,
+        0.23041962087154388
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.44999998807907104
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.44999998807907104
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703102
+    },
+    {
+      "indices": {
+        "model_distribution": 6,
+        "model_mean": 20,
+        "oracle_discrete": 17,
+        "oracle_mean": 21,
+        "oracle_smooth": 37
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.1043219044804573,
+        0.17249734699726105
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.25584688782691956,
+        0.25584733486175537
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.6499999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        }
+      },
+      "seed": 703103
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 37,
+        "oracle_discrete": 50,
+        "oracle_mean": 11,
+        "oracle_smooth": 50
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6133497357368469,
+        0.6133500933647156
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5917924046516418,
+        0.34881556034088135
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 1.0
+        }
+      },
+      "seed": 703104
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 6,
+        "oracle_discrete": 13,
+        "oracle_mean": 2,
+        "oracle_smooth": 10
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.13291792571544647,
+        0.13291896879673004
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.2472120076417923,
+        0.04774753376841545
+      ],
+      "model_mean_success": [
+        false,
+        true
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.550000011920929
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 703105
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 19,
+        "oracle_discrete": 21,
+        "oracle_mean": 25,
+        "oracle_smooth": 26
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3450930416584015,
+        0.3450917899608612
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.7413273453712463,
+        0.1419290155172348
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.6000000238418579
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703106
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 31,
+        "oracle_discrete": 17,
+        "oracle_mean": 7,
+        "oracle_smooth": 34
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.41348448395729065,
+        0.41348502039909363
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5345814824104309,
+        0.021690914407372475
+      ],
+      "model_mean_success": [
+        false,
+        true
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.75
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 703107
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 7,
+        "oracle_discrete": 29,
+        "oracle_mean": 2,
+        "oracle_smooth": 18
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3403390049934387,
+        0.34033894538879395
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.3918530344963074,
+        0.18310731649398804
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        }
+      },
+      "seed": 703108
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 32,
+        "oracle_discrete": 6,
+        "oracle_mean": 25,
+        "oracle_smooth": 26
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3179638683795929,
+        0.3179627060890198
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.3179638683795929,
+        0.3179627060890198
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.800000011920929
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703109
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 40,
+        "oracle_discrete": 7,
+        "oracle_mean": 11,
+        "oracle_smooth": 25
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.5668875575065613,
+        0.566886305809021
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5668875575065613,
+        0.566886305809021
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.8999999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703110
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 29,
+        "oracle_discrete": 10,
+        "oracle_mean": 33,
+        "oracle_smooth": 42
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.5699524879455566,
+        0.5699523687362671
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.19463470578193665,
+        0.40695425868034363
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.8999999761581421
+        }
+      },
+      "seed": 703111
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 48,
+        "oracle_discrete": 10,
+        "oracle_mean": 33,
+        "oracle_smooth": 46
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.5540286302566528,
+        0.5540273189544678
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5540286302566528,
+        0.5540273189544678
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703112
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 44,
+        "oracle_discrete": 33,
+        "oracle_mean": 18,
+        "oracle_smooth": 11
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6146417260169983,
+        0.6146417856216431
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6146417260169983,
+        0.6146417856216431
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.949999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        }
+      },
+      "seed": 703113
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 32,
+        "oracle_discrete": 2,
+        "oracle_mean": 6,
+        "oracle_smooth": 26
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.4057101309299469,
+        0.4057101607322693
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.4057101309299469,
+        0.4057101607322693
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.800000011920929
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703114
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 8,
+        "oracle_discrete": 17,
+        "oracle_mean": 21,
+        "oracle_smooth": 34
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.358595073223114,
+        0.35859522223472595
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.358595073223114,
+        0.35859522223472595
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.5
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 703115
+    },
+    {
+      "indices": {
+        "model_distribution": 39,
+        "model_mean": 51,
+        "oracle_discrete": 10,
+        "oracle_mean": 2,
+        "oracle_smooth": 14
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6351138949394226,
+        0.24541537463665009
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.72789067029953,
+        0.5812922120094299
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.8500000238418579
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 703116
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 3,
+        "oracle_discrete": 6,
+        "oracle_mean": 25,
+        "oracle_smooth": 6
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.4316488206386566,
+        0.4316486120223999
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.06927141547203064,
+        0.3239418864250183
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        }
+      },
+      "seed": 703117
+    },
+    {
+      "indices": {
+        "model_distribution": 32,
+        "model_mean": 51,
+        "oracle_discrete": 2,
+        "oracle_mean": 6,
+        "oracle_smooth": 2
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.24941013753414154,
+        0.24940913915634155
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6894585490226746,
+        0.23943236470222473
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.800000011920929
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703118
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 6,
+        "oracle_discrete": 17,
+        "oracle_mean": 10,
+        "oracle_smooth": 41
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.30125778913497925,
+        0.30125826597213745
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.06938128918409348,
+        0.22129599750041962
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6000000238418579
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        }
+      },
+      "seed": 703119
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 28,
+        "oracle_discrete": 30,
+        "oracle_mean": 6,
+        "oracle_smooth": 37
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.4865292012691498,
+        0.4865289330482483
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.4865292012691498,
+        0.4865289330482483
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.75
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        }
+      },
+      "seed": 703120
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 48,
+        "oracle_discrete": 25,
+        "oracle_mean": 14,
+        "oracle_smooth": 25
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.5964311957359314,
+        0.5964305996894836
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5706639289855957,
+        0.5897789001464844
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703121
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 44,
+        "oracle_discrete": 41,
+        "oracle_mean": 10,
+        "oracle_smooth": 41
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.34125420451164246,
+        0.3412534296512604
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.34125420451164246,
+        0.3412534296512604
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.949999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8999999761581421
+        }
+      },
+      "seed": 703122
+    },
+    {
+      "indices": {
+        "model_distribution": 9,
+        "model_mean": 11,
+        "oracle_discrete": 21,
+        "oracle_mean": 7,
+        "oracle_smooth": 45
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3875104486942291,
+        0.3875792324542999
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.19972407817840576,
+        0.2542068660259247
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.5
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.6499999761581421
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703123
+    },
+    {
+      "indices": {
+        "model_distribution": 33,
+        "model_mean": 51,
+        "oracle_discrete": 29,
+        "oracle_mean": 2,
+        "oracle_smooth": 14
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.588595986366272,
+        0.11860717087984085
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.7157087326049805,
+        0.5643723011016846
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 703124
+    },
+    {
+      "indices": {
+        "model_distribution": 6,
+        "model_mean": 51,
+        "oracle_discrete": 48,
+        "oracle_mean": 9,
+        "oracle_smooth": 48
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6007867455482483,
+        0.06446021795272827
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        1.0584790706634521,
+        0.8412336707115173
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.44999998807907104
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.5
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        }
+      },
+      "seed": 703125
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 35,
+        "oracle_discrete": 10,
+        "oracle_mean": 18,
+        "oracle_smooth": 10
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6856698393821716,
+        0.6856693625450134
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6892023682594299,
+        0.2682085335254669
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.800000011920929
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.6000000238418579
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 703126
+    },
+    {
+      "indices": {
+        "model_distribution": 28,
+        "model_mean": 51,
+        "oracle_discrete": 14,
+        "oracle_mean": 2,
+        "oracle_smooth": 14
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.2895817458629608,
+        0.2895803153514862
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.9349873065948486,
+        0.6605068445205688
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.75
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        }
+      },
+      "seed": 703127
+    },
+    {
+      "indices": {
+        "model_distribution": 29,
+        "model_mean": 23,
+        "oracle_discrete": 2,
+        "oracle_mean": 3,
+        "oracle_smooth": 33
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.7831215858459473,
+        0.07547321915626526
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.8083752393722534,
+        0.02969578467309475
+      ],
+      "model_mean_success": [
+        false,
+        true
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.6499999761581421
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        }
+      },
+      "seed": 703128
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 51,
+        "oracle_discrete": 26,
+        "oracle_mean": 3,
+        "oracle_smooth": 37
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3042253255844116,
+        0.3042246997356415
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6295753121376038,
+        0.17723146080970764
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        true
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.699999988079071
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.8500000238418579
+        }
+      },
+      "seed": 703129
+    },
+    {
+      "indices": {
+        "model_distribution": 2,
+        "model_mean": 48,
+        "oracle_discrete": 25,
+        "oracle_mean": 11,
+        "oracle_smooth": 25
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.3823971152305603,
+        0.4765021800994873
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5016809105873108,
+        0.501681387424469
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        }
+      },
+      "seed": 703130
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 36,
+        "oracle_discrete": 10,
+        "oracle_mean": 14,
+        "oracle_smooth": 10
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6578619480133057,
+        0.6578603982925415
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6578619480133057,
+        0.6578603982925415
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.8500000238418579
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.5
+        }
+      },
+      "seed": 703131
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 27,
+        "oracle_discrete": 7,
+        "oracle_mean": 33,
+        "oracle_smooth": 46
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6070371866226196,
+        0.6070365309715271
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.7166710495948792,
+        0.2884007692337036
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.699999988079071
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.800000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703132
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 48,
+        "oracle_discrete": 25,
+        "oracle_mean": 11,
+        "oracle_smooth": 46
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.5725313425064087,
+        0.5725318789482117
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.5725313425064087,
+        0.5725318789482117
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        true
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.699999988079071
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.5
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.949999988079071
+        }
+      },
+      "seed": 703133
+    },
+    {
+      "indices": {
+        "model_distribution": 0,
+        "model_mean": 49,
+        "oracle_discrete": 3,
+        "oracle_mean": 14,
+        "oracle_smooth": 3
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.5684195160865784,
+        0.5684182047843933
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6728938221931458,
+        0.03587375208735466
+      ],
+      "model_mean_success": [
+        false,
+        true
+      ],
+      "oracle_discrete_success": [
+        true,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        true,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 1.0
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.4000000059604645
+        }
+      },
+      "seed": 703134
+    },
+    {
+      "indices": {
+        "model_distribution": 1,
+        "model_mean": 0,
+        "oracle_discrete": 14,
+        "oracle_mean": 29,
+        "oracle_smooth": 7
+      },
+      "model_distribution_exact_terminal_distance_m": [
+        0.6162852048873901,
+        0.6162853240966797
+      ],
+      "model_distribution_success": [
+        false,
+        false
+      ],
+      "model_mean_exact_terminal_distance_m": [
+        0.6162852048873901,
+        0.6162853240966797
+      ],
+      "model_mean_success": [
+        false,
+        false
+      ],
+      "oracle_discrete_success": [
+        false,
+        false
+      ],
+      "oracle_mean_success": [
+        false,
+        false
+      ],
+      "oracle_smooth_success": [
+        false,
+        false
+      ],
+      "parameters": {
+        "model_distribution": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.4000000059604645
+        },
+        "model_mean": {
+          "angle_deg": 0.0,
+          "duration": 1,
+          "speed": 0.4000000059604645
+        },
+        "oracle_discrete": {
+          "angle_deg": 0.0,
+          "duration": 3,
+          "speed": 0.550000011920929
+        },
+        "oracle_mean": {
+          "angle_deg": 0.0,
+          "duration": 2,
+          "speed": 0.75
+        },
+        "oracle_smooth": {
+          "angle_deg": 0.0,
+          "duration": 4,
+          "speed": 0.44999998807907104
+        }
+      },
+      "seed": 703135
+    }
+  ],
+  "seed": 703072,
+  "success_threshold_m": 0.05,
+  "task": "fetch_slide_hidden_friction_commitment"
+}

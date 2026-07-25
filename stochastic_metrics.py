@@ -151,15 +151,21 @@ def interval_metrics(samples, observations, level):
     return coverage, width
 
 
-def aggregate_particle_cost(cost, objective="mean", tail_fraction=0.25):
+def aggregate_particle_cost(
+    cost, objective="mean", tail_fraction=0.25, risk_weight=1.0
+):
     """Aggregate [batch, candidate, particle] costs for particle MPC."""
 
     if cost.ndim != 3:
         raise ValueError("Particle costs must have [batch, candidate, particle] axes")
     if objective == "mean":
         return cost.mean(dim=-1)
+    if objective == "mean_std":
+        return cost.mean(dim=-1) + float(risk_weight) * cost.std(
+            dim=-1, unbiased=False
+        )
     if objective != "cvar":
-        raise ValueError("objective must be 'mean' or 'cvar'")
+        raise ValueError("objective must be 'mean', 'mean_std', or 'cvar'")
     count = max(1, math.ceil(cost.size(-1) * tail_fraction))
     return cost.topk(count, dim=-1, largest=True).values.mean(dim=-1)
 

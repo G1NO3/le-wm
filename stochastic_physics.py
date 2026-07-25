@@ -33,6 +33,38 @@ PHYSICS_PROFILES = {
 }
 
 
+# FetchPush isolates one episode-constant hidden factor: object/table friction.
+# Mass, gripper friction, and transient slips stay fixed so any downstream gain
+# can be attributed to friction uncertainty rather than a bundle of effects.
+FETCH_PUSH_PROFILES = {
+    "push_strong": PhysicsProfile(
+        "push_strong", (1.0, 1.0), (0.2, 3.0), (1.0, 1.0), 0.0
+    ),
+    "push_medium": PhysicsProfile(
+        "push_medium", (1.0, 1.0), (0.4, 2.5), (1.0, 1.0), 0.0
+    ),
+    "push_mild": PhysicsProfile(
+        "push_mild", (1.0, 1.0), (0.7, 2.0), (1.0, 1.0), 0.0
+    ),
+}
+
+
+# FetchSlide is already deliberately slippery at its nominal coefficient.
+# These multipliers keep both modes controllable while separating the stopping
+# impulse: the low mode coasts much farther than the high mode after one hit.
+FETCH_SLIDE_PROFILES = {
+    "slide_strong": PhysicsProfile(
+        "slide_strong", (1.0, 1.0), (0.2, 1.0), (1.0, 1.0), 0.0
+    ),
+    "slide_medium": PhysicsProfile(
+        "slide_medium", (1.0, 1.0), (0.35, 0.85), (1.0, 1.0), 0.0
+    ),
+    "slide_mild": PhysicsProfile(
+        "slide_mild", (1.0, 1.0), (0.5, 0.8), (1.0, 1.0), 0.0
+    ),
+}
+
+
 def select_calibrated_profile(pilot_results):
     """Choose the first ordered level satisfying the preregistered pilot gate."""
 
@@ -89,6 +121,8 @@ class HiddenPhysicsWrapper(gym.Wrapper):
         raw = self.env.unwrapped
         if hasattr(raw, "_model") and hasattr(raw, "_data"):
             return raw._model, raw._data
+        if hasattr(raw, "model") and hasattr(raw, "data"):
+            return raw.model, raw.data
         if hasattr(raw, "sim"):
             return raw.sim.model, raw.sim.data
         raise TypeError("HiddenPhysicsWrapper requires a MuJoCo environment")
@@ -119,11 +153,15 @@ class HiddenPhysicsWrapper(gym.Wrapper):
             )
 
         geom_names = self._names(self._model, "geom", self._model.ngeom)
+        body_names = self._names(self._model, "body", self._model.nbody)
         self._surface_geoms = np.array(
             [
                 i
                 for i, name in enumerate(geom_names)
-                if any(x in name for x in ("table", "floor", "counter"))
+                if any(
+                    x in f"{name} {body_names[int(self._model.geom_bodyid[i])]}"
+                    for x in ("table", "floor", "counter")
+                )
             ],
             dtype=int,
         )
@@ -135,9 +173,13 @@ class HiddenPhysicsWrapper(gym.Wrapper):
             ],
             dtype=int,
         )
-        if not self._cube_bodies.size or not self._pad_geoms.size:
+        pads_required = self.profile.slip_probability > 0 or any(
+            value != 1.0 for value in self.profile.pad_friction
+        )
+        if not self._cube_bodies.size or (pads_required and not self._pad_geoms.size):
             raise RuntimeError(
-                "Could not identify target bodies and gripper pads; pass target_body_names"
+                "Could not identify required target bodies/gripper pads; "
+                "pass target_body_names or use a friction-only profile"
             )
 
     def _sample_mode(self):
@@ -164,9 +206,10 @@ class HiddenPhysicsWrapper(gym.Wrapper):
         self._model.geom_friction[object_and_surface_geoms] *= self._mode[
             "surface_friction_multiplier"
         ]
-        self._model.geom_friction[self._pad_geoms] *= self._mode[
-            "pad_friction_multiplier"
-        ]
+        if self._pad_geoms.size:
+            self._model.geom_friction[self._pad_geoms] *= self._mode[
+                "pad_friction_multiplier"
+            ]
 
     def _privileged_info(self, slip=False):
         profile_id = {"mild": 0, "medium": 1, "strong": 2}.get(
@@ -330,7 +373,15 @@ class HiddenPhysicsWrapper(gym.Wrapper):
             "grasp_retries": self._grasp_retries,
             "contact_index": self._contact_index,
         }
-        for name in ("act", "ctrl", "mocap_pos", "mocap_quat", "qacc_warmstart"):
+        for name in (
+            "act",
+            "ctrl",
+            "mocap_pos",
+            "mocap_quat",
+            "qacc_warmstart",
+            "qfrc_applied",
+            "xfrc_applied",
+        ):
             if hasattr(self._data, name):
                 state[name] = getattr(self._data, name).copy()
         if hasattr(self._data, "time"):
@@ -338,7 +389,13 @@ class HiddenPhysicsWrapper(gym.Wrapper):
         raw = self.env.unwrapped
         state["environment"] = {
             name: copy.deepcopy(getattr(raw, name))
-            for name in ("_prev_qpos", "_prev_qvel", "_success", "_reset_next_step")
+            for name in (
+                "_prev_qpos",
+                "_prev_qvel",
+                "_success",
+                "_reset_next_step",
+                "goal",
+            )
             if hasattr(raw, name)
         }
         return state
@@ -362,7 +419,15 @@ class HiddenPhysicsWrapper(gym.Wrapper):
         self._drop_count = int(state.get("drop_count", 0))
         self._grasp_retries = int(state.get("grasp_retries", 0))
         self._contact_index = int(state.get("contact_index", 0))
-        for name in ("act", "ctrl", "mocap_pos", "mocap_quat", "qacc_warmstart"):
+        for name in (
+            "act",
+            "ctrl",
+            "mocap_pos",
+            "mocap_quat",
+            "qacc_warmstart",
+            "qfrc_applied",
+            "xfrc_applied",
+        ):
             if name in state and hasattr(self._data, name):
                 getattr(self._data, name)[:] = state[name]
         if "time" in state and hasattr(self._data, "time"):
@@ -391,6 +456,245 @@ class OGBenchHiddenPhysics(HiddenPhysicsWrapper):
         kwargs.setdefault("close_when_positive", False)
         kwargs.setdefault("close_threshold", 0.05)
         super().__init__(env, **kwargs)
+
+
+class FetchPushHiddenFriction(HiddenPhysicsWrapper):
+    """Friction-only hidden physics and fork metadata for FetchPush.
+
+    The environment's object mass and robot contact parameters remain fixed.
+    Episodes optionally terminate as soon as the standard Fetch success radius
+    is reached, making ``World.collect`` produce task-complete trajectories.
+    """
+
+    def __init__(
+        self,
+        env,
+        *,
+        profile="push_strong",
+        terminate_at_goal=True,
+        inner_max_episode_steps=None,
+        **kwargs,
+    ):
+        if isinstance(profile, str):
+            if profile not in FETCH_PUSH_PROFILES:
+                raise KeyError(
+                    f"Unknown FetchPush profile {profile!r}; expected one of "
+                    f"{sorted(FETCH_PUSH_PROFILES)}"
+                )
+            profile = FETCH_PUSH_PROFILES[profile]
+        kwargs.setdefault("target_body_names", ("object0",))
+        super().__init__(env, profile=profile, **kwargs)
+        self.terminate_at_goal = bool(terminate_at_goal)
+        self._episode_seed = -1
+        self._goal_image_cache = None
+        if inner_max_episode_steps is not None:
+            current = env
+            while current is not None:
+                if hasattr(current, "_max_episode_steps"):
+                    current._max_episode_steps = int(inner_max_episode_steps)
+                current = getattr(current, "env", None)
+
+    def _object_position(self):
+        object_id = int(self._cube_bodies[0])
+        return self._data.xpos[object_id].copy()
+
+    def _goal_position(self):
+        return np.asarray(self.env.unwrapped.goal, dtype=np.float64).copy()
+
+    def _render_goal_image(self):
+        """Render the ordinary visual goal without changing simulator state."""
+
+        raw = self.env.unwrapped
+        qpos = self._data.qpos.copy()
+        qvel = self._data.qvel.copy()
+        mocap_pos = self._data.mocap_pos.copy()
+        mocap_quat = self._data.mocap_quat.copy()
+        object_qpos = raw._utils.get_joint_qpos(
+            self._model, self._data, "object0:joint"
+        ).copy()
+        object_qpos[:3] = self._goal_position()
+        raw._utils.set_joint_qpos(
+            self._model, self._data, "object0:joint", object_qpos
+        )
+        self._data.mocap_pos[0, :2] = object_qpos[:2]
+        self._data.mocap_pos[0, 2] = object_qpos[2] + 0.005
+        try:
+            import mujoco
+
+            mujoco.mj_forward(self._model, self._data)
+            image = np.asarray(self.env.render()).copy()
+        finally:
+            self._data.qpos[:] = qpos
+            self._data.qvel[:] = qvel
+            self._data.mocap_pos[:] = mocap_pos
+            self._data.mocap_quat[:] = mocap_quat
+            try:
+                mujoco.mj_forward(self._model, self._data)
+            except (ImportError, UnboundLocalError):
+                if hasattr(raw, "sim"):
+                    raw.sim.forward()
+        return image
+
+    def _risk_info(self):
+        if self._data is None or not self._cube_bodies.size:
+            distance = 0.0
+        else:
+            distance = float(
+                np.linalg.norm(self._object_position() - self._goal_position())
+            )
+        return {
+            "metrics/target_object_drops": np.array(0, dtype=np.int32),
+            "metrics/collateral_displacement": np.array(0.0, dtype=np.float32),
+            "metrics/grasp_retries": np.array(0, dtype=np.int32),
+            "metrics/final_goal_distance": np.array(distance, dtype=np.float32),
+        }
+
+    def _fetch_info(self, info, previous_qpos, previous_qvel):
+        distance = float(self._risk_info()["metrics/final_goal_distance"])
+        threshold = float(getattr(self.env.unwrapped, "distance_threshold", 0.05))
+        success = bool(info.get("is_success", distance <= threshold))
+        info["success"] = np.array(success, dtype=np.bool_)
+        info["qpos"] = self._data.qpos.copy()
+        info["qvel"] = self._data.qvel.copy()
+        info["prev_qpos"] = np.asarray(previous_qpos).copy()
+        info["prev_qvel"] = np.asarray(previous_qvel).copy()
+        info["object_position"] = self._object_position().astype(np.float32)
+        info["goal_position"] = self._goal_position().astype(np.float32)
+        if self._goal_image_cache is None:
+            self._goal_image_cache = self._render_goal_image()
+        info["goal"] = self._goal_image_cache.copy()
+        info["privileged/base_seed"] = np.array(self._episode_seed, dtype=np.int64)
+        info["privileged/friction_multiplier"] = np.array(
+            self._mode["surface_friction_multiplier"], dtype=np.float32
+        )
+        info.update(self._risk_info())
+        return success
+
+    def reset(self, *, seed=None, options=None):
+        self._goal_image_cache = None
+        observation, info = super().reset(seed=seed, options=options)
+        self._episode_seed = int(seed) if seed is not None else -1
+        self._fetch_info(info, self._data.qpos, self._data.qvel)
+        return observation, info
+
+    def step(self, action):
+        previous_qpos = self._data.qpos.copy()
+        previous_qvel = self._data.qvel.copy()
+        observation, reward, terminated, truncated, info = super().step(action)
+        success = self._fetch_info(info, previous_qpos, previous_qvel)
+        return (
+            observation,
+            reward,
+            bool(terminated or (success and self.terminate_at_goal)),
+            truncated,
+            info,
+        )
+
+
+class FetchSlideHiddenFriction(FetchPushHiddenFriction):
+    """Episode-constant puck/table friction for FetchSlide.
+
+    FetchPush and FetchSlide share the same Fetch object, goal, simulator-state,
+    and success interfaces.  Only their calibrated friction profiles differ.
+    """
+
+    def __init__(self, env, *, profile="slide_strong", **kwargs):
+        if isinstance(profile, str):
+            if profile not in FETCH_SLIDE_PROFILES:
+                raise KeyError(
+                    f"Unknown FetchSlide profile {profile!r}; expected one of "
+                    f"{sorted(FETCH_SLIDE_PROFILES)}"
+                )
+            profile = FETCH_SLIDE_PROFILES[profile]
+        super().__init__(env, profile=profile, **kwargs)
+
+
+class FetchPushPairedFriction(FetchPushHiddenFriction):
+    """Map consecutive collection seeds to one scene under both frictions.
+
+    Logical seeds ``origin + 2*k`` and ``origin + 2*k + 1`` reset the base
+    simulator with the same scene seed.  The even episode uses the low mode
+    and the odd episode the high mode.  This makes pair grouping explicit and
+    prevents a model from winning by exploiting unrelated start-state draws.
+    """
+
+    def __init__(
+        self,
+        env,
+        *,
+        collection_seed_origin=3072,
+        scene_seed_origin=None,
+        **kwargs,
+    ):
+        self.collection_seed_origin = int(collection_seed_origin)
+        self.scene_seed_origin = int(
+            collection_seed_origin if scene_seed_origin is None else scene_seed_origin
+        )
+        self._forced_friction = None
+        self._pair_id = -1
+        self._collection_seed = -1
+        self._friction_mode_index = -1
+        super().__init__(env, **kwargs)
+
+    def _sample_mode(self):
+        mode = super()._sample_mode()
+        if self._forced_friction is not None:
+            mode["surface_friction_multiplier"] = self._forced_friction
+        return mode
+
+    def reset(self, *, seed=None, options=None):
+        if seed is None:
+            raise ValueError("FetchPushPairedFriction requires an explicit seed")
+        logical_seed = int(seed)
+        offset = logical_seed - self.collection_seed_origin
+        if offset < 0:
+            raise ValueError(
+                f"Seed {logical_seed} precedes collection origin "
+                f"{self.collection_seed_origin}"
+            )
+        self._pair_id = offset // 2
+        self._friction_mode_index = offset % 2
+        self._collection_seed = logical_seed
+        self._forced_friction = float(
+            self.profile.surface_friction[self._friction_mode_index]
+        )
+        scene_seed = self.scene_seed_origin + self._pair_id
+        observation, info = super().reset(seed=scene_seed, options=options)
+        self._episode_seed = scene_seed
+        info["privileged/base_seed"] = np.array(scene_seed, dtype=np.int64)
+        info["privileged/pair_id"] = np.array(self._pair_id, dtype=np.int64)
+        info["privileged/collection_seed"] = np.array(
+            logical_seed, dtype=np.int64
+        )
+        info["privileged/friction_mode"] = np.array(
+            self._friction_mode_index, dtype=np.int8
+        )
+        return observation, info
+
+    def step(self, action):
+        observation, reward, terminated, truncated, info = super().step(action)
+        info["privileged/pair_id"] = np.array(self._pair_id, dtype=np.int64)
+        info["privileged/collection_seed"] = np.array(
+            self._collection_seed, dtype=np.int64
+        )
+        info["privileged/friction_mode"] = np.array(
+            self._friction_mode_index, dtype=np.int8
+        )
+        return observation, reward, terminated, truncated, info
+
+
+class FetchSlidePairedFriction(FetchPushPairedFriction):
+    """Pair each FetchSlide scene under the two calibrated friction modes."""
+
+    def __init__(self, env, *, profile="slide_strong", **kwargs):
+        if isinstance(profile, str):
+            if profile not in FETCH_SLIDE_PROFILES:
+                raise KeyError(
+                    f"Unknown FetchSlide profile {profile!r}; expected one of "
+                    f"{sorted(FETCH_SLIDE_PROFILES)}"
+                )
+            profile = FETCH_SLIDE_PROFILES[profile]
+        super().__init__(env, profile=profile, **kwargs)
 
 
 class RoboCasaHiddenPhysics(HiddenPhysicsWrapper):

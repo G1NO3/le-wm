@@ -1,0 +1,106 @@
+{
+  "artifact_scope": "compact immutable record; raw transitions, fork payloads, and per-context shards remain on ICE",
+  "dataset": {
+    "path": "data/pilots/fetch_push_friction_500pairs_seed3072_serial.h5",
+    "sha256": "c1e61c1b5b69a77d298484e7be2954df25781389cff8fb50f26b5fc5517be816",
+    "split_manifest_sha256": "dd7b4d40ada0004920ee1df31f7f8cf1b8b000af1527ce2c923a2a44be83541b"
+  },
+  "base_checkpoint": {
+    "path": "data/ice/fetch_state_mode_mixture/seed_24041/fetch_state_mode_residual_seed24041_object.ckpt",
+    "sha256": "0995360b4320df1a79b9fcea99f7bef8ef5ea612e67cf66bfdd2dd78f01a1f69",
+    "frozen_components": ["nominal", "residual_flow", "normalizers", "residual_scale"]
+  },
+  "label_free_paired_outcome_training": {
+    "dataset_keys_read": ["ep_len", "state", "action"],
+    "uses_privileged_mode_labels": false,
+    "scene_pairing": "consecutive episode IDs grouped by floor(id / 2); pair membership only",
+    "assignment": "lower-cost one-head-per-episode permutation within each scene pair",
+    "assignment_dims": [3, 4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 19],
+    "object_motion_threshold": 0.0001,
+    "training_loss": "assigned head 25-D normalized residual MSE over all episode transitions",
+    "epochs": 120,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.00001,
+    "training_jobs": [5527076, 5527077, 5527078],
+    "seeds": [26041, 26042, 26043],
+    "primary_seed_fixed_before_evaluation": 26041
+  },
+  "checkpoints": {
+    "26041": "20ce6eda3c064e7bc1fd462aea9c0fe3bee85946143996505b32378a78d6bf57",
+    "26042": "549992e0aafa1ac95ddbd63f63ac1f12cf2760d322699581178acdc16ac23c92",
+    "26043": "f1d303a8ec739f22bb91796bc322e53076a4f81418b07246f76dc78f958ee0cf"
+  },
+  "prediction_gate_h10": {
+    "contexts": 64,
+    "samples": 32,
+    "context_seed": 1603072,
+    "jobs": [5527079, 5527080, 5527081],
+    "26041": {
+      "nominal_energy": 0.3483550548553467,
+      "stochastic_energy": 0.28467339277267456,
+      "residual_energy_skill": 0.18280678987503052,
+      "paired_gain_ci95_vs_nominal": [0.050168540328741074, 0.07752508670091629],
+      "paired_gain_ci95_vs_residual_mean": [0.02061661332845688, 0.025319457054138184],
+      "metrics_sha256": "d8a8f61448353b1b9def174ac9f2a0ba53c940feb3ee088099883385efe3e524"
+    },
+    "26042": {
+      "nominal_energy": 0.3483550548553467,
+      "stochastic_energy": 0.31471341848373413,
+      "paired_gain_ci95_vs_nominal": [0.015223154798150063, 0.05286090448498726],
+      "paired_gain_ci95_vs_residual_mean": [0.02522381953895092, 0.029956603422760963],
+      "metrics_sha256": "56fd155f33ba0bd3a042eb9d25f29b02514cdd83b1398721d164eefbccd7407c"
+    },
+    "26043": {
+      "nominal_energy": 0.3483550548553467,
+      "stochastic_energy": 0.2953202426433563,
+      "paired_gain_ci95_vs_nominal": [0.039411015808582306, 0.06706639379262924],
+      "paired_gain_ci95_vs_residual_mean": [0.02429511956870556, 0.03131547570228577],
+      "metrics_sha256": "ee18ac7535ec4b83ae74bbb4ea38c116138324b35acfc400ff9d5caab1156fd7"
+    },
+    "all_three_seeds_pass_nominal_and_mean_attribution": true
+  },
+  "control_validation": {
+    "job": 5527083,
+    "contexts": 64,
+    "episodes": 128,
+    "context_seed": 1703072,
+    "residual_mean_success_rate": 0.4453125,
+    "stochastic_success_rate": 0.546875,
+    "absolute_success_improvement": 0.1015625,
+    "scene_cluster_bootstrap_ci95": [0.03125, 0.171875],
+    "stochastic_only_successes": 19,
+    "mean_only_successes": 6,
+    "artifact_sha256": "40cd013332b0ea075b97a9d2f407129be52d1a06756339628d8f21f273cb6964"
+  },
+  "fresh_control_confirmation": {
+    "jobs": [5527134, 5527135, 5527136, 5527137, 5527138, 5527139, 5527140, 5527141],
+    "jobs_completed_exit_0": true,
+    "contexts": 1024,
+    "episodes": 2048,
+    "unique_context_seeds": 1024,
+    "bootstrap_draws": 50000,
+    "bootstrap_seed": 1803072,
+    "residual_mean_success_rate": 0.5234375,
+    "stochastic_success_rate": 0.5615234375,
+    "residual_mean_success_rate_by_friction_mode": [0.8056640625, 0.2412109375],
+    "stochastic_success_rate_by_friction_mode": [0.857421875, 0.265625],
+    "absolute_success_improvement": 0.0380859375,
+    "scene_cluster_bootstrap_ci95": [0.017578125, 0.05859375],
+    "stochastic_only_successes": 239,
+    "mean_only_successes": 161,
+    "all_eight_shard_deltas_positive": true,
+    "strict_improvement_gate": true
+  },
+  "confirmation_oracle": {
+    "deterministic_success_rate": 0.59619140625,
+    "stochastic_success_rate": 0.76708984375,
+    "absolute_success_improvement": 0.1708984375,
+    "scene_cluster_bootstrap_ci95": [0.15673828125, 0.185546875],
+    "strict_improvement_gate": true
+  },
+  "ice_summary": {
+    "path": "data/ice/fetch_state_paired_modes/seed_26041/commitment_confirm_1024ctx/paired_summary_1024ctx.json",
+    "sha256": "363ee8689c200ca7a6d65d01177170d102a6f8ebadbf2790224dce16bebbfd00"
+  },
+  "verdict": "A label-free, sequence-consistent stochastic residual improves exact simulator success over its deterministic residual mean on fresh paired friction outcomes. Ordinary one-step flow marginals alone were a powered control null; persistent paired-outcome structure is the enabling factor."
+}

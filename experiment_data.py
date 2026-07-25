@@ -61,6 +61,52 @@ def build_collection_manifest(
     return manifest
 
 
+def build_grouped_collection_manifest(
+    episode_lengths,
+    dataset_sha256,
+    group_ids,
+    *,
+    seed,
+    fractions=(0.8, 0.1, 0.1),
+    group_key="group_id",
+):
+    """Split whole paired/counterfactual groups, never individual episodes."""
+
+    lengths = np.asarray(episode_lengths, dtype=np.int64)
+    group_ids = np.asarray(group_ids, dtype=np.int64)
+    if len(lengths) != len(group_ids):
+        raise ValueError("Each episode must have exactly one group ID")
+    if not np.isclose(sum(fractions), 1.0):
+        raise ValueError("Episode split fractions must sum to one")
+    groups = np.unique(group_ids)
+    rng = np.random.default_rng(seed)
+    rng.shuffle(groups)
+    n_train = int(len(groups) * fractions[0])
+    n_val = int(len(groups) * fractions[1])
+    split_groups = {
+        "train": groups[:n_train],
+        "val": groups[n_train : n_train + n_val],
+        "test": groups[n_train + n_val :],
+    }
+    episodes = {
+        name: np.flatnonzero(np.isin(group_ids, values)).tolist()
+        for name, values in split_groups.items()
+    }
+    manifest = {
+        "version": 3,
+        "seed": int(seed),
+        "fractions": list(fractions),
+        "dataset_sha256": str(dataset_sha256),
+        "episode_lengths_sha256": sha256_json(lengths.tolist()),
+        "group_key": str(group_key),
+        "group_ids_sha256": sha256_json(group_ids.tolist()),
+        "groups": {name: values.tolist() for name, values in split_groups.items()},
+        "episodes": episodes,
+    }
+    manifest["sha256"] = sha256_json(manifest)
+    return manifest
+
+
 def build_episode_manifest(dataset, *, seed: int, fractions=(0.8, 0.1, 0.1)):
     """Split episode IDs and map the dataset's clip indices to each split."""
 
@@ -141,7 +187,7 @@ def episode_disjoint_split(dataset, path, *, seed, fractions=(0.8, 0.1, 0.1)):
             raise RuntimeError(f"Split manifest references a different dataset: {path}")
         if not np.allclose(manifest.get("fractions", ()), fractions):
             raise RuntimeError(f"Immutable split manifest fractions differ: {path}")
-        if manifest.get("version") == 2:
+        if manifest.get("version") in (2, 3):
             expected_lengths = sha256_json(
                 np.asarray(dataset.lengths, dtype=np.int64).tolist()
             )

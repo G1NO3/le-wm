@@ -42,7 +42,15 @@ print_run_metadata() {
   echo "stablewm_home=$STABLEWM_HOME"
   echo "pixi=$($PIXI_BIN --version)"
   if command -v nvidia-smi >/dev/null 2>&1; then
-    nvidia-smi --query-gpu=name,driver_version,memory.total \
-      --format=csv,noheader
+    if lewm_gpu_info="$(
+      nvidia-smi --query-gpu=name,driver_version,memory.total \
+        --format=csv,noheader 2>/dev/null
+    )"; then
+      printf '%s\n' "$lewm_gpu_info"
+    else
+      echo "gpu=none"
+    fi
+  else
+    echo "gpu=none"
   fi
 }

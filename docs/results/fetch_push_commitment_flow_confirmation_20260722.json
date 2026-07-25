@@ -1,0 +1,61 @@
+{
+  "artifact_scope": "compact immutable record; raw per-context artifacts remain on ICE",
+  "checkpoint": {
+    "path": "data/ice/fetch_state_mode_mixture/seed_24041/fetch_state_mode_residual_seed24041_object.ckpt",
+    "sha256": "0995360b4320df1a79b9fcea99f7bef8ef5ea612e67cf66bfdd2dd78f01a1f69",
+    "components_used": ["nominal", "residual_flow"],
+    "supervised_mode_heads_accessed": false
+  },
+  "flow_sampling": {
+    "particles": 32,
+    "flow_steps": 4,
+    "base_seed": 24041,
+    "noise": "context-seeded antithetic Gaussian",
+    "temporal_coupling": "same base sample held over model horizon",
+    "candidate_coupling": "common random numbers",
+    "uses_privileged_mode_labels": false
+  },
+  "validation": {
+    "ice_job": 5527008,
+    "contexts": 64,
+    "episodes": 128,
+    "artifact_sha256": "39179df7e21f62da0616a0eed6b566d088f1e61d39120db3064fe07aabc7d092",
+    "deterministic_success_rate": 0.6171875,
+    "stochastic_success_rate": 0.6640625,
+    "absolute_success_improvement": 0.046875,
+    "scene_cluster_bootstrap_ci95": [-0.0078125, 0.1015625],
+    "stochastic_only_successes": 10,
+    "deterministic_only_successes": 4,
+    "directional_screen_gate": true
+  },
+  "fresh_confirmation": {
+    "contexts": 1024,
+    "episodes": 2048,
+    "bootstrap_draws": 50000,
+    "bootstrap_seed": 1203072,
+    "ice_jobs": [5527018, 5527019, 5527020, 5527021, 5527022, 5527023, 5527024, 5527025],
+    "jobs_completed_exit_0": true,
+    "unique_context_seeds": 1024,
+    "deterministic_success_rate": 0.62451171875,
+    "stochastic_success_rate": 0.6220703125,
+    "deterministic_success_rate_by_friction_mode": [0.94140625, 0.3076171875],
+    "stochastic_success_rate_by_friction_mode": [0.921875, 0.322265625],
+    "absolute_success_improvement": -0.00244140625,
+    "scene_cluster_bootstrap_ci95": [-0.01708984375, 0.01220703125],
+    "stochastic_only_successes": 108,
+    "deterministic_only_successes": 113,
+    "strict_improvement_gate": false
+  },
+  "confirmation_oracle": {
+    "deterministic_success_rate": 0.5927734375,
+    "stochastic_success_rate": 0.7685546875,
+    "absolute_success_improvement": 0.17578125,
+    "scene_cluster_bootstrap_ci95": [0.1611328125, 0.1904296875],
+    "strict_improvement_gate": true
+  },
+  "ice_summary": {
+    "path": "data/ice/fetch_state_mode_mixture/seed_24041/flow_commitment_confirm_1024ctx/paired_summary_1024ctx.json",
+    "sha256": "561c6dbe68dbb440cd4f97b1cb6ce43cfb7ae13ce76ec1d727b9ed356f74397c"
+  },
+  "interpretation": "The directional label-free screen did not replicate. Current one-step flow marginals plus hand-imposed persistent Gaussian coupling do not improve task success, despite strong task decision value and a passing supervised residual-mode upper bound."
+}

@@ -1,0 +1,72 @@
+defaults:
+  - launcher: local
+  - solver: cem
+  - _self_
+
+world:
+  env_name: swm/FetchPush-v3
+  num_envs: ${eval.batch_size}
+  max_episode_steps: ???
+
+dataset:
+  stats: ${eval.dataset_name}
+  # Pixel LeWM uses pixels while the ordinary-state controller uses state.
+  # Only actions are scaled by the shared policy adapter.
+  keys_to_load: [pixels, action, state]
+  keys_to_cache: [action]
+
+seed: 303072
+policy: random
+
+plan_config:
+  horizon: 10
+  receding_horizon: 5
+  history_len: 3
+  action_block: 2
+  warm_start: false
+
+eval:
+  protocol: full_task
+  video: false
+  wall_clock_budget_seconds: null
+  num_eval: 40
+  batch_size: 4
+  eval_budget: 100
+  img_size: 224
+  guided_expert: true
+  dataset_name: ???
+  hidden_physics:
+    enabled: true
+    paired: true
+    profile: push_strong
+    terminate_at_goal: true
+    inner_max_episode_steps: 100
+    collection_seed_origin: ${seed}
+    scene_seed_origin: ${seed}
+  stochastic_planning:
+    enabled: false
+    kernel: flow
+    particles: 8
+    objective: cvar
+    cvar_tail_fraction: 0.25
+    risk_weight: 0.25
+    success_threshold: 0.05
+    success_temperature: 0.01
+    flow_steps: 8
+    particle_chunk_size: 4
+    common_random_numbers: true
+    temporal_common_noise: false
+    # The environment succeeds on first goal entry, not terminal position.
+    minimum_distance: true
+    collateral_penalty_weight: 0.0
+    collateral_state_indices: []
+    physical_probe_checkpoint: null
+    physical_probe_name: object_position
+    sampling_seed: ${seed}
+
+output:
+  filename: fetch_push_control.txt
+
+solver:
+  var_scale: 0.2
+  n_steps: 15

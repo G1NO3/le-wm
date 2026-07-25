@@ -1,0 +1,409 @@
+<title>Residual Dynamics for Latent World Models — Reviewer Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#f6f7f9; --panel:#ffffff; --ink:#0f141c; --muted:#59626f;
+    --line:#dde1e8; --line-strong:#c3c9d4;
+    --nominal:#0e7c86;      /* deterministic / frozen JEPA */
+    --residual:#d1791f;     /* stochastic residual */
+    --nominal-soft:#0e7c8618; --residual-soft:#d1791f18;
+    --good:#2f8f5b; --bad:#c0452f;
+    --grid:#e7eaef;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --maxw:920px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0c0f14; --panel:#141922; --ink:#eef1f5; --muted:#98a2b2;
+      --line:#232a35; --line-strong:#333c4a;
+      --nominal:#3fb5c0; --residual:#ed9a4a;
+      --nominal-soft:#3fb5c022; --residual-soft:#ed9a4a22;
+      --good:#5fc487; --bad:#e2765f; --grid:#1d2431;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f7f9; --panel:#ffffff; --ink:#0f141c; --muted:#59626f;
+    --line:#dde1e8; --line-strong:#c3c9d4; --nominal:#0e7c86; --residual:#d1791f;
+    --nominal-soft:#0e7c8618; --residual-soft:#d1791f18; --good:#2f8f5b; --bad:#c0452f; --grid:#e7eaef;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0c0f14; --panel:#141922; --ink:#eef1f5; --muted:#98a2b2;
+    --line:#232a35; --line-strong:#333c4a; --nominal:#3fb5c0; --residual:#ed9a4a;
+    --nominal-soft:#3fb5c022; --residual-soft:#ed9a4a22; --good:#5fc487; --bad:#e2765f; --grid:#1d2431;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  header{padding:72px 0 34px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+  h1{font-size:clamp(29px,4.4vw,44px);line-height:1.08;margin:0 0 18px;
+    letter-spacing:-.02em;text-wrap:balance;font-weight:650}
+  .lede{font-size:clamp(17px,2.1vw,20px);color:var(--muted);max-width:60ch;margin:0}
+  .eq{font-family:var(--mono);font-size:clamp(14px,2vw,17px);margin:26px 0 0;
+    padding:16px 20px;background:var(--panel);border:1px solid var(--line);
+    border-radius:10px;overflow-x:auto;white-space:nowrap;color:var(--ink)}
+  .eq .nom{color:var(--nominal);font-weight:600}
+  .eq .res{color:var(--residual);font-weight:600}
+  .eq sub{font-size:.72em}
+  section{padding:30px 0;border-top:1px solid var(--line)}
+  h2{font-size:13px;font-family:var(--mono);letter-spacing:.13em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 6px;font-weight:600}
+  .h2big{font-size:clamp(21px,3vw,27px);font-family:var(--sans);letter-spacing:-.01em;
+    text-transform:none;color:var(--ink);margin:0 0 14px;font-weight:620}
+  p.note{color:var(--muted);max-width:64ch}
+  .fig{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:22px;margin:18px 0 10px;overflow-x:auto}
+  .fig svg{display:block;min-width:640px;width:100%;height:auto;font-family:var(--mono)}
+  figcaption{font-size:13.5px;color:var(--muted);margin-top:4px}
+  figcaption b{color:var(--ink);font-weight:600}
+  .legend{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;
+    color:var(--muted);margin:2px 0 16px}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+  svg text{fill:var(--ink)}
+  svg .lbl{fill:var(--muted);font-size:11px}
+  svg .lblk{fill:var(--ink);font-size:12.5px;font-weight:600}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:16px 0}
+  th,td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line);
+    font-variant-numeric:tabular-nums;white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  thead th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);font-weight:600}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.base td{color:var(--muted)}
+  .win{color:var(--good);font-weight:600}
+  .flag{color:var(--bad);font-weight:600}
+  .tag{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;
+    border:1px solid var(--line-strong);color:var(--muted)}
+  .callout{display:flex;gap:14px;align-items:flex-start;background:var(--panel);
+    border:1px solid var(--line);border-left:3px solid var(--residual);border-radius:10px;
+    padding:16px 18px;margin:16px 0}
+  .callout .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--residual);margin:0 0 4px}
+  .callout p{margin:0;font-size:14.5px;color:var(--ink)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr}}
+  footer{padding:38px 0 60px;color:var(--muted);font-size:12.5px;font-family:var(--mono);
+    border-top:1px solid var(--line)}
+  .prov{margin-top:8px;line-height:1.9}
+  a{color:var(--nominal)}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">Method &amp; Evaluation Guide · Latent Residual Dynamics</p>
+  <h1>Turning a frozen deterministic world model into a calibrated stochastic one</h1>
+  <p class="lede">A deterministic latent predictor answers <em>“where next, on average.”</em>
+    We add a flow-matched residual kernel that answers <em>“with what spread, and which way could it break”</em>
+    — then measure the gain against the deterministic model at every rung.</p>
+  <div class="eq">
+    z<sub>t+1</sub> = <span class="nom">Φ<sub>ψ</sub>(z<sub>≤t</sub>, u<sub>≤t</sub>)</span>
+    &nbsp;+&nbsp; <span class="res">S · T<sub>θ</sub><sup> </sup>(ε)</span>
+    &nbsp;&nbsp;&nbsp;<span style="color:var(--muted)">ε ~ 𝒩(0, I)</span>
+  </div>
+</header>
+
+<!-- ===================== METHOD ===================== -->
+<section>
+  <h2>Figure 1 · Architecture</h2>
+  <p class="h2big">A frozen nominal, a learned residual, a small memory</p>
+  <p class="note">The deterministic JEPA predictor <span style="color:var(--nominal)">Φ</span> is frozen — its
+    point prediction is untouched. A conditional flow <span style="color:var(--residual)">T<sub>θ</sub></span>
+    maps noise to the <em>residual</em> (what the environment’s hidden physics actually did), whitened by
+    fixed statistics S. A one-layer GRU carries recent residual context across the episode.</p>
+
+  <div class="legend">
+    <span><i class="dot" style="background:var(--nominal)"></i> frozen / deterministic</span>
+    <span><i class="dot" style="background:var(--residual)"></i> learned / stochastic</span>
+    <span><i class="dot" style="background:var(--muted)"></i> whitening &amp; memory state</span>
+  </div>
+
+  <figure class="fig">
+  <svg viewBox="0 0 760 300" role="img" aria-label="Architecture diagram">
+    <defs>
+      <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+        <path d="M0,0 L7,3 L0,6 Z" fill="var(--muted)"/></marker>
+      <marker id="ahr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+        <path d="M0,0 L7,3 L0,6 Z" fill="var(--residual)"/></marker>
+    </defs>
+    <!-- inputs -->
+    <rect x="8" y="118" width="120" height="52" rx="8" fill="var(--nominal-soft)" stroke="var(--nominal)"/>
+    <text x="68" y="140" text-anchor="middle" class="lblk">z≤t , u≤t</text>
+    <text x="68" y="157" text-anchor="middle" class="lbl">history</text>
+    <!-- nominal predictor -->
+    <rect x="200" y="40" width="150" height="60" rx="8" fill="var(--nominal-soft)" stroke="var(--nominal)"/>
+    <text x="275" y="64" text-anchor="middle" class="lblk">Φψ  (frozen JEPA)</text>
+    <text x="275" y="82" text-anchor="middle" class="lbl">deterministic predictor</text>
+    <!-- noise -->
+    <rect x="8" y="210" width="120" height="46" rx="8" fill="none" stroke="var(--line-strong)"/>
+    <text x="68" y="238" text-anchor="middle" class="lblk">ε ~ 𝒩(0,I)</text>
+    <!-- flow -->
+    <rect x="200" y="188" width="150" height="66" rx="8" fill="var(--residual-soft)" stroke="var(--residual)"/>
+    <text x="275" y="212" text-anchor="middle" class="lblk">Tθ  residual flow</text>
+    <text x="275" y="230" text-anchor="middle" class="lbl">conditional vector field</text>
+    <text x="275" y="245" text-anchor="middle" class="lbl">→ whiten by S</text>
+    <!-- memory -->
+    <rect x="200" y="128" width="150" height="40" rx="8" fill="none" stroke="var(--line-strong)" stroke-dasharray="4 3"/>
+    <text x="275" y="153" text-anchor="middle" class="lbl">GRU memory h<tspan dy="2" font-size="9">t</tspan></text>
+    <!-- sum -->
+    <circle cx="470" cy="148" r="21" fill="var(--panel)" stroke="var(--ink)"/>
+    <text x="470" y="154" text-anchor="middle" class="lblk" font-size="18">+</text>
+    <!-- output distribution -->
+    <rect x="560" y="96" width="180" height="108" rx="10" fill="var(--panel)" stroke="var(--line-strong)"/>
+    <text x="650" y="116" text-anchor="middle" class="lbl">p(z<tspan font-size="9" dy="2">t+1</tspan><tspan dy="-2"> | </tspan>z≤t,u≤t)</text>
+    <!-- scatter cloud -->
+    <g fill="var(--residual)" opacity="0.85">
+      <circle cx="612" cy="150" r="2.5"/><circle cx="628" cy="140" r="2.5"/>
+      <circle cx="640" cy="158" r="2.5"/><circle cx="655" cy="146" r="2.5"/>
+      <circle cx="668" cy="166" r="2.5"/><circle cx="682" cy="150" r="2.5"/>
+      <circle cx="648" cy="172" r="2.5"/><circle cx="634" cy="164" r="2.5"/>
+      <circle cx="695" cy="160" r="2.5"/><circle cx="620" cy="168" r="2.5"/>
+    </g>
+    <circle cx="641" cy="129" r="3.4" fill="var(--nominal)"/>
+    <text x="650" y="196" text-anchor="middle" class="lbl">nominal mean + residual spread</text>
+    <!-- arrows -->
+    <path d="M128,138 L196,74" fill="none" stroke="var(--muted)" marker-end="url(#ah)"/>
+    <path d="M128,148 L196,148" fill="none" stroke="var(--muted)" marker-end="url(#ah)"/>
+    <path d="M128,232 L196,224" fill="none" stroke="var(--residual)" marker-end="url(#ahr)"/>
+    <path d="M350,70 C410,74 430,120 452,138" fill="none" stroke="var(--nominal)" marker-end="url(#ah)"/>
+    <path d="M350,221 C410,214 430,178 452,160" fill="none" stroke="var(--residual)" marker-end="url(#ahr)"/>
+    <path d="M491,148 L556,148" fill="none" stroke="var(--muted)" marker-end="url(#ah)"/>
+    <!-- memory feedback loop -->
+    <path d="M275,188 L275,170" fill="none" stroke="var(--line-strong)" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+    <path d="M470,169 C420,250 330,250 300,168" fill="none" stroke="var(--line-strong)" stroke-dasharray="4 3" marker-end="url(#ah)"/>
+    <text x="386" y="283" text-anchor="middle" class="lbl">realized residual updates memory</text>
+  </svg>
+  <figcaption><b>Only the amber path is trained.</b> Vanilla behavior is recovered exactly when the
+    residual is switched off — the flow’s output head is zero-initialized, so it starts as the
+    deterministic model and can only add structure.</figcaption>
+  </figure>
+</section>
+
+<!-- ===================== FORK PROTOCOL ===================== -->
+<section>
+  <h2>Figure 2 · Evaluation protocol</h2>
+  <p class="h2big">Scoring against a <em>ground-truth</em> conditional distribution</p>
+  <p class="note">Most stochastic world models are judged by likelihood or downstream return. We reset the
+    simulator to one recorded state and roll it forward many times under <em>resampled hidden physics
+    modes</em> (mass, friction, slip). Those forks <em>are</em> the true distribution of futures — so proper
+    scoring rules compare model samples to reality, not to a proxy.</p>
+
+  <figure class="fig">
+  <svg viewBox="0 0 760 300" role="img" aria-label="Fork evaluation protocol">
+    <defs>
+      <marker id="ah2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+        <path d="M0,0 L7,3 L0,6 Z" fill="var(--muted)"/></marker>
+    </defs>
+    <!-- context -->
+    <rect x="8" y="120" width="128" height="60" rx="8" fill="var(--nominal-soft)" stroke="var(--nominal)"/>
+    <text x="72" y="144" text-anchor="middle" class="lblk">recorded</text>
+    <text x="72" y="160" text-anchor="middle" class="lblk">context</text>
+    <text x="72" y="176" text-anchor="middle" class="lbl">state + action window</text>
+    <!-- fork branches with mode chips -->
+    <g class="lbl" font-size="10.5">
+      <path d="M136,150 C185,150 185,60 234,60" fill="none" stroke="var(--muted)" marker-end="url(#ah2)"/>
+      <path d="M136,150 C185,150 185,108 234,108" fill="none" stroke="var(--muted)" marker-end="url(#ah2)"/>
+      <path d="M136,150 C185,150 185,150 234,150" fill="none" stroke="var(--muted)" marker-end="url(#ah2)"/>
+      <path d="M136,150 C185,150 185,192 234,192" fill="none" stroke="var(--muted)" marker-end="url(#ah2)"/>
+      <path d="M136,150 C185,150 185,240 234,240" fill="none" stroke="var(--muted)" marker-end="url(#ah2)"/>
+    </g>
+    <g font-size="10.5">
+      <rect x="236" y="49" width="120" height="22" rx="6" fill="var(--panel)" stroke="var(--line-strong)"/>
+      <text x="246" y="64" class="lbl">mass↑ · grip slips</text>
+      <rect x="236" y="97" width="120" height="22" rx="6" fill="var(--panel)" stroke="var(--line-strong)"/>
+      <text x="246" y="112" class="lbl">mass↓ · high friction</text>
+      <rect x="236" y="139" width="120" height="22" rx="6" fill="var(--panel)" stroke="var(--line-strong)"/>
+      <text x="246" y="154" class="lbl">mass↑ · low friction</text>
+      <rect x="236" y="181" width="120" height="22" rx="6" fill="var(--panel)" stroke="var(--line-strong)"/>
+      <text x="246" y="196" class="lbl">nominal · no slip</text>
+      <rect x="236" y="229" width="120" height="22" rx="6" fill="var(--panel)" stroke="var(--line-strong)"/>
+      <text x="246" y="244" class="lbl">mass↓ · grip slips</text>
+    </g>
+    <text x="296" y="286" text-anchor="middle" class="lbl">8 hidden modes × many seeds</text>
+    <!-- ground truth cloud -->
+    <path d="M356,150 L432,150" fill="none" stroke="var(--muted)" marker-end="url(#ah2)"/>
+    <rect x="436" y="86" width="150" height="128" rx="10" fill="var(--panel)" stroke="var(--line-strong)"/>
+    <text x="511" y="104" text-anchor="middle" class="lbl">true futures (forks)</text>
+    <g fill="var(--nominal)" opacity="0.9">
+      <circle cx="474" cy="132" r="2.6"/><circle cx="486" cy="124" r="2.6"/><circle cx="498" cy="140" r="2.6"/>
+      <circle cx="466" cy="150" r="2.6"/><circle cx="481" cy="158" r="2.6"/>
+      <circle cx="500" cy="120" r="2.6"/><circle cx="512" cy="150" r="2.6"/>
+      <circle cx="540" cy="176" r="2.6"/><circle cx="556" cy="186" r="2.6"/><circle cx="548" cy="168" r="2.6"/>
+      <circle cx="566" cy="178" r="2.6"/><circle cx="532" cy="190" r="2.6"/>
+    </g>
+    <text x="511" y="205" text-anchor="middle" class="lbl">two physical outcome clusters</text>
+    <!-- compare -->
+    <path d="M586,150 L636,150" fill="none" stroke="var(--muted)" marker-end="url(#ah2)"/>
+    <rect x="640" y="104" width="112" height="92" rx="10" fill="var(--residual-soft)" stroke="var(--residual)"/>
+    <text x="696" y="126" text-anchor="middle" class="lblk" font-size="11">score</text>
+    <text x="696" y="146" text-anchor="middle" class="lbl">energy · MMD</text>
+    <text x="696" y="162" text-anchor="middle" class="lbl">coverage · ECE</text>
+    <text x="696" y="178" text-anchor="middle" class="lbl">mode separation</text>
+  </svg>
+  <figcaption>Every fork carries a <b>commanded-action audit column</b> and a content hash; splits are
+    episode-disjoint and immutable. The same battery scores model samples and true forks side by side.</figcaption>
+  </figure>
+</section>
+
+<!-- ===================== BENEFIT LADDER ===================== -->
+<section>
+  <h2>Figure 3 · Results</h2>
+  <p class="h2big">How much each rung buys — measured against the deterministic model</p>
+  <p class="note">Left: proper-score skill over the deterministic baseline (higher is better) — most of the gain
+    is simply <em>acknowledging noise at the right scale</em>; the learned kernel adds the rest. Right: covariance
+    match to the true residuals (lower is better) — this is where the flow separates from a Gaussian.</p>
+
+  <div class="grid2">
+  <figure class="fig">
+  <svg viewBox="0 0 360 250" role="img" aria-label="Energy skill vs deterministic baseline">
+    <text x="12" y="20" class="lblk" font-size="12">Energy skill vs deterministic ↑</text>
+    <!-- axis -->
+    <line x1="120" y1="40" x2="120" y2="212" stroke="var(--line-strong)"/>
+    <line x1="120" y1="212" x2="344" y2="212" stroke="var(--line-strong)"/>
+    <!-- gridlines at 10/20/30% -->
+    <g stroke="var(--grid)">
+      <line x1="195" y1="40" x2="195" y2="212"/><line x1="270" y1="40" x2="270" y2="212"/>
+      <line x1="344" y1="40" x2="344" y2="212"/></g>
+    <g class="lbl" text-anchor="middle">
+      <text x="195" y="228">10%</text><text x="270" y="228">20%</text><text x="344" y="228">30%+</text>
+    </g>
+    <!-- bars: baseline 0, gaussian 23, conditional 32(cap 30 scale), flow 29, gru 30 -->
+    <!-- scale: 7.47 px per % from x=120 -->
+    <g font-size="11">
+      <text x="112" y="60" text-anchor="end" class="lbl">deterministic</text>
+      <rect x="120" y="50" width="1.5" height="16" fill="var(--muted)"/>
+      <text x="128" y="62" class="lbl">baseline · 0</text>
+
+      <text x="112" y="93" text-anchor="end" class="lbl">+ Gaussian noise</text>
+      <rect x="120" y="83" width="172" height="16" rx="3" fill="var(--muted)" opacity=".55"/>
+      <text x="298" y="95" class="lbl">+23%</text>
+
+      <text x="112" y="126" text-anchor="end" class="lbl">cond. Gaussian</text>
+      <rect x="120" y="116" width="239" height="16" rx="3" fill="var(--nominal)" opacity=".8"/>
+      <text x="300" y="128" fill="#fff" text-anchor="end" font-size="10">+32%</text>
+
+      <text x="112" y="159" text-anchor="end" class="lbl">memoryless flow</text>
+      <rect x="120" y="149" width="217" height="16" rx="3" fill="var(--residual)" opacity=".85"/>
+      <text x="343" y="161" class="lbl">+29%</text>
+
+      <text x="112" y="192" text-anchor="end" class="lbl">GRU flow</text>
+      <rect x="120" y="182" width="224" height="16" rx="3" fill="var(--residual)"/>
+      <text x="332" y="194" fill="#fff" text-anchor="end" font-size="10">+30%</text>
+    </g>
+  </svg>
+  <figcaption><b>+23 of ~30 points</b> come from noise scale alone; learning adds the rest. A conditional
+    Gaussian is competitive here.</figcaption>
+  </figure>
+
+  <figure class="fig">
+  <svg viewBox="0 0 360 250" role="img" aria-label="Covariance error, lower is better">
+    <text x="12" y="20" class="lblk" font-size="12">Covariance error to truth ↓</text>
+    <line x1="120" y1="40" x2="120" y2="212" stroke="var(--line-strong)"/>
+    <line x1="120" y1="212" x2="344" y2="212" stroke="var(--line-strong)"/>
+    <g stroke="var(--grid)"><line x1="195" y1="40" x2="195" y2="212"/>
+      <line x1="270" y1="40" x2="270" y2="212"/><line x1="344" y1="40" x2="344" y2="212"/></g>
+    <g class="lbl" text-anchor="middle"><text x="195" y="228">0.3</text><text x="270" y="228">0.6</text><text x="344" y="228">0.9</text></g>
+    <!-- scale: 249px = 0.9 → 276.7 px per unit -->
+    <g font-size="11">
+      <text x="112" y="76" text-anchor="end" class="lbl">unit Gaussian</text>
+      <rect x="120" y="66" width="221" height="16" rx="3" fill="var(--muted)" opacity=".55"/>
+      <text x="345" y="78" class="lbl" text-anchor="end" fill="#fff" font-size="10">0.91</text>
+
+      <text x="112" y="112" text-anchor="end" class="lbl">cond. Gaussian</text>
+      <rect x="120" y="102" width="213" height="16" rx="3" fill="var(--nominal)" opacity=".8"/>
+      <text x="337" y="114" class="lbl">0.87</text>
+
+      <text x="112" y="148" text-anchor="end" class="lbl">memoryless flow</text>
+      <rect x="120" y="138" width="188" height="16" rx="3" fill="var(--residual)" opacity=".85"/>
+      <text x="312" y="150" class="lbl">0.77</text>
+
+      <text x="112" y="184" text-anchor="end" class="lbl">GRU flow</text>
+      <rect x="120" y="174" width="187" height="16" rx="3" fill="var(--residual)"/>
+      <text x="311" y="186" class="lbl">0.77</text>
+    </g>
+  </svg>
+  <figcaption><b>The flow’s real edge:</b> it captures residual <em>correlation structure</em> a diagonal
+    Gaussian cannot. Full-covariance oracle still to be added.</figcaption>
+  </figure>
+  </div>
+
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>Model</th><th>Success ↑</th><th>Worst-decile dist ↓</th><th>Latency/ep</th><th>Setting</th></tr></thead>
+    <tbody>
+      <tr class="base"><td>Deterministic CEM</td><td>40%</td><td>0.215</td><td>3.6 s</td><td>baseline</td></tr>
+      <tr><td>Memoryless flow · 8-particle MPC</td><td class="win">50%</td><td class="win">0.186</td><td>8.3 s</td><td>mean</td></tr>
+      <tr><td>GRU flow · 8-particle MPC</td><td>40%</td><td class="win">0.157</td><td>8.9 s</td><td>reset-mem*</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <figcaption style="font-size:12.5px;color:var(--muted)">Downstream planning, smoke scale (n = 10
+    post-contact windows, strong hidden physics). Tail-risk distance improves for both stochastic planners;
+    success is 1 episode and not yet significant. <b>*</b> GRU ran with memory disabled at smoke time; the
+    online-memory fix and 100-eval pilot are in progress.</figcaption>
+</section>
+
+<!-- ===================== MEMORY FINDING ===================== -->
+<section>
+  <h2>Figure 4 · What the memory actually does</h2>
+  <p class="h2big">Recent-context adaptation, not a hidden-mode filter</p>
+  <div class="callout">
+    <div>
+      <p class="k">Replicated across two nominals</p>
+      <p>The GRU’s residual-prediction benefit is real and stays positive out to 200 observed transitions —
+        but the hidden physics mode is <b>not linearly decodable</b> from its state at any depth (probe accuracy
+        sits at the majority baseline). The memory adapts to <em>recent residual context</em>; it does not infer
+        which of the eight modes it is in. The paper framing follows the evidence.</p>
+    </div>
+  </div>
+
+  <figure class="fig">
+  <svg viewBox="0 0 760 230" role="img" aria-label="Memory skill and mode-probe accuracy vs observed transitions">
+    <!-- axes -->
+    <line x1="70" y1="30" x2="70" y2="180" stroke="var(--line-strong)"/>
+    <line x1="70" y1="180" x2="720" y2="180" stroke="var(--line-strong)"/>
+    <text x="70" y="205" text-anchor="middle" class="lbl">1</text>
+    <text x="240" y="205" text-anchor="middle" class="lbl">12</text>
+    <text x="400" y="205" text-anchor="middle" class="lbl">50</text>
+    <text x="560" y="205" text-anchor="middle" class="lbl">100</text>
+    <text x="712" y="205" text-anchor="middle" class="lbl">200</text>
+    <text x="395" y="223" text-anchor="middle" class="lbl">observed transitions (episode depth)</text>
+    <!-- baseline line for probe (majority 0.18 ~ chance) -->
+    <line x1="70" y1="150" x2="720" y2="150" stroke="var(--line-strong)" stroke-dasharray="4 4"/>
+    <text x="716" y="145" text-anchor="end" class="lbl">mode probe ≈ chance</text>
+    <!-- probe points (flat near baseline) -->
+    <g fill="var(--muted)">
+      <circle cx="70" cy="150" r="3"/><circle cx="150" cy="149" r="3"/><circle cx="240" cy="151" r="3"/>
+      <circle cx="330" cy="150" r="3"/><circle cx="400" cy="150" r="3"/><circle cx="480" cy="150" r="3"/>
+      <circle cx="560" cy="149" r="3"/><circle cx="640" cy="151" r="3"/><circle cx="712" cy="150" r="3"/>
+    </g>
+    <!-- skill curve: starts ~ +0.27 (y high) decays to +0.08 -->
+    <!-- map skill 0.30->y30, 0->y180 : y = 180 - skill*500 -->
+    <polyline fill="none" stroke="var(--residual)" stroke-width="2.5"
+      points="70,55 150,50 240,66 330,110 400,138 480,120 560,100 640,150 712,141"/>
+    <g fill="var(--residual)">
+      <circle cx="70" cy="55" r="3.4"/><circle cx="150" cy="50" r="3.4"/><circle cx="240" cy="66" r="3.4"/>
+      <circle cx="330" cy="110" r="3.4"/><circle cx="400" cy="138" r="3.4"/><circle cx="480" cy="120" r="3.4"/>
+      <circle cx="560" cy="100" r="3.4"/><circle cx="640" cy="150" r="3.4"/><circle cx="712" cy="141" r="3.4"/>
+    </g>
+    <text x="86" y="44" class="lbl" fill="var(--residual)">memory-vs-reset skill (stays &gt; 0)</text>
+    <text x="30" y="34" class="lbl">+skill</text>
+  </svg>
+  <figcaption>Amber: memory improves residual prediction over a reset state, strongest for the most recent
+    ~12 steps, decaying but always positive. Grey: mode-identification probe never rises above chance.</figcaption>
+  </figure>
+</section>
+
+<footer>
+  <div>QUADRUPLE-STACK · STRONG HIDDEN PHYSICS · TASK-ADAPTED FROZEN NOMINAL · SEED 13041</div>
+  <div class="prov">
+    nominal val pred-loss 0.00227 (25× &lt; official) · residual mean-norm 0.048 vs 1.11 (23× less bias)<br>
+    prediction: 2048 held-out targets, NFE 8 · control smoke: 10 post-contact windows, 8 particles, NFE 4<br>
+    all artifacts carry dataset / checkpoint / split SHA-256 · figures are schematic, numbers are measured
+  </div>
+</footer>
+</div>

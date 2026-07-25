@@ -146,6 +146,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/6e/5e/edb9c0ae051602c3ccaffe424256463636d639e27d7f302dde9975ef9e7a/nvidia_cudnn_cu13-9.20.0.48-py3-none-manylinux_2_27_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/6f/67/8d85ca2323233ae3c0365a659c4e52ee1f587b440e4bc577e7d8e4416d0f/transformers-5.14.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/71/43/1947f06babed6b3f1d7f38b0c767f52df66bfb2bc10b468c4a7de9eceff2/aiohappyeyeballs-2.7.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/71/86/2b890923c96b2ef3cf0f98ce91c54bad762db0982e07e6dd9b2afab9a2d3/gymnasium_robotics-1.4.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/72/b3/33c4ad44fa020e3757e9b2fad8a5de53d9079b501e6bbc45bdd18f82f893/datasets-2.21.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/78/b6/6307fbef88d9b5ee7421e68d78a9f162e0da4900bc5f5793f6d3d0e34fb8/annotated_types-0.7.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/79/d4/e9bd12b7b4cbd23b4dfb47e744ee1fa54d6d9c3c9bc406ec86c1be8c8307/kornia-0.8.2-py2.py3-none-any.whl
@@ -163,6 +164,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/8b/4d/5740c27110b83634d8491c3b5facf0111b3e554c3164f4fb953be9bddaf6/pytorch_lightning-2.6.5-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/8e/6d/41991e503e51fc1134502694c5fa7a1671501a17ffa12716a4a9151af3df/scipy-1.15.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/90/60/5740d4fd1e93f8acb8b632d438a3c67e4dddfb445a7119f74e942008aaf6/ogbench-1.2.1-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/95/da/89907ebf66f435ad36395ec25af4a79e5f9a58821314811f33649959162d/pettingzoo-1.26.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/96/42/3e5985a0a7e57de470b320c6d6a1a67c844f6737a587f3d44dd13d1819e7/wcwidth-0.8.2-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/97/75/2c59747e6a68e7e1f3df65b1133c03b27fd889c6e975a8539570bf5a9b68/richuru-0.1.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/99/55/db07de81b5c630da5cbf5c7df646580ca26dfaefa593667fc6f2fe016d2e/tabulate-0.10.0-py3-none-any.whl
@@ -5292,6 +5294,27 @@ packages:
   version: 6.0.3
   sha256: b8bb0864c5a28024fac8a632c443c87c5aa6f215c0b126c449ae1a150412f31d
   requires_python: '>=3.8'
+- pypi: https://files.pythonhosted.org/packages/71/86/2b890923c96b2ef3cf0f98ce91c54bad762db0982e07e6dd9b2afab9a2d3/gymnasium_robotics-1.4.2-py3-none-any.whl
+  name: gymnasium-robotics
+  version: 1.4.2
+  sha256: a1743530431cb377e6b3b956d284bc96436fc68bac1648ef205054c178e7dc4b
+  requires_dist:
+  - mujoco>=2.2.0
+  - numpy>=1.21.0
+  - gymnasium>=1.2.0
+  - pettingzoo>=1.23.0
+  - jinja2>=3.0.3
+  - imageio
+  - setuptools
+  - packaging
+  - pytest==7.0.1 ; extra == 'testing'
+  - mujoco-py-cython3 ; extra == 'testing'
+  - pettingzoo>=1.23.0 ; extra == 'testing'
+  - jinja2>=3.0.3 ; extra == 'testing'
+  - mujoco-py-cython3 ; extra == 'mujoco-py'
+  - mujoco-py>=2.1,<2.2 ; extra == 'mujoco-py-original'
+  - cython<3 ; extra == 'mujoco-py-original'
+  requires_python: '>=3.10'
 - pypi: https://files.pythonhosted.org/packages/72/b3/33c4ad44fa020e3757e9b2fad8a5de53d9079b501e6bbc45bdd18f82f893/datasets-2.21.0-py3-none-any.whl
   name: datasets
   version: 2.21.0
@@ -6119,6 +6142,43 @@ packages:
   - markupsafe>=2.1.1
   - watchdog>=2.3 ; extra == 'watchdog'
   requires_python: '>=3.9'
+- pypi: https://files.pythonhosted.org/packages/95/da/89907ebf66f435ad36395ec25af4a79e5f9a58821314811f33649959162d/pettingzoo-1.26.1-py3-none-any.whl
+  name: pettingzoo
+  version: 1.26.1
+  sha256: f4715dde696bf159d68bb1d3f764ff5083eb7e0cc32ac31a748e81ae530181dd
+  requires_dist:
+  - numpy>=1.21.0
+  - gymnasium>=1.0.0
+  - multi-agent-ale-py>=0.1.11 ; extra == 'atari'
+  - pygame-ce>=2.3.0 ; extra == 'atari'
+  - chess>=1.9.4 ; extra == 'classic'
+  - rlcard>=1.0.5 ; extra == 'classic'
+  - pygame-ce>=2.3.0 ; extra == 'classic'
+  - shimmy[openspiel]>=1.2.0 ; extra == 'classic'
+  - pygame-ce>=2.3.0 ; extra == 'butterfly'
+  - pymunk>=6.2.0 ; extra == 'butterfly'
+  - pygame-ce>=2.3.0 ; extra == 'sisl'
+  - pymunk>=6.2.0 ; extra == 'sisl'
+  - box2d-py>=2.3.5 ; extra == 'sisl'
+  - scipy>=1.4.1 ; extra == 'sisl'
+  - pillow>=8.0.1 ; extra == 'other'
+  - pynput>=1.7.6 ; extra == 'testing'
+  - pytest>=8.0.0 ; extra == 'testing'
+  - autorom>=0.6.1 ; extra == 'testing'
+  - pytest-cov>=4.1.0 ; extra == 'testing'
+  - pytest-xdist>=3.5.0 ; extra == 'testing'
+  - pre-commit>=3.5.0 ; extra == 'testing'
+  - pytest-markdown-docs>=0.5.0 ; extra == 'testing'
+  - multi-agent-ale-py>=0.1.11 ; extra == 'all'
+  - pygame-ce>=2.3.0 ; extra == 'all'
+  - chess>=1.9.4 ; extra == 'all'
+  - rlcard>=1.0.5 ; extra == 'all'
+  - shimmy[openspiel]>=1.2.0 ; extra == 'all'
+  - pymunk>=6.2.0 ; extra == 'all'
+  - box2d-py>=2.3.5 ; extra == 'all'
+  - scipy>=1.4.1 ; extra == 'all'
+  - pillow>=8.0.1 ; extra == 'all'
+  requires_python: '>=3.9,<3.15'
 - pypi: https://files.pythonhosted.org/packages/96/42/3e5985a0a7e57de470b320c6d6a1a67c844f6737a587f3d44dd13d1819e7/wcwidth-0.8.2-py3-none-any.whl
   name: wcwidth
   version: 0.8.2

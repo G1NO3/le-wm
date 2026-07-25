@@ -90,6 +90,7 @@ def main():
         "models": {},
     }
     per_context_primary = {}
+    per_context_primary_mean = {}
     for model_name, samples in predictions.items():
         model_result = {}
         for horizon in horizons:
@@ -102,6 +103,10 @@ def main():
             model_result[str(horizon)] = summarize(values)
             if horizon == args.primary_horizon:
                 per_context_primary[model_name] = values["energy_score"]
+                per_context_primary_mean[model_name] = energy_score(
+                    samples[:, :, horizon_index].mean(1, keepdim=True),
+                    observations[:, :, horizon_index],
+                )
             if horizon >= 2:
                 trajectory_samples = samples[:, :, :horizon]
                 trajectory_truth = observations[:, :, :horizon]
@@ -221,6 +226,41 @@ def main():
             result["paired_energy_bootstrap"][baseline] = {
                 "mean_improvement": float(delta.mean()),
                 "ci95": [float(x) for x in interval],
+            }
+
+    if "deterministic" in per_context_primary:
+        result["primary_context_energy_scores"] = {
+            name: [float(value) for value in values]
+            for name, values in per_context_primary.items()
+        }
+        result["primary_context_mean_energy_scores"] = {
+            name: [float(value) for value in values]
+            for name, values in per_context_primary_mean.items()
+        }
+        result["paired_model_bootstrap"] = {}
+        nominal = per_context_primary["deterministic"]
+        for model_name, values in per_context_primary.items():
+            if model_name == "deterministic":
+                continue
+            versus_nominal = nominal - values
+            versus_mean = per_context_primary_mean[model_name] - values
+            nominal_interval = paired_bootstrap_interval(
+                versus_nominal,
+                generator=torch.Generator().manual_seed(args.seed),
+            )
+            mean_interval = paired_bootstrap_interval(
+                versus_mean,
+                generator=torch.Generator().manual_seed(args.seed + 1),
+            )
+            result["paired_model_bootstrap"][model_name] = {
+                "versus_deterministic": {
+                    "mean_improvement": float(versus_nominal.mean()),
+                    "ci95": [float(x) for x in nominal_interval],
+                },
+                "versus_residual_mean": {
+                    "mean_improvement": float(versus_mean.mean()),
+                    "ci95": [float(x) for x in mean_interval],
+                },
             }
 
     if memory_model in per_context_primary:
