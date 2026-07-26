@@ -33,9 +33,13 @@ uncertainty*, but not in ordinary receding-horizon control where re-planning
 hides the benefit.** This report sharpens exactly when and why the benefit
 appears, and quantifies the ceiling a better learned kernel is chasing.
 
-Companion video (exact-fork oracle mechanism):
-[`fetch_push_commitment_oracle_demo_20260725.mp4`](results/fetch_push_commitment_oracle_demo_20260725.mp4)
-(poster: [`.png`](results/fetch_push_commitment_oracle_demo_20260725.png)).
+Companion videos (exact-fork oracle mechanism), as individual per-cell clips for
+side-by-side use in a 16:9 submission video, in
+[`results/video_panels/`](results/video_panels/). Each clip is one method × one
+hidden friction, self-labeled with a live goal distance and a SUCCESS/MISS
+banner. The signature pairing is HIGH friction, mean push (MISS) beside
+distribution push (SUCCESS): `push_hero_0p25_mean_oracle_push_2p5x.mp4` |
+`push_hero_0p25_distribution_oracle_push_2p5x.mp4`.
 
 ---
 
@@ -364,7 +368,7 @@ wrong, committing to actions that live in the valley between physical outcomes.
 - Geometry screen (this report): [`screen_fetch_push_commitment_geometry.py`](../scripts/eval/screen_fetch_push_commitment_geometry.py);
   results [`fetch_push_commitment_geometry_screen_20260724.json`](results/fetch_push_commitment_geometry_screen_20260724.json),
   [`fetch_push_commitment_geometry_confirm_20260724.json`](results/fetch_push_commitment_geometry_confirm_20260724.json).
-- Oracle demo: [`fetch_push_commitment_oracle_demo_20260725.mp4`](results/fetch_push_commitment_oracle_demo_20260725.mp4) / [`.png`](results/fetch_push_commitment_oracle_demo_20260725.png).
+- Oracle demo clips (individual per-cell, for side-by-side 16:9 composition): [`results/video_panels/`](results/video_panels/) — 5 scenes × {mean, distribution} × {low, high friction}: 4 FetchPush scenes (`push_hero_0p25`, `push_0p2_a`, `push_0p25_b`, `push_0p2_b`) and 1 FetchSlide scene (`slide_*`). Composite posters: `fetch_push_commitment_hero_0p25_20260726.png`, `fetch_push_commitment_extra_0p2_20260726.png`, `fetch_slide_commitment_oracle_demo_20260726.png`. Renderers: [`render_fetch_push_commitment_demo.py`](../scripts/eval/render_fetch_push_commitment_demo.py), [`render_fetch_slide_commitment_demo.py`](../scripts/eval/render_fetch_slide_commitment_demo.py).
 - Learned commitment: [`fetch_push_paired_modes_confirmation_20260722.json`](results/fetch_push_paired_modes_confirmation_20260722.json),
   [`fetch_push_commitment_mode_confirmation_20260722.json`](results/fetch_push_commitment_mode_confirmation_20260722.json),
   [`fetch_push_commitment_flow_confirmation_20260722.json`](results/fetch_push_commitment_flow_confirmation_20260722.json).

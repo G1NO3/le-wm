@@ -55,8 +55,19 @@ FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--output", type=Path, help="Composite 2x2 mp4 (optional).")
     parser.add_argument("--poster", type=Path)
+    parser.add_argument(
+        "--individual-dir",
+        type=Path,
+        help="If set, write one mp4 per (method, friction) cell into this directory.",
+    )
+    parser.add_argument(
+        "--individual-prefix",
+        type=str,
+        default="panel",
+        help="Filename prefix for individual-panel clips.",
+    )
     parser.add_argument("--seed", type=int, default=1803092)
     parser.add_argument("--mean-index", type=int, default=22)
     parser.add_argument("--stochastic-index", type=int, default=92)
@@ -74,6 +85,8 @@ def parse_args():
     parser.add_argument("--title", type=str, default=None)
     parser.add_argument("--subtitle", type=str, default=None)
     parser.add_argument("--caption", type=str, default=None)
+    parser.add_argument("--friction-low", type=float, default=None)
+    parser.add_argument("--friction-high", type=float, default=None)
     return parser.parse_args()
 
 
@@ -124,19 +137,22 @@ def replay(
     return frames, np.asarray(distances), running_minimum, successes
 
 
-def panel_frame(frame, distance, running_minimum, success, final, threshold):
+def panel_frame(frame, distance, running_minimum, success, final, threshold,
+                moving_label="PUSHING", show_closest=True):
     image = Image.fromarray(frame).resize((PANEL_SIZE, PANEL_SIZE), Image.Resampling.LANCZOS)
     footer = Image.new("RGB", (PANEL_SIZE, PANEL_FOOTER_HEIGHT), "#111821")
     footer_draw = ImageDraw.Draw(footer)
-    status = "SUCCESS" if success else ("MISS" if final else "PUSHING")
+    status = "SUCCESS" if success else ("MISS" if final else moving_label)
     status_color = "#48d17a" if success else ("#ff6b6b" if final else "#f5c451")
     footer_draw.text((12, 7), status, font=font(19, bold=True), fill=status_color)
-    footer_draw.text(
-        (12, 31),
-        f"distance {distance * 100:.1f} cm  |  closest {running_minimum * 100:.1f} cm",
-        font=font(13),
-        fill="#e4e9ef",
+    # For push, success is closest approach (min over horizon); for slide it is
+    # the settled terminal distance, so the "closest" line is suppressed.
+    metric = (
+        f"distance {distance * 100:.1f} cm  |  closest {running_minimum * 100:.1f} cm"
+        if show_closest
+        else f"settled {distance * 100:.1f} cm from goal"
     )
+    footer_draw.text((12, 31), metric, font=font(13), fill="#e4e9ef")
     border_color = status_color if (success or final) else "#617082"
     combined = Image.new("RGB", (PANEL_SIZE, PANEL_SIZE + PANEL_FOOTER_HEIGHT))
     combined.paste(image, (0, 0))
@@ -148,6 +164,63 @@ def panel_frame(frame, distance, running_minimum, success, final, threshold):
         draw.rounded_rectangle((105, 150, 255, 205), radius=9, fill=banner_color)
         centered(draw, (105, 150, 255, 205), status, font(24, bold=True), "white")
     return combined
+
+
+INDIV_LABEL_HEIGHT = 46
+
+
+def individual_panel_frame(frame, distance, running_minimum, success, final,
+                           threshold, *, method, mode_name, multiplier,
+                           moving_label="PUSHING", show_closest=True):
+    """One self-contained sim panel with a compact top label, for side-by-side
+    composition in an external editor (e.g. two clips in a 16:9 report video)."""
+    panel = panel_frame(
+        frame, distance, running_minimum, success, final, threshold,
+        moving_label=moving_label, show_closest=show_closest,
+    )
+    labeled = Image.new("RGB", (panel.width, panel.height + INDIV_LABEL_HEIGHT), "#080d13")
+    draw = ImageDraw.Draw(labeled)
+    centered(draw, (0, 3, panel.width, 25), method, font(17, bold=True), "#f6f8fb")
+    centered(
+        draw,
+        (0, 25, panel.width, INDIV_LABEL_HEIGHT),
+        f"{mode_name}  ({multiplier:g}× friction)",
+        font(13),
+        "#f5c451" if multiplier < 1.5 else "#c3a2ff",
+    )
+    labeled.paste(panel, (0, INDIV_LABEL_HEIGHT))
+    return labeled
+
+
+def render_individual_panels(trajectories, parameters, threshold, directory,
+                             prefix, fps, *, moving_label="PUSHING",
+                             show_closest=True):
+    """Write one mp4 per (method, friction mode) cell."""
+    directory.mkdir(parents=True, exist_ok=True)
+    outputs = []
+    length = len(next(iter(trajectories.values()))[0])
+    final_index = length - 1
+    for column, method in enumerate(METHODS):
+        method_slug = method.lower().replace(" ", "_").replace("-", "_")
+        for row, (mode_name, multiplier) in enumerate(MODES):
+            mode_slug = f"{multiplier:g}x".replace(".", "p")
+            frames, distances, minima, successes = trajectories[(column, row)]
+            clip = [
+                individual_panel_frame(
+                    frames[i], distances[i], minima[i], bool(successes[i]),
+                    i == final_index, threshold,
+                    method=method, mode_name=mode_name, multiplier=multiplier,
+                    moving_label=moving_label, show_closest=show_closest,
+                )
+                for i in range(length)
+            ]
+            out = directory / f"{prefix}_{method_slug}_{mode_slug}.mp4"
+            encode_video(clip, out, fps)
+            outputs.append(out)
+            # Match the video banner / eval: last success flag (closest-approach
+            # for push, settled-terminal for slide) rather than raw terminal.
+            print(f"panel={out}  ({'success' if bool(successes[-1]) else 'miss'})")
+    return outputs
 
 
 def compose(index, trajectories, parameters, threshold, seed):
@@ -270,6 +343,8 @@ def encode_video(frames, output, fps):
 
 def main():
     args = parse_args()
+    if args.output is None and args.individual_dir is None:
+        raise SystemExit("Provide --output (composite) and/or --individual-dir (panels)")
     for path in (args.output, args.poster):
         if path is not None and path.exists():
             raise SystemExit(f"Refusing to overwrite existing artifact: {path}")
@@ -281,13 +356,20 @@ def main():
         if len(labels) != 2:
             raise SystemExit("--method-labels must be two comma-separated names")
         METHODS = labels
-    global TITLE, SUBTITLE, CAPTION
+    global TITLE, SUBTITLE, CAPTION, MODES
     if args.title is not None:
         TITLE = args.title
     if args.subtitle is not None:
         SUBTITLE = args.subtitle
     if args.caption is not None:
         CAPTION = args.caption
+    if args.friction_low is not None or args.friction_high is not None:
+        if args.friction_low is None or args.friction_high is None:
+            raise SystemExit("--friction-low and --friction-high must be given together")
+        MODES = (
+            ("LOW FRICTION", args.friction_low),
+            ("HIGH FRICTION", args.friction_high),
+        )
 
     env = FetchPushHiddenFriction(
         gym.make("swm/FetchPush-v3", max_episode_steps=100, render_mode="rgb_array"),
@@ -324,25 +406,34 @@ def main():
                     final_hold=args.final_hold,
                 )
         length = len(trajectories[(0, 0)][0])
-        composed = [
-            compose(
-                index,
+        if args.output is not None:
+            composed = [
+                compose(
+                    index,
+                    trajectories,
+                    (parameters[selected[0]], parameters[selected[1]]),
+                    args.success_threshold,
+                    args.seed,
+                )
+                for index in range(length)
+            ]
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            encode_video(composed, args.output, args.fps)
+            if args.poster is not None:
+                args.poster.parent.mkdir(parents=True, exist_ok=True)
+                composed[-1].save(args.poster)
+            print(f"video={args.output}")
+            if args.poster is not None:
+                print(f"poster={args.poster}")
+        if args.individual_dir is not None:
+            render_individual_panels(
                 trajectories,
                 (parameters[selected[0]], parameters[selected[1]]),
                 args.success_threshold,
-                args.seed,
+                args.individual_dir,
+                args.individual_prefix,
+                args.fps,
             )
-            for index in range(length)
-        ]
-        args.output.parent.mkdir(parents=True, exist_ok=True)
-        encode_video(composed, args.output, args.fps)
-        if args.poster is not None:
-            args.poster.parent.mkdir(parents=True, exist_ok=True)
-            composed[-1].save(args.poster)
-
-        print(f"video={args.output}")
-        if args.poster is not None:
-            print(f"poster={args.poster}")
         for column, method in enumerate(METHODS):
             for row, (mode_name, multiplier) in enumerate(MODES):
                 minimum = trajectories[(column, row)][2][-1]
