@@ -1,6 +1,6 @@
 # Project Status
 
-Last updated: 2026-07-23
+Last updated: 2026-07-25
 
 ## Repository
 
@@ -445,6 +445,38 @@ Quadruple-stack Gate 2 pilot and prediction launch (2026-07-19):
   Its three running tasks are conditional Gaussian, memoryless flow, and
   GRU-memory flow, all with frozen nominal LeWM, model seed 13041, 10 epochs,
   batch size 64, and identical dataset/split/statistics hashes.
+
+## Commitment ceiling screen (2026-07-25)
+
+Intermediate report written: `docs/intermediate-report-2026-07-25.md` (rigorous
+math in LeWM notation; prediction + planning + MPC vs deterministic LeWM).
+
+A pure exact-fork geometry screen (no model, no training) mapped the ceiling of
+the FetchPush commitment task. Script:
+`scripts/eval/screen_fetch_push_commitment_geometry.py`. It rolls a dense
+push-pulse library through exact forks under two friction multipliers and scores
+a mean oracle (plans on the averaged-position trajectory, valley-prone) vs a
+distribution oracle (minimizes expected 0/1 failure). Two grading levels:
+episode (each mode separately) and context (one committed push must succeed
+under BOTH frictions — the honest commit-before-reveal metric).
+
+Confirmed on 100 fresh scenes (`fetch_push_commitment_geometry_confirm_20260724.json`):
+at 0.25x/2.5x friction, tau=5cm, context success is 77.0% (mean oracle) vs
+99.0% (distribution oracle), +22.0 pp with 95% CI [+14.0, +30.0]; hedge exists
+in 99% of scenes. At 0.2x/3.0x tau=5cm the context gap is +25 pp (33% -> 58%).
+Sweet spot: extreme friction (0.15/4.0) breaks the hedge; mild friction (0.3/2.0,
+0.4/1.8) saturates. My strict "clean-win" (mean fails BOTH modes) is 0 across
+all geometries — in this 1D straddle the mean-optimal action always rescues the
+closer mode, so the demonstration's strength comes from context-level scoring,
+not more extreme physics. The learned label-free model realized ~+3.8 pp of a
+comparable ceiling, so the open problem is closing the learned-vs-oracle gap.
+
+Oracle demo video/poster (exact forks only, seed 1803092; mean-oracle push wins
+low friction 0.9cm but misses high 8.8cm, distribution-oracle push wins both
+0.6cm/4.3cm): `docs/results/fetch_push_commitment_oracle_demo_20260725.mp4` and
+`.png`. The renderer now takes `--method-labels/--title/--subtitle/--caption`
+so oracle vs learned demos are labeled accurately.
+`tests/test_fetch_commitment.py` passes (6).
 
 ## Open Risks
 

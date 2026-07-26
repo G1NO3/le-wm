@@ -37,6 +37,10 @@ from stochastic_physics import FetchPushHiddenFriction
 
 MODES = (("LOW FRICTION", 0.2), ("HIGH FRICTION", 3.0))
 METHODS = ("Residual mean", "Stochastic residual")
+# Overridable at runtime via --method-labels for exact-fork oracle demos.
+TITLE = "Friction-varying FetchPush — fresh held-out scene"
+SUBTITLE = "Stochastic residual selects a push that succeeds in both hidden modes"
+CAPTION = "1,024-context result: 52.3% → 56.2%  (+3.8 pp; 95% CI +1.8 to +5.9)"
 PANEL_SIZE = 360
 MARGIN = 22
 GAP = 14
@@ -61,6 +65,15 @@ def parse_args():
     parser.add_argument("--initial-hold", type=int, default=6)
     parser.add_argument("--final-hold", type=int, default=12)
     parser.add_argument("--success-threshold", type=float, default=0.05)
+    parser.add_argument(
+        "--method-labels",
+        type=str,
+        default=None,
+        help="Comma-separated column labels overriding the two method names.",
+    )
+    parser.add_argument("--title", type=str, default=None)
+    parser.add_argument("--subtitle", type=str, default=None)
+    parser.add_argument("--caption", type=str, default=None)
     return parser.parse_args()
 
 
@@ -154,21 +167,21 @@ def compose(index, trajectories, parameters, threshold, seed):
     centered(
         draw,
         (MARGIN, 10, width - MARGIN, 48),
-        "Friction-varying FetchPush — fresh held-out scene",
+        TITLE,
         font(25, bold=True),
         "#f6f8fb",
     )
     centered(
         draw,
         (MARGIN, 48, width - MARGIN, 78),
-        "Stochastic residual selects a push that succeeds in both hidden modes",
+        SUBTITLE,
         font(16, bold=True),
         "#83d9ff",
     )
     centered(
         draw,
         (MARGIN, 79, width - MARGIN, 112),
-        "1,024-context result: 52.3% → 56.2%  (+3.8 pp; 95% CI +1.8 to +5.9)",
+        CAPTION,
         font(15),
         "#cad4df",
     )
@@ -262,6 +275,19 @@ def main():
             raise SystemExit(f"Refusing to overwrite existing artifact: {path}")
     if args.fps <= 0:
         raise SystemExit("--fps must be positive")
+    if args.method_labels is not None:
+        global METHODS
+        labels = tuple(x.strip() for x in args.method_labels.split(","))
+        if len(labels) != 2:
+            raise SystemExit("--method-labels must be two comma-separated names")
+        METHODS = labels
+    global TITLE, SUBTITLE, CAPTION
+    if args.title is not None:
+        TITLE = args.title
+    if args.subtitle is not None:
+        SUBTITLE = args.subtitle
+    if args.caption is not None:
+        CAPTION = args.caption
 
     env = FetchPushHiddenFriction(
         gym.make("swm/FetchPush-v3", max_episode_steps=100, render_mode="rgb_array"),
