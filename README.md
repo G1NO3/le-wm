@@ -1,221 +1,191 @@
+# LeWM Residual-Flow Research Fork
 
-# LeWorldModel
-### Stable End-to-End Joint-Embedding Predictive Architecture from Pixels
+This repository extends
+[LeWorldModel (LeWM)](https://github.com/lucas-maes/le-wm) with optional
+flow-matched residual kernels for stochastic robotic world models. The
+deterministic JEPA predictor remains the nominal dynamics model; a conditional
+residual model learns uncertainty around its latent transitions.
 
-[Lucas Maes*](https://x.com/lucasmaes_), [Quentin Le Lidec*](https://quentinll.github.io/), [Damien Scieur](https://scholar.google.com/citations?user=hNscQzgAAAAJ&hl=fr), [Yann LeCun](https://yann.lecun.com/) and [Randall Balestriero](https://randallbalestriero.github.io/)
-
-**Abstract:** Joint Embedding Predictive Architectures (JEPAs) offer a compelling framework for learning world models in compact latent spaces, yet existing methods remain fragile, relying on complex multi-term losses, exponential moving averages, pretrained encoders, or auxiliary supervision to avoid representation collapse. In this work, we introduce LeWorldModel (LeWM), the first JEPA that trains stably end-to-end from raw pixels using only two loss terms: a next-embedding prediction loss and a regularizer enforcing Gaussian-distributed latent embeddings. This reduces tunable loss hyperparameters from six to one compared to the only existing end-to-end alternative. With ~15M parameters trainable on a single GPU in a few hours, LeWM plans up to 48× faster than foundation-model-based world models while remaining competitive across diverse 2D and 3D control tasks. Beyond control, we show that LeWM's latent space encodes meaningful physical structure through probing of physical quantities. Surprise evaluation confirms that the model reliably detects physically implausible events.
-
-<p align="center">
-   <b>[ <a href="https://arxiv.org/pdf/2603.19312v1">Paper</a> | <a href="https://huggingface.co/collections/quentinll/lewm">Checkpoints &amp; Data</a> | <a href="https://le-wm.github.io/">Website</a> ]</b>
-</p>
-
-<br>
+The implementation preserves vanilla LeWM behavior unless
+`loss.residual_flow.enabled=true`.
 
 <p align="center">
-  <img src="assets/lewm.gif" width="80%">
+  <img src="assets/lewm.gif" width="80%" alt="LeWorldModel rollout">
 </p>
 
-If you find this code useful, please reference it in your paper:
-```
-@article{maes_lelidec2026lewm,
-  title={LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels},
-  author={Maes, Lucas and Le Lidec, Quentin and Scieur, Damien and LeCun, Yann and Balestriero, Randall},
-  journal={arXiv preprint},
-  year={2026}
-}
-```
+## What is included
 
-## Using the code
-This codebase builds on [stable-worldmodel](https://github.com/galilai-group/stable-worldmodel) for environment management, planning, and evaluation, and [stable-pretraining](https://github.com/galilai-group/stable-pretraining) for training. Together they reduce this repository to its core contribution: the model architecture and training objective.
+- End-to-end LeWM latent dynamics and rollout in `jepa.py`.
+- Conditional flow-matched latent residuals in `residual_flow.py`.
+- Joint nominal and residual training in `train.py`.
+- Optional recurrent residual memory and stochastic particle rollouts.
+- Conditional Gaussian, memoryless flow, and GRU-flow baselines.
+- Exact simulator-fork evaluation, calibration metrics, and particle MPC tools.
+- PushT, OGBench, FetchPush, and FetchSlide experiment workflows.
 
-**Installation:**
+The compact project history and current research status live in
+[`wiki/README.md`](wiki/README.md). See
+[`wiki/evaluation.md`](wiki/evaluation.md) for metric definitions and
+[`docs/project-plan.md`](docs/project-plan.md) for the experiment log.
+
+## Installation
+
+Linux and Python 3.10 are the validated development target. Pixi is the
+environment source of truth and should be used for reproducible training,
+evaluation, and cluster jobs:
+
 ```bash
 pixi install --locked
 pixi run smoke-import
 pixi run test
 ```
 
-The committed Pixi lockfile is used for both local development and cluster
-jobs. See `docs/ice-setup.md` for Georgia Tech PACE ICE setup and Slurm
-ablation arrays.
+A pip-compatible file is also provided for lightweight local setup:
 
-OGBench, PushT, and HDF5 support are included in the default environment. The
-current RoboCasa stack has its own Python 3.11 environment:
+```bash
+python3.10 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+`requirements.txt` records direct dependencies but is not a replacement for
+the committed `pixi.lock`. Do not use ad hoc `pip install` commands inside the
+Pixi environment.
+
+The optional RoboCasa stack uses its own Python 3.11 Pixi environment:
 
 ```bash
 pixi install --locked -e robocasa
 pixi run -e robocasa robocasa-smoke
 pixi run -e robocasa setup-robocasa
-# Download RoboCasa assets explicitly (about 10 GB) only when needed.
 ```
 
-## Data
+RoboCasa assets are downloaded separately and are not stored in this
+repository.
 
-Datasets use the HDF5 format for fast loading. Download the data from [HuggingFace](https://huggingface.co/collections/quentinll/lewm) and decompress with:
+## Data and checkpoints
+
+Use a large writable directory for datasets, checkpoints, and evaluation
+artifacts:
 
 ```bash
-tar --zstd -xvf archive.tar.zst
+export STABLEWM_HOME=/path/to/stable-wm-storage
 ```
 
-Place the extracted `.h5` files under `$STABLEWM_HOME` (defaults to `~/.stable-wm/`). You can override this path:
-```bash
-export STABLEWM_HOME=/path/to/your/storage
-```
+Dataset configs refer to HDF5 files by basename. For example,
+`pusht_expert_train` resolves to
+`$STABLEWM_HOME/pusht_expert_train.h5`.
 
-Dataset names are specified without the `.h5` extension. For example, `config/train/data/pusht.yaml` references `pusht_expert_train`, which resolves to `$STABLEWM_HOME/pusht_expert_train.h5`.
+Upstream pretrained LeWM checkpoints and datasets are available from the
+[LeWM Hugging Face collection](https://huggingface.co/collections/quentinll/lewm).
+Artifacts for this fork's stochastic-manipulation experiments are intentionally
+kept out of Git.
 
 ## Training
 
-`jepa.py` contains the PyTorch implementation of LeWM. Training is configured via [Hydra](https://hydra.cc/) config files under `config/train/`.
-
-Before training, set your WandB `entity` and `project` in `config/train/lewm.yaml`:
-```yaml
-wandb:
-  config:
-    entity: your_entity
-    project: your_project
-```
-
-To launch training:
-```bash
-pixi run train-pusht
-```
-
-Checkpoints are saved to `$STABLEWM_HOME` upon completion.
-
-## Complex stochastic manipulation study
-
-The gated study specification is `config/studies/complex_stochastic.yaml`.
-Its primary task is OGBench double-cube task 5 (stacking), with triple-cube
-task 4 (cyclic rearrangement) and RoboCasa `PickPlaceCounterToCabinet` as
-transfer evaluations.
-
-Pilot collection is capped at 1,000 episodes unless the larger stage is
-acknowledged explicitly:
+Train vanilla LeWM on PushT:
 
 ```bash
-pixi run python scripts/data/collect_stochastic_ogbench.py \
-  --task double_stack --profile strong --episodes 1000 \
-  --output "$STABLEWM_HOME/ogbench/cube_double_stochastic_stack.h5"
+pixi run train-pusht wandb.enabled=false
 ```
 
-`config/ablations/double_stack_prediction.tsv` compares a conditional Gaussian,
-a memoryless residual flow, and a flow with one explicit 128-dimensional GRU
-state against one frozen nominal checkpoint and one centered residual-statistics
-artifact. Run `pixi run smoke-memory` before submitting these heads.
-Downstream Slurm arrays should use `scripts/slurm/ice/submit_gated_array.sh`,
-which verifies the preceding gate's hashed evidence before calling `sbatch`.
-
-For baseline scripts, see the stable-worldmodel [scripts](https://github.com/galilai-group/stable-worldmodel/tree/main/scripts/train) folder.
-
-## Planning
-
-Evaluation configs live under `config/eval/`. Set the `policy` field to the checkpoint path **relative to `$STABLEWM_HOME`**, without the `_object.ckpt` suffix:
+Enable the latent residual-flow objective:
 
 ```bash
-# ✓ correct
+pixi run train-pusht-residual wandb.enabled=false
+```
+
+For a smaller-memory residual run:
+
+```bash
+pixi run train-pusht-residual \
+  loader.batch_size=32 \
+  wandb.enabled=false
+```
+
+Hydra configuration lives under `config/train/`; the residual model is
+configured by the `loss.residual_flow` block in
+`config/train/lewm.yaml`. Checkpoints are written below `$STABLEWM_HOME`.
+
+## Evaluation
+
+Evaluate a residual-flow checkpoint:
+
+```bash
+pixi run python scripts/eval/evaluate_latent_residuals.py \
+  --checkpoint \
+  "$STABLEWM_HOME/pusht_rflow/lewm_rflow_epoch_1_object.ckpt" \
+  --output "$STABLEWM_HOME/eval/pusht_rflow.json"
+```
+
+The evaluator compares learned residual samples with simple baselines using
+proper scores, calibration, interval coverage, and covariance diagnostics.
+Control experiments additionally compare deterministic and stochastic planning
+on exact simulator forks.
+
+For standard LeWM planning, `policy` is a checkpoint path relative to
+`$STABLEWM_HOME` without the `_object.ckpt` suffix:
+
+```bash
 python eval.py --config-name=pusht.yaml policy=pusht/lewm
-
-# ✗ incorrect
-python eval.py --config-name=pusht.yaml policy=pusht/lewm_object.ckpt
 ```
 
-## Pretrained Checkpoints
+## Development
 
-Pretrained LeWM checkpoints for each environment are mirrored on the Hugging Face
-Hub (model repos), alongside the datasets (dataset repos) in the same collection:
-
-- [`quentinll/lewm-pusht`](https://huggingface.co/quentinll/lewm-pusht)
-- [`quentinll/lewm-cube`](https://huggingface.co/quentinll/lewm-cube)
-- [`quentinll/lewm-tworooms`](https://huggingface.co/quentinll/lewm-tworooms)
-- [`quentinll/lewm-reacher`](https://huggingface.co/quentinll/lewm-reacher)
-
-The full baseline checkpoint suite (PLDM, LeJEPA, IVL, IQL, GCBC, DINO-WM, DINO-WM-noprop)
-is available on [Google Drive](https://drive.google.com/drive/folders/1r31os0d4-rR0mdHc7OlY_e5nh3XT4r4e):
-
-<div align="center">
-
-| Method | two-room | pusht | cube | reacher |
-|:---:|:---:|:---:|:---:|:---:|
-| pldm | ✓ | ✓ | ✓ | ✓ |
-| lejepa | ✓ | ✓ | ✓ | ✓ |
-| ivl | ✓ | ✓ | ✓ | — |
-| iql | ✓ | ✓ | ✓ | — |
-| gcbc | ✓ | ✓ | ✓ | — |
-| dinowm | ✓ | ✓ | — | — |
-| dinowm_noprop | ✓ | ✓ | ✓ | ✓ |
-
-</div>
-
-## Loading a checkpoint
-
-### From the Drive archive
-
-Each tar archive contains two files per checkpoint:
-- `<name>_object.ckpt` — a serialized Python object for convenient loading; this is what `eval.py` and the `stable_worldmodel` API use
-- `<name>_weight.ckpt` — a weights-only checkpoint (`state_dict`) for cases where you want to load weights into your own model instance
-
-Place the extracted files under `$STABLEWM_HOME/` and load via:
-
-```python
-import stable_worldmodel as swm
-
-# Load the cost model (for MPC)
-cost = swm.policy.AutoCostModel('pusht/lewm')
-```
-
-`AutoCostModel` accepts:
-- `run_name` — checkpoint path **relative to `$STABLEWM_HOME`**, without the `_object.ckpt` suffix
-- `cache_dir` — optional override for the checkpoint root (defaults to `$STABLEWM_HOME`)
-
-The returned module is in `eval` mode with its PyTorch weights accessible via `.state_dict()`.
-
-### From the Hugging Face mirror
-
-The HF model repos ship the LeWM checkpoint as a `weights.pt` (state dict) plus a
-`config.json` describing the model. Convert once to produce the `_object.ckpt`
-that `eval.py` expects:
+Run the fast syntax check and test suite before submitting changes:
 
 ```bash
-# download weights.pt + config.json
-hf download quentinll/lewm-pusht --local-dir $STABLEWM_HOME/hf_pusht
-
-# convert to object checkpoint under $STABLEWM_HOME/pusht/lewm_object.ckpt
-python - <<'PY'
-import json, torch, stable_pretraining as spt
-from pathlib import Path
-from jepa import JEPA
-from module import ARPredictor, Embedder, MLP
-import stable_worldmodel as swm
-
-src = Path(swm.data.utils.get_cache_dir(), "hf_pusht")
-out = Path(swm.data.utils.get_cache_dir(), "pusht", "lewm_object.ckpt")
-
-cfg = json.loads((src / "config.json").read_text())
-encoder = spt.backbone.utils.vit_hf(
-    cfg["encoder"]["size"],
-    patch_size=cfg["encoder"]["patch_size"],
-    image_size=cfg["encoder"]["image_size"],
-    pretrained=False, use_mask_token=False,
-)
-mlp = lambda k: MLP(input_dim=cfg[k]["input_dim"], output_dim=cfg[k]["output_dim"],
-                    hidden_dim=cfg[k]["hidden_dim"], norm_fn=torch.nn.BatchNorm1d)
-model = JEPA(
-    encoder=encoder,
-    predictor=ARPredictor(**cfg["predictor"]),
-    action_encoder=Embedder(**cfg["action_encoder"]),
-    projector=mlp("projector"),
-    pred_proj=mlp("pred_proj"),
-)
-sd = torch.load(src / "weights.pt", map_location="cpu", weights_only=False)
-model.load_state_dict(sd, strict=True)
-out.parent.mkdir(parents=True, exist_ok=True)
-torch.save(model, out)
-PY
+pixi run check
+pixi run test
 ```
 
-After conversion, load via `swm.policy.AutoCostModel('pusht/lewm')` as usual.
+Useful source locations:
 
-## Contact & Contributions
-Feel free to open [issues](https://github.com/lucas-maes/le-wm/issues)! For questions or collaborations, please contact `lucas.maes@mila.quebec`
+| Path | Purpose |
+| --- | --- |
+| `jepa.py` | LeWM model, latent transitions, rollout, and residual sampling |
+| `train.py` | Training loop and residual flow-matching loss |
+| `residual_flow.py` | Conditional residual vector field |
+| `residual_memory.py` | Recurrent residual state |
+| `residual_kernels.py` | Stochastic residual baselines |
+| `stochastic_metrics.py` | Distribution and calibration metrics |
+| `config/` | Hydra training, evaluation, study, and ablation configs |
+| `scripts/data/` | Dataset collection and validation |
+| `scripts/eval/` | Prediction and control evaluation |
+| `scripts/slurm/` | Cluster submission helpers |
+
+Cluster setup and runbooks are documented in
+[`docs/ice-setup.md`](docs/ice-setup.md) and
+[`docs/sky1-setup.md`](docs/sky1-setup.md).
+
+## Upstream LeWorldModel
+
+This fork builds on
+[stable-worldmodel](https://github.com/galilai-group/stable-worldmodel) for
+environment management, planning, and evaluation, and
+[stable-pretraining](https://github.com/galilai-group/stable-pretraining) for
+training.
+
+Upstream resources:
+
+- [Paper](https://arxiv.org/abs/2603.19312)
+- [Project website](https://le-wm.github.io/)
+- [Checkpoints and datasets](https://huggingface.co/collections/quentinll/lewm)
+
+If you use the upstream model, cite:
+
+```bibtex
+@article{maes_lelidec2026lewm,
+  title={LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels},
+  author={Maes, Lucas and Le Lidec, Quentin and Scieur, Damien and
+          LeCun, Yann and Balestriero, Randall},
+  journal={arXiv preprint},
+  year={2026}
+}
+```
+
+## License
+
+See [`LICENSE`](LICENSE). Contributions should keep residual-flow behavior
+optional and preserve compatibility with upstream LeWM.
